@@ -1,0 +1,6 @@
+framework module Pods_DCMetroWidget {
+  umbrella header "Pods-DCMetroWidget-umbrella.h"
+
+  export *
+  module * { export * }
+}

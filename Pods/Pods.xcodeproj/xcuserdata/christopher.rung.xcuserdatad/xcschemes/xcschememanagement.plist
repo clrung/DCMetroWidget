@@ -4,25 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>DCMetro.xcscheme</key>
+		<key>Pods-DCMetroWidget.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>DCMetroWidget.xcscheme</key>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>588D7C461CD1A1CB008A2A22</key>
+		<key>E917EB2751F9CE20D593E875E537999F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>588D7C5C1CD1A1DE008A2A22</key>
+		<key>F2F86E02EADE92563952DDDAF9135D1F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

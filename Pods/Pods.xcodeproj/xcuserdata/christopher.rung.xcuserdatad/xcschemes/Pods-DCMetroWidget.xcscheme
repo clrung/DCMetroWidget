@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "588D7C461CD1A1CB008A2A22"
-               BuildableName = "DCMetro.app"
-               BlueprintName = "DCMetro"
-               ReferencedContainer = "container:DCMetro.xcodeproj">
+               BlueprintIdentifier = "F2F86E02EADE92563952DDDAF9135D1F"
+               BuildableName = "Pods_DCMetroWidget.framework"
+               BlueprintName = "Pods-DCMetroWidget"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "588D7C461CD1A1CB008A2A22"
-            BuildableName = "DCMetro.app"
-            BlueprintName = "DCMetro"
-            ReferencedContainer = "container:DCMetro.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -51,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "588D7C461CD1A1CB008A2A22"
-            BuildableName = "DCMetro.app"
-            BlueprintName = "DCMetro"
-            ReferencedContainer = "container:DCMetro.xcodeproj">
+            BlueprintIdentifier = "F2F86E02EADE92563952DDDAF9135D1F"
+            BuildableName = "Pods_DCMetroWidget.framework"
+            BlueprintName = "Pods-DCMetroWidget"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -70,16 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "588D7C461CD1A1CB008A2A22"
-            BuildableName = "DCMetro.app"
-            BlueprintName = "DCMetro"
-            ReferencedContainer = "container:DCMetro.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
