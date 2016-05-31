@@ -16,7 +16,6 @@
 		588D7C681CD1A1DE008A2A22 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */; };
 		588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C6A1CD1A1DE008A2A22 /* InfoPlist.strings */; };
 		588D7C6F1CD1A1DE008A2A22 /* DCMetroWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 588D7C5D1CD1A1DE008A2A22 /* DCMetroWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		588EA65F1CE5558C00ACDF41 /* MetroFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EA65E1CE5558C00ACDF41 /* MetroFetcher.swift */; };
 		588EA6611CE55FD600ACDF41 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EA6601CE55FD600ACDF41 /* Train.swift */; };
 		588EA6631CE56A0700ACDF41 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EA6621CE56A0700ACDF41 /* Line.swift */; };
 		59581C8AFE7C75792E46675F /* Pods_DCMetroWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */; };
@@ -63,7 +62,6 @@
 		588D7C671CD1A1DE008A2A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
 		588D7C691CD1A1DE008A2A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		588D7C6B1CD1A1DE008A2A22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		588EA65E1CE5558C00ACDF41 /* MetroFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetroFetcher.swift; sourceTree = "<group>"; };
 		588EA6601CE55FD600ACDF41 /* Train.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Train.swift; sourceTree = "<group>"; };
 		588EA6621CE56A0700ACDF41 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */,
-				588EA65E1CE5558C00ACDF41 /* MetroFetcher.swift */,
 				588EA6601CE55FD600ACDF41 /* Train.swift */,
 				588EA6621CE56A0700ACDF41 /* Line.swift */,
 				588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */,
@@ -328,7 +325,6 @@
 				588D7C651CD1A1DE008A2A22 /* TodayViewController.swift in Sources */,
 				588EA6631CE56A0700ACDF41 /* Line.swift in Sources */,
 				588EA6611CE55FD600ACDF41 /* Train.swift in Sources */,
-				588EA65F1CE5558C00ACDF41 /* MetroFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

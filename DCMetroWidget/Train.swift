@@ -14,7 +14,7 @@ import SwiftyJSON
 */
 class Train {
     
-    var car: Int = 0
+    var numCars: Int = 0
     var destination: String = ""
     var destinationCode: String = ""
     var destinationName: String = ""
