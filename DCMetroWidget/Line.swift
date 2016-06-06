@@ -8,8 +8,20 @@
 
 import Foundation
 
-enum Line {
+enum Line : CustomStringConvertible{
     
     case RD, BL, YL, OR, GR, SV, NO
+    
+    var description : String {
+        switch self {
+        case .RD: return "Red"
+        case .BL: return "Blue"
+        case .YL: return "Yellow"
+        case .OR: return "Orange"
+        case .GR: return "Green"
+        case .SV: return "Silver"
+        case .NO: return "No Passenger"
+        }
+    }
     
 }
