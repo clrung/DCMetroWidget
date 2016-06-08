@@ -17,6 +17,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
     var prediction: JSON = JSON(NSNull)
     var trains:[Train] = []
     
+    let HEADER_HEIGHT = 23
+    let ROW_HEIGHT = 17
+    let ROW_SPACING = 6
+    
     override var nibName: String? {
         return "TodayViewController"
     }
@@ -51,7 +55,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
         
         trains = [train1, train2, train3];
         
-        self.predictionTableViewHeightConstraint.constant = CGFloat(50 + trains.count * 20)
+        self.predictionTableViewHeightConstraint.constant = CGFloat(HEADER_HEIGHT + trains.count * (ROW_HEIGHT + ROW_SPACING))
 
         self.predictionTableView.reloadData()
         
@@ -63,6 +67,18 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
             // TODO stop a progress indicator
         })
         
+    }
+    
+    var widgetAllowsEditing: Bool {
+        return true
+    }
+    
+    func widgetDidBeginEditing() {
+        debugPrint("began editing")
+    }
+    
+    func widgetDidEndEditing() {
+        debugPrint("ended editing in main")
     }
     
     func getPrediction(stationCode: String, onCompleted: () -> ()) {

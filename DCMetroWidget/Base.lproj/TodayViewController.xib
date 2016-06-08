@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="DCMetroWidget" customModuleProvider="target">
             <connections>
-                <outlet property="asd" destination="EAt-qh-G7Q" id="yki-hC-epa"/>
                 <outlet property="predictionTableView" destination="jAJ-D1-e6X" id="ec9-C3-no1"/>
                 <outlet property="predictionTableViewHeightConstraint" destination="EAt-qh-G7Q" id="Gs9-9g-jeZ"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -16,8 +14,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="143"/>
+        <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" userLabel="Main">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="139"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MP5-Zb-MoP">
                     <rect key="frame" x="-2" y="116" width="104" height="17"/>
@@ -31,28 +29,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ueh-WT-95V">
-                    <rect key="frame" x="134" y="109" width="186" height="29"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="24" id="4zr-JJ-YLg"/>
-                        <constraint firstAttribute="width" constant="180" id="rGv-v1-zZe"/>
-                    </constraints>
-                    <popUpButtonCell key="cell" type="push" title="Union Station" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" inset="2" pullsDown="YES" id="7hf-RE-SyX">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="jxL-ft-RLf">
-                            <items>
-                                <menuItem title="Union Station" state="on" hidden="YES" id="mXk-az-BkM"/>
-                                <menuItem title="Item 2" id="WOE-iA-41Y">
-                                    <attributedString key="attributedTitle"/>
-                                </menuItem>
-                                <menuItem title="Item 3" id="yAB-qf-KNH"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-YT-uax">
-                    <rect key="frame" x="159" y="55.5" width="32" height="32"/>
+                    <rect key="frame" x="159" y="53" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="Ue9-JR-Zat"/>
                         <constraint firstAttribute="height" constant="32" id="lyC-I0-Q7o"/>
@@ -93,7 +71,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="QOy-oT-ASJ"/>
                                                         </constraints>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAdvanced" id="6d1-Pg-cJn"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSTrashFull" id="6d1-Pg-cJn"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -252,25 +230,37 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="PAz-J3-g8X">
+                    <rect key="frame" x="293" y="112" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="ER4-cI-hBQ"/>
+                        <constraint firstAttribute="width" constant="24" id="GGq-sI-ET9"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAdvanced" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="zIM-KV-GiS">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="1Bq-GQ-QtD"/>
                 <constraint firstAttribute="bottom" secondItem="isK-RV-08P" secondAttribute="bottom" constant="15" id="9Di-NM-RLp"/>
                 <constraint firstItem="MP5-Zb-MoP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="CJH-rq-p4y"/>
-                <constraint firstItem="ueh-WT-95V" firstAttribute="centerY" secondItem="MP5-Zb-MoP" secondAttribute="centerY" id="Ln5-vn-sQF"/>
+                <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="33" id="I97-LF-ZsN"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
-                <constraint firstItem="ueh-WT-95V" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" multiplier="1.3" id="Sbh-NM-qh3"/>
+                <constraint firstItem="PAz-J3-g8X" firstAttribute="centerY" secondItem="MP5-Zb-MoP" secondAttribute="centerY" id="aPb-Vz-b0d"/>
                 <constraint firstItem="isK-RV-08P" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="kbK-PA-bgv"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="l4f-9L-5Xz"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="MP5-Zb-MoP" secondAttribute="bottom" constant="15" id="nDz-2J-nOw"/>
                 <constraint firstItem="isK-RV-08P" firstAttribute="top" secondItem="ne8-JS-SDK" secondAttribute="bottom" constant="15" id="qrL-90-eSZ"/>
-                <constraint firstItem="MP5-Zb-MoP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="shh-FJ-O2C"/>
-                <constraint firstItem="ne8-JS-SDK" firstAttribute="trailing" secondItem="ueh-WT-95V" secondAttribute="trailing" id="vG5-oa-U45"/>
+                <constraint firstItem="MP5-Zb-MoP" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="6" id="shh-FJ-O2C"/>
+                <constraint firstItem="PAz-J3-g8X" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" id="uNW-rF-CiW"/>
             </constraints>
-            <point key="canvasLocation" x="358" y="425"/>
+            <point key="canvasLocation" x="309" y="440.5"/>
         </customView>
     </objects>
     <resources>
         <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSTrashFull" width="32" height="32"/>
     </resources>
 </document>
