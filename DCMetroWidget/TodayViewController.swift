@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource {
     
+    @IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var predictionTableView: NSTableView!
     var prediction: JSON = JSON(NSNull)
     var trains:[Train] = []
@@ -49,6 +50,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
         train3.destination = "Wiehle-Reston East"
         
         trains = [train1, train2, train3];
+        
+        self.predictionTableViewHeightConstraint.constant = CGFloat(50 + trains.count * 20)
 
         self.predictionTableView.reloadData()
         
