@@ -15,13 +15,10 @@ import SwiftyJSON
 class Train {
     
     var numCars: Int = 0
-    var destination: String = ""
-    var destinationCode: String = ""
-    var destinationName: String = ""
-    var Group: String = ""
+    var destination: Station = Station.A01
+    var Group: Int = 0
     var line: Line = Line.NO
-    var locationCode: String = ""
-    var locationName: String = ""
+    var location: Station = Station.A01
     var min: Int = 0
     
     required init(json: JSON) {
