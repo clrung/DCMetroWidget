@@ -7,20 +7,21 @@
 //
 
 import Foundation
+import Cocoa
 
-enum Line : CustomStringConvertible{
+enum Line {
     
     case RD, BL, YL, OR, GR, SV, NO
     
-    var description : String {
+    var color : NSColor {
         switch self {
-        case .RD: return "Red"
-        case .BL: return "Blue"
-        case .YL: return "Yellow"
-        case .OR: return "Orange"
-        case .GR: return "Green"
-        case .SV: return "Silver"
-        case .NO: return "No Passenger"
+        case .RD: return NSColor.redColor()
+        case .BL: return NSColor.blueColor()
+        case .YL: return NSColor.yellowColor()
+        case .OR: return NSColor.orangeColor()
+        case .GR: return NSColor.greenColor()
+        case .SV: return NSColor.grayColor()
+        case .NO: return NSColor.clearColor()
         }
     }
     

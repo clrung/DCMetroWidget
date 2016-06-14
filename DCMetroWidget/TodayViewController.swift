@@ -14,6 +14,16 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var predictionTableView: NSTableView!
+
+	@IBOutlet weak var stationRadioButton1: NSButton!
+	@IBOutlet weak var stationRadioButton2: NSButton!
+	@IBOutlet weak var stationRadioButton3: NSButton!
+	@IBOutlet weak var stationRadioButton4: NSButton!
+	@IBOutlet weak var stationRadioButton5: NSButton!
+	@IBOutlet weak var stationRadioButton6: NSButton!
+	
+	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
+	
 	var prediction: JSON = JSON(NSNull)
 	var trains:[Train] = []
 	
@@ -108,21 +118,20 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-		return trains.count
+		return trains.count ?? 0
 	}
 	
 	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		
 		let item = trains[row]
 		
-		var lineColor:NSImage?
-		
+		var lineColor = NSImage(named: "lineColor")
 		var text = ""
 		var cellIdentifier: String = ""
 		
 		if tableColumn == tableView.tableColumns[0] {
 			cellIdentifier = "lineCell"
-			text = item.line.description
+			lineColor = getTintedImage(lineColor!, tint: item.line.color)
 		} else if tableColumn == tableView.tableColumns[1] {
 			cellIdentifier = "timeCell"
 			text = String(item.min)
@@ -141,6 +150,30 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		}
 		
 		return nil
+	}
+	
+	@IBAction func touchStationRadioButton(sender: NSButton) {
+		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
+		
+		for radioButton in stationRadioButtons {
+			radioButton.state = NSOffState
+		}
+		
+		sender.state = NSOnState
+
+	}
+	
+	// from http://stackoverflow.com/a/25952895
+	func getTintedImage(image:NSImage, tint:NSColor) -> NSImage {
+		let tinted = image.copy() as! NSImage
+		tinted.lockFocus()
+		tint.set()
+		
+		let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
+		NSRectFillUsingOperation(imageRect, NSCompositingOperation.CompositeSourceAtop)
+		
+		tinted.unlockFocus()
+		return tinted
 	}
 	
 }
