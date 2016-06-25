@@ -9,8 +9,9 @@
 import Cocoa
 import NotificationCenter
 import SwiftyJSON
+import CoreLocation
 
-class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource {
+class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
 	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var predictionTableView: NSTableView!
@@ -24,8 +25,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
 	
-	var prediction: JSON = JSON(NSNull)
+	@IBOutlet weak var getCurrentLocationButton: NSButton!
+
+	var predictionJSON: JSON = JSON(NSNull)
 	var trains:[Train] = []
+	
+	let locationManager = CLLocationManager()
+	var currentLocation: CLLocation = CLLocation()
 	
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
@@ -45,37 +51,21 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let train1 = Train(json: nil)
-		train1.line = Line.BL
-		train1.min = 1
-		train1.numCars = 6
-		train1.destination = Station.G05
-		
-		let train2 = Train(json: nil)
-		train2.line = Line.GR
-		train2.min = 2
-		train2.numCars = 4
-		train2.destination = Station.J03
-		
-		let train3 = Train(json: nil)
-		train3.line = Line.OR
-		train3.min = 3
-		train3.numCars = 6
-		train3.destination = Station.N06
-		
-		trains = [train1, train2, train3];
+		locationManager.delegate = self
+		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+		locationManager.distanceFilter = kCLDistanceFilterNone;
 		
 		self.predictionTableViewHeightConstraint.constant = CGFloat(HEADER_HEIGHT + trains.count * (ROW_HEIGHT + ROW_SPACING))
 		
-		self.predictionTableView.reloadData()
-		
 		debugPrint("beginning fetch")
-		// TODO start a progress indicator
+		// TODO start the progress indicator
 		
 		getPrediction("B03", onCompleted: {
 			debugPrint("fetch completed")
-			// TODO stop a progress indicator
+			// TODO stop the progress indicator
 		})
+		
+		self.predictionTableView.reloadData()
 		
 	}
 	
@@ -104,9 +94,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
 			if error == nil {
-				self.prediction = JSON(data: data!)
-				
-				debugPrint(self.prediction)
+				self.predictionJSON = JSON(data: data!)
 				
 				onCompleted()
 			} else {
@@ -176,4 +164,49 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		return tinted
 	}
 	
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
+		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
+
+		for radioButton in stationRadioButtons {
+			radioButton.hidden = false
+		}
+		
+		getCurrentLocationButton.hidden = true
+		
+		debugPrint("latitude: ", locationManager.location?.coordinate.latitude)
+		debugPrint("longitude: ", locationManager.location?.coordinate.longitude)
+		
+		currentLocation = locationManager.location!
+		
+		getSixClosestStations()
+		
+		// TODO stop the progress indicator
+		
+		locationManager.stopUpdatingLocation()
+	}
+	
+	@IBAction func getCurrentLocation(sender: NSButton) {
+		locationManager.startUpdatingLocation()
+		// TODO start the progress indicator
+	}
+	
+	func getSixClosestStations() -> [Station] {
+		var sixClosestStations = [Station]()
+		var distancesDictionary: [CLLocationDistance:String] = [:]
+		
+		for station in Station.allValues {
+			distancesDictionary[station.location.distanceFromLocation(currentLocation)] = station.rawValue
+		}
+		
+		let sortedDistancesKeys = Array(distancesDictionary.keys).sort(<)
+		
+		for (index, element) in sortedDistancesKeys.enumerate() {
+			sixClosestStations.append(Station(rawValue: distancesDictionary[element]!)!)
+			if index == 6 {
+				break;
+			}
+		}
+		
+		return sixClosestStations
+	}
 }

@@ -3,10 +3,12 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="DCMetroWidget" customModuleProvider="target">
             <connections>
+                <outlet property="getCurrentLocationButton" destination="vrG-qf-P78" id="fJf-o2-VYW"/>
                 <outlet property="predictionTableView" destination="jAJ-D1-e6X" id="ec9-C3-no1"/>
                 <outlet property="predictionTableViewHeightConstraint" destination="EAt-qh-G7Q" id="Gs9-9g-jeZ"/>
                 <outlet property="stationPopUpButton" destination="EF8-Fa-xYk" id="5Ug-l8-Q5J"/>
@@ -229,7 +231,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="MO6-N0-gDS">
+                <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MO6-N0-gDS">
                     <rect key="frame" x="-1" y="112" width="133" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="YLp-xP-VbR"/>
@@ -243,7 +245,7 @@
                         <action selector="touchStationRadioButton:" target="-2" id="KdJ-Mo-CDX"/>
                     </connections>
                 </button>
-                <button tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="KHI-1L-RLC">
+                <button hidden="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="KHI-1L-RLC">
                     <rect key="frame" x="-1" y="87" width="133" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="DUP-kE-HAn">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -253,7 +255,7 @@
                         <action selector="touchStationRadioButton:" target="-2" id="oPz-ce-c9V"/>
                     </connections>
                 </button>
-                <button tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="Kqx-bA-Ylg">
+                <button hidden="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="Kqx-bA-Ylg">
                     <rect key="frame" x="-1" y="62" width="133" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="zrt-iy-8q1">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -263,7 +265,7 @@
                         <action selector="touchStationRadioButton:" target="-2" id="klZ-8a-02O"/>
                     </connections>
                 </button>
-                <button tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-bj-jLk">
+                <button hidden="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-bj-jLk">
                     <rect key="frame" x="129" y="112" width="133" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oYo-6u-pcP">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -273,7 +275,7 @@
                         <action selector="touchStationRadioButton:" target="-2" id="dFd-96-EeS"/>
                     </connections>
                 </button>
-                <button tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-aY-VcA">
+                <button hidden="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-aY-VcA">
                     <rect key="frame" x="129" y="87" width="133" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="t9v-hq-RES">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -283,7 +285,7 @@
                         <action selector="touchStationRadioButton:" target="-2" id="fDQ-AV-oCn"/>
                     </connections>
                 </button>
-                <button tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="yfR-p3-WNn">
+                <button hidden="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="yfR-p3-WNn">
                     <rect key="frame" x="129" y="62" width="133" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="E05-7P-08W">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -323,6 +325,20 @@
                         </menu>
                     </popUpButtonCell>
                 </popUpButton>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-qf-P78">
+                    <rect key="frame" x="59" y="83" width="162" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="MLk-cC-h9E"/>
+                        <constraint firstAttribute="width" constant="150" id="uLm-1L-u1K"/>
+                    </constraints>
+                    <buttonCell key="cell" type="push" title="Get current location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kl4-Pt-13l">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="getCurrentLocation:" target="-2" id="19O-PD-s0a"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="5tG-aY-VcA" firstAttribute="height" secondItem="MO6-N0-gDS" secondAttribute="height" id="0Xx-Ts-rrB"/>
@@ -357,6 +373,8 @@
                 <constraint firstItem="yfR-p3-WNn" firstAttribute="centerX" secondItem="Ix1-bj-jLk" secondAttribute="centerX" id="hr8-mz-CH6"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="l4f-9L-5Xz"/>
                 <constraint firstItem="KHI-1L-RLC" firstAttribute="centerX" secondItem="MO6-N0-gDS" secondAttribute="centerX" id="lIK-9W-OWb"/>
+                <constraint firstItem="vrG-qf-P78" firstAttribute="trailing" secondItem="5tG-aY-VcA" secondAttribute="centerX" constant="20" id="pfS-1b-6PM"/>
+                <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="5tG-aY-VcA" secondAttribute="centerY" id="rPO-YN-LGv"/>
                 <constraint firstItem="yfR-p3-WNn" firstAttribute="width" secondItem="MO6-N0-gDS" secondAttribute="width" id="rQG-ol-hY4"/>
                 <constraint firstItem="Plm-fj-xBU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="vWx-uc-QbF"/>
             </constraints>
