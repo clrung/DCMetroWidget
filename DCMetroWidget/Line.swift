@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-enum Line {
+enum Line: String {
     
     case RD, BL, YL, OR, GR, SV, NO
     

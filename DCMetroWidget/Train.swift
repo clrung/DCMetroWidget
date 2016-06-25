@@ -16,13 +16,18 @@ class Train {
     
     var numCars: Int = 0
     var destination: Station = Station.A01
-    var Group: Int = 0
+    var group: Int = 0
     var line: Line = Line.NO
     var location: Station = Station.A01
     var min: Int = 0
     
-    required init(json: JSON) {
-        
+	required init(numCars: Int, destination: Station, group: Int, line: Line, location: Station, min: Int ) {
+        self.numCars = numCars
+		self.destination = destination
+		self.group = group
+		self.line = line
+		self.location = location
+		self.min = min
     }
     
 }

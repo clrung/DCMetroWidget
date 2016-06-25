@@ -15,7 +15,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var predictionTableView: NSTableView!
-
+	
 	@IBOutlet weak var stationRadioButton1: NSButton!
 	@IBOutlet weak var stationRadioButton2: NSButton!
 	@IBOutlet weak var stationRadioButton3: NSButton!
@@ -26,12 +26,14 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
 	
 	@IBOutlet weak var getCurrentLocationButton: NSButton!
-
+	
 	var predictionJSON: JSON = JSON(NSNull)
-	var trains:[Train] = []
+	var trains: [Train] = []
 	
 	let locationManager = CLLocationManager()
 	var currentLocation: CLLocation = CLLocation()
+	
+	var selectedStation: Station = Station.A01
 	
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
@@ -55,18 +57,30 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
 		locationManager.distanceFilter = kCLDistanceFilterNone;
 		
-		self.predictionTableViewHeightConstraint.constant = CGFloat(HEADER_HEIGHT + trains.count * (ROW_HEIGHT + ROW_SPACING))
-		
-		debugPrint("beginning fetch")
 		// TODO start the progress indicator
 		
-		getPrediction("B03", onCompleted: {
-			debugPrint("fetch completed")
+		getPrediction(selectedStation.rawValue, onCompleted: {
+			// the JSON only contains one root element, "Trains"
+			self.predictionJSON = self.predictionJSON["Trains"]
+			
+			self.trains = []
+			
+			for (_, subJson): (String, JSON) in self.predictionJSON {
+				self.trains.append(Train(numCars: subJson["Car"].intValue,
+					destination: Station(rawValue: subJson["DestinationCode"].stringValue)!,
+					group: subJson["Group"].intValue,
+					line: Line(rawValue: subJson["Line"].stringValue)!,
+					location: Station(rawValue: subJson["LocationCode"].stringValue)!,
+					min: subJson["Min"].intValue))
+			}
+			
 			// TODO stop the progress indicator
+			
+			dispatch_async(dispatch_get_main_queue(), {
+				self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
+				self.predictionTableView.reloadData()
+			})
 		})
-		
-		self.predictionTableView.reloadData()
-		
 	}
 	
 	var widgetAllowsEditing: Bool {
@@ -95,7 +109,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
 			if error == nil {
 				self.predictionJSON = JSON(data: data!)
-				
+
 				onCompleted()
 			} else {
 				debugPrint(error)
@@ -148,7 +162,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		}
 		
 		sender.state = NSOnState
-
+		
 	}
 	
 	// from http://stackoverflow.com/a/25952895
@@ -166,15 +180,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
 		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
-
+		
 		for radioButton in stationRadioButtons {
 			radioButton.hidden = false
 		}
 		
 		getCurrentLocationButton.hidden = true
-		
-		debugPrint("latitude: ", locationManager.location?.coordinate.latitude)
-		debugPrint("longitude: ", locationManager.location?.coordinate.longitude)
 		
 		currentLocation = locationManager.location!
 		
