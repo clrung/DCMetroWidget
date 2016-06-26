@@ -175,13 +175,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		let item = trains[row]
 		
-		var lineColor = NSImage(named: "lineColor")
+		var lineImage = NSImage(named: "lineImage")
 		var text = ""
 		var cellIdentifier: String = ""
 		
 		if tableColumn == tableView.tableColumns[0] {
 			cellIdentifier = "lineCell"
-			lineColor = item.line != Line.NO ? getTintedImage(lineColor!, tint: item.line.color) : nil
+			lineImage = item.line != Line.NO ? getTintedImage(lineImage!, tint: item.line.color) : nil
 		} else if tableColumn == tableView.tableColumns[1] {
 			cellIdentifier = "timeCell"
 			text = String(item.min)
@@ -195,7 +195,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
 			cell.textField?.stringValue = text
-			cell.imageView?.image = lineColor ?? nil
+			cell.imageView?.image = lineImage ?? nil
 			return cell
 		}
 		

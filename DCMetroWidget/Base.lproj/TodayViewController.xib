@@ -68,7 +68,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="QOy-oT-ASJ"/>
                                                         </constraints>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="lineColor" id="6d1-Pg-cJn"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="lineImage" id="6d1-Pg-cJn"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -382,6 +382,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="lineColor" width="30" height="30"/>
+        <image name="lineImage" width="30" height="30"/>
     </resources>
 </document>
