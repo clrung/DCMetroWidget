@@ -59,28 +59,76 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		// TODO start the progress indicator
 		
+		self.trains = []
+		
 		getPrediction(selectedStation.rawValue, onCompleted: {
-			// the JSON only contains one root element, "Trains"
-			self.predictionJSON = self.predictionJSON["Trains"]
-			
-			self.trains = []
-			
-			for (_, subJson): (String, JSON) in self.predictionJSON {
-				self.trains.append(Train(numCars: subJson["Car"].intValue,
-					destination: Station(rawValue: subJson["DestinationCode"].stringValue)!,
-					group: subJson["Group"].intValue,
-					line: Line(rawValue: subJson["Line"].stringValue)!,
-					location: Station(rawValue: subJson["LocationCode"].stringValue)!,
-					min: subJson["Min"].intValue))
-			}
-			
 			// TODO stop the progress indicator
+			
+			self.populateTrainArray()
+			
+			// TODO the other 3 stations
+			if self.selectedStation == Station.A01 {
+				let trainsGroup1 = self.trains
+				self.trains = []
+				
+				self.selectedStation = Station.C01
+				self.getPrediction(self.selectedStation.rawValue, onCompleted: {
+					self.populateTrainArray()
+					
+					self.trains = self.trains + trainsGroup1
+					
+					dispatch_async(dispatch_get_main_queue(), {
+						self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
+						self.predictionTableView.reloadData()
+					})
+				})
+			}
 			
 			dispatch_async(dispatch_get_main_queue(), {
 				self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
 				self.predictionTableView.reloadData()
 			})
+			
 		})
+	}
+
+	func populateTrainArray() {
+		// the JSON only contains one root element, "Trains"
+		self.predictionJSON = self.predictionJSON["Trains"]
+		
+		for (_, subJson): (String, JSON) in self.predictionJSON {
+			var line: Line? = nil
+			var min: String? = nil
+			var numCars: String? = nil
+			var destination: Station? = nil
+			
+			if subJson["DestinationName"].stringValue == Station.No.description || subJson["DestinationName"].stringValue == Station.Train.description {
+				line = Line.NO
+				min = "-"
+				numCars = "-"
+				destination = subJson["DestinationName"].stringValue == Station.No.description ? Station.No : Station.Train
+			}
+			
+			if subJson["Min"].stringValue == "" {
+				debugPrint("found empty min, skipping")
+				continue
+			}
+			
+			self.trains.append(Train(numCars: numCars ?? subJson["Car"].stringValue,
+				destination: destination ?? Station(rawValue: subJson["DestinationCode"].stringValue)!,
+				group: subJson["Group"].stringValue,
+				line: line ?? Line(rawValue: subJson["Line"].stringValue)!,
+				location: Station(rawValue: subJson["LocationCode"].stringValue)!,
+				min: min ?? subJson["Min"].stringValue))
+		}
+		
+		self.trains.sortInPlace({ $0.destination.description.compare($1.destination.description) == .OrderedAscending })
+		self.trains.sortInPlace({ $0.group < $1.group })
+		
+		for train in self.trains {
+			debugPrint(train.debugDescription)
+		}
+		debugPrint()
 	}
 	
 	var widgetAllowsEditing: Bool {
@@ -133,7 +181,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		if tableColumn == tableView.tableColumns[0] {
 			cellIdentifier = "lineCell"
-			lineColor = getTintedImage(lineColor!, tint: item.line.color)
+			lineColor = item.line != Line.NO ? getTintedImage(lineColor!, tint: item.line.color) : nil
 		} else if tableColumn == tableView.tableColumns[1] {
 			cellIdentifier = "timeCell"
 			text = String(item.min)
