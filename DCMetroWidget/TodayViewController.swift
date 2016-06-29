@@ -66,32 +66,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			
 			self.populateTrainArray()
 			
-			// TODO the other 3 stations
-			if self.selectedStation == Station.A01 {
-				let trainsGroup1 = self.trains
-				self.trains = []
-				
-				self.selectedStation = Station.C01
-				self.getPrediction(self.selectedStation.rawValue, onCompleted: {
-					self.populateTrainArray()
-					
-					self.trains = self.trains + trainsGroup1
-					
-					dispatch_async(dispatch_get_main_queue(), {
-						self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
-						self.predictionTableView.reloadData()
-					})
-				})
-			}
+			self.handleTwoLevelStation()
 			
-			dispatch_async(dispatch_get_main_queue(), {
-				self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
-				self.predictionTableView.reloadData()
-			})
-			
+			self.reloadTableView()
 		})
 	}
-
+	
 	func populateTrainArray() {
 		// the JSON only contains one root element, "Trains"
 		self.predictionJSON = self.predictionJSON["Trains"]
@@ -131,6 +111,43 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		debugPrint()
 	}
 	
+	func reloadTableView() {
+		dispatch_async(dispatch_get_main_queue(), {
+			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
+			self.predictionTableView.reloadData()
+		})
+	}
+	
+	/**
+	Checks the selected station to see if it is one of the four metro stations that have two levels.  If it is, fetch the predictions for the second station code, add it to the trains array, and reload the table view.
+	
+	WMATA API: "Some stations have two platforms (e.g.: Gallery Place, Fort Totten, L'Enfant Plaza, and Metro Center). To retrieve complete predictions for these stations, be sure to pass in both StationCodes.
+	*/
+	func handleTwoLevelStation() {
+		let twoLevelStations = [Station.B01, Station.B06, Station.D03, Station.A01]
+		
+		if twoLevelStations.contains(self.selectedStation) {
+			let trainsGroup1 = self.trains
+			self.trains = []
+			
+			switch self.selectedStation {
+			case Station.A01: self.selectedStation = Station.C01
+			case Station.B01: self.selectedStation = Station.F01
+			case Station.B06: self.selectedStation = Station.E06
+			case Station.D03: self.selectedStation = Station.F03
+			default: break
+			}
+			
+			self.getPrediction(self.selectedStation.rawValue, onCompleted: {
+				self.populateTrainArray()
+				
+				self.trains = self.trains + trainsGroup1
+				
+				self.reloadTableView()
+			})
+		}
+	}
+	
 	var widgetAllowsEditing: Bool {
 		return true
 	}
@@ -157,7 +174,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
 			if error == nil {
 				self.predictionJSON = JSON(data: data!)
-
+				
 				onCompleted()
 			} else {
 				debugPrint(error)
