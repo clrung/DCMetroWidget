@@ -62,6 +62,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		locationManager.distanceFilter = kCLDistanceFilterNone;
 	}
 	
+	override func viewDidAppear() {
+		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
+			locationManager.startUpdatingLocation()
+		}
+	}
+	
 	func populateTrainArray() {
 		// the JSON only contains one root element, "Trains"
 		self.predictionJSON = self.predictionJSON["Trains"]
@@ -112,7 +118,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		if twoLevelStations.contains(self.selectedStation) {
 			let trainsGroup1 = self.trains
-			self.trains = []
 			
 			switch self.selectedStation {
 			case Station.A01: self.selectedStation = Station.C01
@@ -122,12 +127,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			default: break
 			}
 			
+			self.trains = []
+			
 			self.getPrediction(self.selectedStation.rawValue, onCompleted: {
 				self.populateTrainArray()
-				
 				self.trains = self.trains + trainsGroup1
-				
-				self.reloadTableView()
 			})
 		}
 	}
@@ -166,6 +170,19 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		})
 		
 		task.resume()
+	}
+	
+	func setSelectedStationAndGetPredictions() {
+		selectedStationLabel.stringValue = selectedStation.description
+		selectedStationLabelHeightConstraint.constant = 23
+		
+		self.trains = []
+		
+		getPrediction(selectedStation.rawValue, onCompleted: {
+			self.populateTrainArray()
+			self.handleTwoLevelStation()
+			self.reloadTableView()
+		})
 	}
 	
 	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -214,19 +231,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		let selectedStationCode = sixClosestStations[sender.tag].rawValue
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
-		selectedStationLabel.stringValue = selectedStation.description
-		selectedStationLabelHeightConstraint.constant = 23
-		
-		// TODO start the progress indicator
-		
-		self.trains = []
-		
-		getPrediction(selectedStation.rawValue, onCompleted: {
-			// TODO stop the progress indicator
-			self.populateTrainArray()
-			self.handleTwoLevelStation()
-			self.reloadTableView()
-		})
+
+		setSelectedStationAndGetPredictions()
 	}
 	
 	// from http://stackoverflow.com/a/25952895
@@ -256,14 +262,16 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		getCurrentLocationButton.hidden = true
 		
-		// TODO stop the progress indicator
+		// Display the closest station
+		selectedStation = sixClosestStations[0]
+
+		setSelectedStationAndGetPredictions()
 		
 		locationManager.stopUpdatingLocation()
 	}
 	
 	@IBAction func getCurrentLocation(sender: NSButton) {
 		locationManager.startUpdatingLocation()
-		// TODO start the progress indicator
 	}
 	
 	func getSixClosestStations() -> [Station] {

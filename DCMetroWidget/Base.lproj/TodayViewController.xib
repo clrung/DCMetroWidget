@@ -244,13 +244,13 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MO6-N0-gDS">
+                <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="MO6-N0-gDS">
                     <rect key="frame" x="-1" y="112" width="133" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="YLp-xP-VbR"/>
                         <constraint firstAttribute="width" constant="130" id="h1Q-R5-RVL"/>
                     </constraints>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="VNc-IL-ljN">
+                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="VNc-IL-ljN">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -258,9 +258,9 @@
                         <action selector="touchStationRadioButton:" target="-2" id="KdJ-Mo-CDX"/>
                     </connections>
                 </button>
-                <button hidden="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="KHI-1L-RLC">
+                <button hidden="YES" focusRingType="none" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="KHI-1L-RLC">
                     <rect key="frame" x="-1" y="87" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="DUP-kE-HAn">
+                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="DUP-kE-HAn">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -268,9 +268,9 @@
                         <action selector="touchStationRadioButton:" target="-2" id="oPz-ce-c9V"/>
                     </connections>
                 </button>
-                <button hidden="YES" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="Kqx-bA-Ylg">
+                <button hidden="YES" focusRingType="none" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="Kqx-bA-Ylg">
                     <rect key="frame" x="-1" y="62" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="zrt-iy-8q1">
+                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="zrt-iy-8q1">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -278,9 +278,9 @@
                         <action selector="touchStationRadioButton:" target="-2" id="klZ-8a-02O"/>
                     </connections>
                 </button>
-                <button hidden="YES" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-bj-jLk">
+                <button hidden="YES" focusRingType="none" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-bj-jLk">
                     <rect key="frame" x="129" y="112" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="oYo-6u-pcP">
+                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="oYo-6u-pcP">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -288,9 +288,9 @@
                         <action selector="touchStationRadioButton:" target="-2" id="dFd-96-EeS"/>
                     </connections>
                 </button>
-                <button hidden="YES" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-aY-VcA">
+                <button hidden="YES" focusRingType="none" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-aY-VcA">
                     <rect key="frame" x="129" y="87" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="t9v-hq-RES">
+                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="t9v-hq-RES">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -298,9 +298,9 @@
                         <action selector="touchStationRadioButton:" target="-2" id="fDQ-AV-oCn"/>
                     </connections>
                 </button>
-                <button hidden="YES" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="yfR-p3-WNn">
+                <button hidden="YES" focusRingType="none" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="yfR-p3-WNn">
                     <rect key="frame" x="129" y="62" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="E05-7P-08W">
+                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="E05-7P-08W">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
