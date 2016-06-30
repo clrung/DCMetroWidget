@@ -13,6 +13,9 @@ import CoreLocation
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
+	@IBOutlet weak var selectedStationLabel: NSTextField!
+	@IBOutlet weak var selectedStationLabelHeightConstraint: NSLayoutConstraint!
+	
 	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var predictionTableView: NSTableView!
 	
@@ -34,6 +37,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	var currentLocation: CLLocation = CLLocation()
 	
 	var selectedStation: Station = Station.A01
+	var sixClosestStations: [Station] = []
 	
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
@@ -56,20 +60,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
 		locationManager.distanceFilter = kCLDistanceFilterNone;
-		
-		// TODO start the progress indicator
-		
-		self.trains = []
-		
-		getPrediction(selectedStation.rawValue, onCompleted: {
-			// TODO stop the progress indicator
-			
-			self.populateTrainArray()
-			
-			self.handleTwoLevelStation()
-			
-			self.reloadTableView()
-		})
 	}
 	
 	func populateTrainArray() {
@@ -84,13 +74,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			
 			if subJson["DestinationName"].stringValue == Station.No.description || subJson["DestinationName"].stringValue == Station.Train.description {
 				line = Line.NO
-				min = "-"
+				min = subJson["Min"] == nil ? "-" : subJson["Min"].stringValue
 				numCars = "-"
 				destination = subJson["DestinationName"].stringValue == Station.No.description ? Station.No : Station.Train
 			}
 			
 			if subJson["Min"].stringValue == "" {
-				debugPrint("found empty min, skipping")
 				continue
 			}
 			
@@ -104,11 +93,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		self.trains.sortInPlace({ $0.destination.description.compare($1.destination.description) == .OrderedAscending })
 		self.trains.sortInPlace({ $0.group < $1.group })
-		
-		for train in self.trains {
-			debugPrint(train.debugDescription)
-		}
-		debugPrint()
 	}
 	
 	func reloadTableView() {
@@ -189,7 +173,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		
 		let item = trains[row]
 		
 		var lineImage = NSImage(named: "lineImage")
@@ -228,6 +211,22 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		sender.state = NSOnState
 		
+		let selectedStationCode = sixClosestStations[sender.tag].rawValue
+		
+		selectedStation = Station(rawValue: selectedStationCode)!
+		selectedStationLabel.stringValue = selectedStation.description
+		selectedStationLabelHeightConstraint.constant = 23
+		
+		// TODO start the progress indicator
+		
+		self.trains = []
+		
+		getPrediction(selectedStation.rawValue, onCompleted: {
+			// TODO stop the progress indicator
+			self.populateTrainArray()
+			self.handleTwoLevelStation()
+			self.reloadTableView()
+		})
 	}
 	
 	// from http://stackoverflow.com/a/25952895
@@ -246,15 +245,16 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
 		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
 		
-		for radioButton in stationRadioButtons {
+		currentLocation = locationManager.location!
+		
+		sixClosestStations = getSixClosestStations()
+		
+		for (index, radioButton) in stationRadioButtons.enumerate() {
 			radioButton.hidden = false
+			stationRadioButtons[index].title = sixClosestStations[index].description
 		}
 		
 		getCurrentLocationButton.hidden = true
-		
-		currentLocation = locationManager.location!
-		
-		getSixClosestStations()
 		
 		// TODO stop the progress indicator
 		
@@ -276,8 +276,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		let sortedDistancesKeys = Array(distancesDictionary.keys).sort(<)
 		
-		for (index, element) in sortedDistancesKeys.enumerate() {
-			sixClosestStations.append(Station(rawValue: distancesDictionary[element]!)!)
+		for (index, key) in sortedDistancesKeys.enumerate() {
+			sixClosestStations.append(Station(rawValue: distancesDictionary[key]!)!)
 			if index == 6 {
 				break;
 			}
