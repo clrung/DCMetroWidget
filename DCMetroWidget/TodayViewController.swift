@@ -200,14 +200,14 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			cellIdentifier = "lineCell"
 			lineImage = item.line != Line.NO ? getTintedImage(lineImage!, tint: item.line.color) : nil
 		} else if tableColumn == tableView.tableColumns[1] {
-			cellIdentifier = "timeCell"
-			text = String(item.min)
-		} else if tableColumn == tableView.tableColumns[2] {
 			cellIdentifier = "carsCell"
 			text = String(item.numCars)
-		} else if tableColumn == tableView.tableColumns[3] {
+		} else if tableColumn == tableView.tableColumns[2] {
 			cellIdentifier = "destinationCell"
 			text = item.destination.description
+		} else if tableColumn == tableView.tableColumns[3] {
+			cellIdentifier = "minCell"
+			text = String(item.min)
 		}
 		
 		if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {

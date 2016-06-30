@@ -21,6 +21,7 @@
 		588EA6651CFF2C6E00ACDF41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */; };
 		58BA39921D162F3600378A1E /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BA39911D162F3600378A1E /* Station.swift */; };
 		58BA39941D1B3C4D00378A1E /* lineImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BA39931D1B3C4D00378A1E /* lineImage.png */; };
+		58D1C0F61D253E5400F21B3B /* WMATAFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */; };
 		59581C8AFE7C75792E46675F /* Pods_DCMetroWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		58BA39911D162F3600378A1E /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		58BA39931D1B3C4D00378A1E /* lineImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lineImage.png; sourceTree = "<group>"; };
+		58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMATAFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */,
+				58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */,
 				58BA39911D162F3600378A1E /* Station.swift */,
 				588EA6601CE55FD600ACDF41 /* Train.swift */,
 				588EA6621CE56A0700ACDF41 /* Line.swift */,
@@ -334,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				588D7C651CD1A1DE008A2A22 /* TodayViewController.swift in Sources */,
+				58D1C0F61D253E5400F21B3B /* WMATAFetcher.swift in Sources */,
 				588EA6631CE56A0700ACDF41 /* Line.swift in Sources */,
 				58BA39921D162F3600378A1E /* Station.swift in Sources */,
 				588EA6611CE55FD600ACDF41 /* Train.swift in Sources */,
