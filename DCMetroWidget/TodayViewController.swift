@@ -30,7 +30,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	@IBOutlet weak var getCurrentLocationButton: NSButton!
 	
-	var predictionJSON: JSON = JSON(NSNull)
+	var predictionJSON: JSON = JSON.null
 	var trains: [Train] = []
 	
 	let locationManager = CLLocationManager()
@@ -127,9 +127,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			default: break
 			}
 			
-			self.trains = []
-			
-			self.getPrediction(self.selectedStation.rawValue, onCompleted: {
+			getPrediction(self.selectedStation.rawValue, onCompleted: {
+				result in
+				self.predictionJSON = result!
+				self.trains = []
 				self.populateTrainArray()
 				self.trains = self.trains + trainsGroup1
 			})
@@ -148,37 +149,14 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		debugPrint("ended editing in main")
 	}
 	
-	func getPrediction(stationCode: String, onCompleted: () -> ()) {
-		guard let wmataURL = NSURL(string: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + stationCode) else {
-			debugPrint("Error: cannot create URL")
-			return
-		}
-		
-		let request = NSMutableURLRequest(URL: wmataURL)
-		let session = NSURLSession.sharedSession()
-		
-		request.setValue("[WMATA_KEY_GOES_HERE]", forHTTPHeaderField:"api_key")
-		
-		let task = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
-			if error == nil {
-				self.predictionJSON = JSON(data: data!)
-				
-				onCompleted()
-			} else {
-				debugPrint(error)
-			}
-		})
-		
-		task.resume()
-	}
-	
 	func setSelectedStationAndGetPredictions() {
 		selectedStationLabel.stringValue = selectedStation.description
 		selectedStationLabelHeightConstraint.constant = 23
 		
-		self.trains = []
-		
 		getPrediction(selectedStation.rawValue, onCompleted: {
+			result in
+			self.predictionJSON = result!
+			self.trains = []
 			self.populateTrainArray()
 			self.handleTwoLevelStation()
 			self.reloadTableView()
@@ -211,6 +189,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		}
 		
 		if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
+			predictionTableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: 1))
 			cell.textField?.stringValue = text
 			cell.imageView?.image = lineImage ?? nil
 			return cell
@@ -231,8 +210,34 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		let selectedStationCode = sixClosestStations[sender.tag].rawValue
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
-
+		
 		setSelectedStationAndGetPredictions()
+	}
+	
+	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
+		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
+		
+		currentLocation = locationManager.location!
+		
+		sixClosestStations = getSixClosestStations(currentLocation)
+		
+		for (index, radioButton) in stationRadioButtons.enumerate() {
+			radioButton.hidden = false
+			stationRadioButtons[index].title = sixClosestStations[index].description
+		}
+		
+		getCurrentLocationButton.hidden = true
+		
+		// Display the closest station
+		selectedStation = sixClosestStations[0]
+		
+		setSelectedStationAndGetPredictions()
+		
+		locationManager.stopUpdatingLocation()
+	}
+	
+	@IBAction func getCurrentLocation(sender: NSButton) {
+		locationManager.startUpdatingLocation()
 	}
 	
 	// from http://stackoverflow.com/a/25952895
@@ -246,51 +251,5 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		tinted.unlockFocus()
 		return tinted
-	}
-	
-	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
-		
-		currentLocation = locationManager.location!
-		
-		sixClosestStations = getSixClosestStations()
-		
-		for (index, radioButton) in stationRadioButtons.enumerate() {
-			radioButton.hidden = false
-			stationRadioButtons[index].title = sixClosestStations[index].description
-		}
-		
-		getCurrentLocationButton.hidden = true
-		
-		// Display the closest station
-		selectedStation = sixClosestStations[0]
-
-		setSelectedStationAndGetPredictions()
-		
-		locationManager.stopUpdatingLocation()
-	}
-	
-	@IBAction func getCurrentLocation(sender: NSButton) {
-		locationManager.startUpdatingLocation()
-	}
-	
-	func getSixClosestStations() -> [Station] {
-		var sixClosestStations = [Station]()
-		var distancesDictionary: [CLLocationDistance:String] = [:]
-		
-		for station in Station.allValues {
-			distancesDictionary[station.location.distanceFromLocation(currentLocation)] = station.rawValue
-		}
-		
-		let sortedDistancesKeys = Array(distancesDictionary.keys).sort(<)
-		
-		for (index, key) in sortedDistancesKeys.enumerate() {
-			sixClosestStations.append(Station(rawValue: distancesDictionary[key]!)!)
-			if index == 6 {
-				break;
-			}
-		}
-		
-		return sixClosestStations
 	}
 }
