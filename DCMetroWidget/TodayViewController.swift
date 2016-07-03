@@ -14,16 +14,20 @@ import CoreLocation
 var currentLocation: CLLocation = CLLocation()
 var sixClosestStations: [Station] = []
 var timeBefore: NSDate? = nil
+var errorText: String = ""
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
 	@IBOutlet weak var selectedStationLabel: NSTextField!
-	@IBOutlet weak var selectedStationLabelHeightConstraint: NSLayoutConstraint!
+	var selectStationString = "Please select a station in Settings"
 	
+	@IBOutlet weak var mainPredictionView: NSScrollView!
 	@IBOutlet weak var predictionTableView: NSTableView!
 	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
 	
 	@IBOutlet weak var getCurrentLocationButton: NSButton!
+	
+	@IBOutlet weak var errorTextField: NSTextField!
 	
 	var settingsViewController: SettingsViewController?
 	
@@ -51,17 +55,20 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
 		locationManager.distanceFilter = kCLDistanceFilterNone
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TodayViewController.setSelectedStationLabelAndReloadTable(_:)),name:"reloadTable", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setSelectedStationLabelAndReloadTable(_:)),name:"reloadTable", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayError(_:)),name:"error", object: nil)
 	}
 	
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
 		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
+			selectedStationLabel.stringValue = "Calculating closest station"
 			locationManager.startUpdatingLocation()
 		} else {
-			predictionTableView.hidden = true
-			selectedStationLabel.hidden = true
+			selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
+			getCurrentLocationButton.hidden = false
+			mainPredictionView.hidden = true
 		}
 	}
 	
@@ -75,15 +82,26 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {
 		dispatch_async(dispatch_get_main_queue(), {
-			self.self.selectedStationLabel.stringValue = selectedStation.description
-			self.selectedStationLabelHeightConstraint.constant = 23
+			self.getCurrentLocationButton.hidden = true
+			self.errorTextField.hidden = true
+			self.mainPredictionView.hidden = false
 			
+			self.selectedStationLabel.stringValue = selectedStation.description
 			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
 			self.predictionTableView.reloadData()
 		})
 	}
 	
-// MARK: TableView
+	func displayError(notification: NSNotification) {
+		dispatch_async(dispatch_get_main_queue(), {
+			self.getCurrentLocationButton.hidden = true
+			self.errorTextField.hidden = false
+			self.errorTextField.stringValue = errorText
+			self.mainPredictionView.hidden = true
+		})
+	}
+	
+	// MARK: TableView
 	
 	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
 		return trains.count ?? 0
@@ -133,7 +151,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		return tinted
 	}
 	
-// MARK: Location
+	// MARK: Location
+	
+	@IBAction func getCurrentLocation(sender: NSButton) {
+		locationManager.startUpdatingLocation()
+	}
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
 		locationManager.stopUpdatingLocation()
@@ -142,10 +164,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		// only fetch new predictions if it has been at least one second since they were last fetched
 		if timeBefore == nil || timeAfter.timeIntervalSinceDate(timeBefore!) > 1 {
-			getCurrentLocationButton.hidden = true
-			predictionTableView.hidden = false
-			selectedStationLabel.hidden = false
-			
 			currentLocation = locationManager.location!
 			sixClosestStations = getSixClosestStations(currentLocation)
 			
@@ -155,13 +173,23 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			
 			setSelectedStationLabelAndGetPredictions()
 		}
+		
+		selectedStationLabel.stringValue = selectedStation.description
+		
 	}
 	
-	@IBAction func getCurrentLocation(sender: NSButton) {
-		locationManager.startUpdatingLocation()
+	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+		if error.code == CLError.Denied.rawValue {
+			locationManager.stopUpdatingLocation()
+			errorText = "Location services denied"
+		} else if error.code == CLError.LocationUnknown.rawValue {
+			locationManager.stopUpdatingLocation()
+			errorText = "Location is unknown"
+		}
+		selectedStationLabel.stringValue = selectStationString
 	}
 	
-// MARK: Editing
+	// MARK: Editing
 	
 	var widgetAllowsEditing: Bool {
 		return false

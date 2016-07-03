@@ -13,6 +13,12 @@ import CoreLocation
 var predictionJSON: JSON = JSON.null
 var trains: [Train] = []
 
+/**
+Gets the stationCode's prediction
+
+- parameter stationCode: the two digit station code
+- returns: result, a JSON containing prediction data, or nil if there was an error
+*/
 func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 	guard let wmataURL = NSURL(string: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + stationCode) else {
 		debugPrint("Error: cannot create URL")
@@ -28,6 +34,7 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 		if error == nil {
 			onCompleted(result: JSON(data: data!))
 		} else {
+			onCompleted(result: nil)
 			debugPrint(error)
 		}
 	}).resume()
@@ -82,7 +89,12 @@ func setSelectedStationLabelAndGetPredictions() {
 		trains = []
 		populateTrainArray()
 		handleTwoLevelStation()
-		NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
+		if trains.count == 0 {
+			errorText = "Prediction data is currently unavailable"
+			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil)
+		} else {
+			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
+		}
 	})
 }
 
