@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="DCMetroWidget" customModuleProvider="target">
@@ -13,31 +12,25 @@
                 <outlet property="predictionTableViewHeightConstraint" destination="EAt-qh-G7Q" id="Gs9-9g-jeZ"/>
                 <outlet property="selectedStationLabel" destination="ZUe-4O-rwA" id="wuO-su-wLZ"/>
                 <outlet property="selectedStationLabelHeightConstraint" destination="itb-Sm-5Ne" id="Lp0-iJ-l5P"/>
-                <outlet property="stationPopUpButton" destination="EF8-Fa-xYk" id="5Ug-l8-Q5J"/>
-                <outlet property="stationRadioButton1" destination="MO6-N0-gDS" id="v4S-Me-eIf"/>
-                <outlet property="stationRadioButton2" destination="KHI-1L-RLC" id="kCP-7n-tFu"/>
-                <outlet property="stationRadioButton3" destination="Kqx-bA-Ylg" id="XEX-lP-HOA"/>
-                <outlet property="stationRadioButton4" destination="Ix1-bj-jLk" id="bO2-Yr-4lQ"/>
-                <outlet property="stationRadioButton5" destination="5tG-aY-VcA" id="ZgK-ey-Igk"/>
-                <outlet property="stationRadioButton6" destination="yfR-p3-WNn" id="OjY-ys-caz"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" userLabel="Main">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="216"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
             <subviews>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-YT-uax">
-                    <rect key="frame" x="144" y="92" width="32" height="32"/>
+                    <rect key="frame" x="144" y="21.5" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="Ue9-JR-Zat"/>
                         <constraint firstAttribute="height" constant="32" id="lyC-I0-Q7o"/>
                     </constraints>
                 </progressIndicator>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZUe-4O-rwA">
-                    <rect key="frame" x="-2" y="216" width="344" height="0.0"/>
+                    <rect key="frame" x="43" y="65" width="264" height="0.0"/>
                     <constraints>
+                        <constraint firstAttribute="width" constant="260" id="L8U-iC-PGV"/>
                         <constraint firstAttribute="height" id="itb-Sm-5Ne"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="m4M-Tc-fBG">
@@ -46,22 +39,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="zFG-d0-aCJ">
-                    <rect key="frame" x="316" y="220" width="24" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="24" id="2HO-8H-Iki"/>
-                        <constraint firstAttribute="height" constant="24" id="z1i-rv-7kN"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAdvanced" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2hn-3H-Vuc">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchSettings:" target="-2" id="GLH-Gb-dNd"/>
-                    </connections>
-                </button>
                 <scrollView autohidesScrollers="YES" horizontalLineScroll="23" horizontalPageScroll="10" verticalLineScroll="23" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" findBarPosition="aboveHorizontalRuler" translatesAutoresizingMaskIntoConstraints="NO" id="ne8-JS-SDK">
-                    <rect key="frame" x="0.0" y="166" width="340" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="50"/>
                     <clipView key="contentView" focusRingType="none" drawsBackground="NO" copiesOnScroll="NO" id="cfi-Bd-I0F">
                         <rect key="frame" x="1" y="0.0" width="338" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,114 +225,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gGV-yB-xyl">
-                    <rect key="frame" x="0.0" y="143" width="160" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="156" id="k4Z-jr-4ch"/>
-                        <constraint firstAttribute="height" constant="17" id="uRe-2l-dd9"/>
-                    </constraints>
-                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select a station near you" id="5oR-Ey-MDT">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="MO6-N0-gDS">
-                    <rect key="frame" x="-1" y="112" width="133" height="27"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="25" id="YLp-xP-VbR"/>
-                        <constraint firstAttribute="width" constant="130" id="h1Q-R5-RVL"/>
-                    </constraints>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="VNc-IL-ljN">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchStationRadioButton:" target="-2" id="KdJ-Mo-CDX"/>
-                    </connections>
-                </button>
-                <button hidden="YES" focusRingType="none" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="KHI-1L-RLC">
-                    <rect key="frame" x="-1" y="87" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="DUP-kE-HAn">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchStationRadioButton:" target="-2" id="oPz-ce-c9V"/>
-                    </connections>
-                </button>
-                <button hidden="YES" focusRingType="none" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="Kqx-bA-Ylg">
-                    <rect key="frame" x="-1" y="62" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="zrt-iy-8q1">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchStationRadioButton:" target="-2" id="klZ-8a-02O"/>
-                    </connections>
-                </button>
-                <button hidden="YES" focusRingType="none" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ix1-bj-jLk">
-                    <rect key="frame" x="129" y="112" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="oYo-6u-pcP">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchStationRadioButton:" target="-2" id="dFd-96-EeS"/>
-                    </connections>
-                </button>
-                <button hidden="YES" focusRingType="none" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="5tG-aY-VcA">
-                    <rect key="frame" x="129" y="87" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="t9v-hq-RES">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchStationRadioButton:" target="-2" id="fDQ-AV-oCn"/>
-                    </connections>
-                </button>
-                <button hidden="YES" focusRingType="none" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="yfR-p3-WNn">
-                    <rect key="frame" x="129" y="62" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="E05-7P-08W">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchStationRadioButton:" target="-2" id="dUi-Yq-tqt"/>
-                    </connections>
-                </button>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Plm-fj-xBU">
-                    <rect key="frame" x="0.0" y="36" width="160" height="17"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="156" id="JID-yR-dc3"/>
-                        <constraint firstAttribute="height" constant="17" id="zKM-2l-9Re"/>
-                    </constraints>
-                    <textFieldCell key="cell" controlSize="mini" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="or choose from the list" id="85i-8b-yee">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EF8-Fa-xYk">
-                    <rect key="frame" x="-2" y="7" width="155" height="26"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="P0q-rw-Wib"/>
-                        <constraint firstAttribute="width" constant="150" id="uNH-0O-QVd"/>
-                    </constraints>
-                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="Vle-uI-rsl">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="syP-2D-N3y">
-                            <items>
-                                <menuItem title="Item 1" id="Qg3-bK-TXT"/>
-                                <menuItem title="Item 2" id="o2a-is-edO"/>
-                                <menuItem title="Item 3" id="8Mo-Qc-4hB"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                </popUpButton>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-qf-P78">
-                    <rect key="frame" x="59" y="83" width="162" height="32"/>
+                    <rect key="frame" x="79" y="19.5" width="162" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="MLk-cC-h9E"/>
                         <constraint firstAttribute="width" constant="150" id="uLm-1L-u1K"/>
@@ -366,49 +239,34 @@
                         <action selector="getCurrentLocation:" target="-2" id="19O-PD-s0a"/>
                     </connections>
                 </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="dcM-pR-Uci">
+                    <rect key="frame" x="310" y="55" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Qlt-gI-m9t"/>
+                        <constraint firstAttribute="height" constant="20" id="eGn-iB-jN5"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAdvanced" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="M6V-k7-DaJ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="touchSettings:" target="-2" id="7L5-1r-e3U"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="5tG-aY-VcA" firstAttribute="height" secondItem="MO6-N0-gDS" secondAttribute="height" id="0Xx-Ts-rrB"/>
-                <constraint firstItem="ZUe-4O-rwA" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" id="16H-E5-YSj"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="1Bq-GQ-QtD"/>
-                <constraint firstItem="Kqx-bA-Ylg" firstAttribute="width" secondItem="MO6-N0-gDS" secondAttribute="width" id="2i5-MV-PMz"/>
-                <constraint firstItem="Ix1-bj-jLk" firstAttribute="height" secondItem="MO6-N0-gDS" secondAttribute="height" id="3IQ-Wk-xTF"/>
-                <constraint firstItem="Kqx-bA-Ylg" firstAttribute="height" secondItem="MO6-N0-gDS" secondAttribute="height" id="3LM-3o-Avv"/>
-                <constraint firstItem="Ix1-bj-jLk" firstAttribute="leading" secondItem="MO6-N0-gDS" secondAttribute="trailing" id="4pX-La-fcw"/>
-                <constraint firstItem="KHI-1L-RLC" firstAttribute="width" secondItem="MO6-N0-gDS" secondAttribute="width" id="5oo-tJ-KCa"/>
-                <constraint firstItem="EF8-Fa-xYk" firstAttribute="top" secondItem="Plm-fj-xBU" secondAttribute="bottom" constant="5" id="64t-rD-eae"/>
-                <constraint firstItem="gGV-yB-xyl" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="6bL-qV-Xot"/>
-                <constraint firstItem="gGV-yB-xyl" firstAttribute="top" secondItem="ne8-JS-SDK" secondAttribute="bottom" constant="6" id="7bF-NF-yDW"/>
-                <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="ZUe-4O-rwA" secondAttribute="bottom" id="85F-lT-H6C"/>
-                <constraint firstItem="ZUe-4O-rwA" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="8HJ-Ba-Ikb"/>
-                <constraint firstItem="zFG-d0-aCJ" firstAttribute="bottom" secondItem="ne8-JS-SDK" secondAttribute="top" constant="-4" id="ASg-dw-pFj"/>
-                <constraint firstItem="zFG-d0-aCJ" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" id="ASu-9T-cDb"/>
-                <constraint firstAttribute="bottom" secondItem="EF8-Fa-xYk" secondAttribute="bottom" constant="10" id="B5X-QT-xpr"/>
-                <constraint firstItem="5tG-aY-VcA" firstAttribute="centerX" secondItem="Ix1-bj-jLk" secondAttribute="centerX" id="HeF-zE-kli"/>
-                <constraint firstItem="Plm-fj-xBU" firstAttribute="top" secondItem="Kqx-bA-Ylg" secondAttribute="bottom" constant="10" id="HeV-Ni-Rar"/>
+                <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="BZ7-Wr-7c0"/>
+                <constraint firstItem="vrG-qf-P78" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="Bam-iz-qbf"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
-                <constraint firstItem="EF8-Fa-xYk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="LDy-WR-XzI"/>
-                <constraint firstItem="KHI-1L-RLC" firstAttribute="centerY" secondItem="5tG-aY-VcA" secondAttribute="centerY" id="NmQ-B9-0Zc"/>
-                <constraint firstItem="Kqx-bA-Ylg" firstAttribute="top" secondItem="KHI-1L-RLC" secondAttribute="bottom" id="O3V-lP-Hpk"/>
+                <constraint firstItem="dcM-pR-Uci" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="-10" id="O5B-bc-EvD"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
-                <constraint firstItem="MO6-N0-gDS" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="ReT-sq-YbO"/>
-                <constraint firstItem="Kqx-bA-Ylg" firstAttribute="centerY" secondItem="yfR-p3-WNn" secondAttribute="centerY" id="S3f-yG-ANB"/>
-                <constraint firstItem="KHI-1L-RLC" firstAttribute="height" secondItem="MO6-N0-gDS" secondAttribute="height" id="Xe1-5P-RTl"/>
-                <constraint firstItem="yfR-p3-WNn" firstAttribute="height" secondItem="MO6-N0-gDS" secondAttribute="height" id="XwW-kJ-Sme"/>
-                <constraint firstItem="Ix1-bj-jLk" firstAttribute="width" secondItem="MO6-N0-gDS" secondAttribute="width" id="YQo-ag-7Vf"/>
-                <constraint firstItem="KHI-1L-RLC" firstAttribute="top" secondItem="MO6-N0-gDS" secondAttribute="bottom" id="aJK-7c-nK0"/>
-                <constraint firstItem="Kqx-bA-Ylg" firstAttribute="centerX" secondItem="MO6-N0-gDS" secondAttribute="centerX" id="cTj-h9-HbI"/>
-                <constraint firstItem="5tG-aY-VcA" firstAttribute="width" secondItem="MO6-N0-gDS" secondAttribute="width" id="cb8-ai-sIV"/>
-                <constraint firstItem="MO6-N0-gDS" firstAttribute="top" secondItem="gGV-yB-xyl" secondAttribute="bottom" constant="5" id="d61-oz-eFQ"/>
-                <constraint firstItem="MO6-N0-gDS" firstAttribute="centerY" secondItem="Ix1-bj-jLk" secondAttribute="centerY" id="fuR-QO-vPO"/>
-                <constraint firstItem="yfR-p3-WNn" firstAttribute="centerX" secondItem="Ix1-bj-jLk" secondAttribute="centerX" id="hr8-mz-CH6"/>
+                <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="dcM-pR-Uci" secondAttribute="bottom" constant="5" id="eCM-l3-ctI"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="l4f-9L-5Xz"/>
-                <constraint firstItem="KHI-1L-RLC" firstAttribute="centerX" secondItem="MO6-N0-gDS" secondAttribute="centerX" id="lIK-9W-OWb"/>
-                <constraint firstItem="ZUe-4O-rwA" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="nGR-Cg-1zW"/>
-                <constraint firstItem="vrG-qf-P78" firstAttribute="trailing" secondItem="5tG-aY-VcA" secondAttribute="centerX" constant="20" id="pfS-1b-6PM"/>
-                <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="5tG-aY-VcA" secondAttribute="centerY" id="rPO-YN-LGv"/>
-                <constraint firstItem="yfR-p3-WNn" firstAttribute="width" secondItem="MO6-N0-gDS" secondAttribute="width" id="rQG-ol-hY4"/>
-                <constraint firstItem="Plm-fj-xBU" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="2" id="vWx-uc-QbF"/>
+                <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="o18-yP-Y40"/>
+                <constraint firstAttribute="bottom" secondItem="ne8-JS-SDK" secondAttribute="bottom" id="s7Y-Rf-WMb"/>
+                <constraint firstItem="dcM-pR-Uci" firstAttribute="centerY" secondItem="ZUe-4O-rwA" secondAttribute="centerY" id="zPm-W9-8S4"/>
+                <constraint firstItem="dcM-pR-Uci" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="zlC-0x-dfa"/>
             </constraints>
             <point key="canvasLocation" x="309" y="591.5"/>
         </customView>

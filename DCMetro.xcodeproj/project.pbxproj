@@ -22,6 +22,8 @@
 		58BA39921D162F3600378A1E /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BA39911D162F3600378A1E /* Station.swift */; };
 		58BA39941D1B3C4D00378A1E /* lineImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BA39931D1B3C4D00378A1E /* lineImage.png */; };
 		58D1C0F61D253E5400F21B3B /* WMATAFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */; };
+		58D1C0F81D26134700F21B3B /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D1C0F71D26134700F21B3B /* SettingsViewController.xib */; };
+		58D1C0FA1D26135C00F21B3B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */; };
 		59581C8AFE7C75792E46675F /* Pods_DCMetroWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +74,8 @@
 		58BA39911D162F3600378A1E /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		58BA39931D1B3C4D00378A1E /* lineImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lineImage.png; sourceTree = "<group>"; };
 		58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMATAFetcher.swift; sourceTree = "<group>"; };
+		58D1C0F71D26134700F21B3B /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,11 +154,13 @@
 			isa = PBXGroup;
 			children = (
 				588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */,
+				588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */,
+				58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */,
+				58D1C0F71D26134700F21B3B /* SettingsViewController.xib */,
 				58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */,
 				58BA39911D162F3600378A1E /* Station.swift */,
 				588EA6601CE55FD600ACDF41 /* Train.swift */,
 				588EA6621CE56A0700ACDF41 /* Line.swift */,
-				588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */,
 				588D7C691CD1A1DE008A2A22 /* Info.plist */,
 				588D7C6A1CD1A1DE008A2A22 /* InfoPlist.strings */,
 				588D7C621CD1A1DE008A2A22 /* Supporting Files */,
@@ -269,6 +275,7 @@
 				588D7C681CD1A1DE008A2A22 /* TodayViewController.xib in Resources */,
 				588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */,
 				58BA39941D1B3C4D00378A1E /* lineImage.png in Resources */,
+				58D1C0F81D26134700F21B3B /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +348,7 @@
 				588EA6631CE56A0700ACDF41 /* Line.swift in Sources */,
 				58BA39921D162F3600378A1E /* Station.swift in Sources */,
 				588EA6611CE55FD600ACDF41 /* Train.swift in Sources */,
+				58D1C0FA1D26135C00F21B3B /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
