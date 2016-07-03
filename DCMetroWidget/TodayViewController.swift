@@ -11,33 +11,26 @@ import NotificationCenter
 import SwiftyJSON
 import CoreLocation
 
+var currentLocation: CLLocation = CLLocation()
+var sixClosestStations: [Station] = []
+var timeBefore: NSDate? = nil
+
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
 	@IBOutlet weak var selectedStationLabel: NSTextField!
 	@IBOutlet weak var selectedStationLabelHeightConstraint: NSLayoutConstraint!
 	
-	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var predictionTableView: NSTableView!
-	
-	@IBOutlet weak var stationRadioButton1: NSButton!
-	@IBOutlet weak var stationRadioButton2: NSButton!
-	@IBOutlet weak var stationRadioButton3: NSButton!
-	@IBOutlet weak var stationRadioButton4: NSButton!
-	@IBOutlet weak var stationRadioButton5: NSButton!
-	@IBOutlet weak var stationRadioButton6: NSButton!
-	
-	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
+	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
 	
 	@IBOutlet weak var getCurrentLocationButton: NSButton!
+	
+	var settingsViewController: SettingsViewController?
 	
 	var predictionJSON: JSON = JSON.null
 	var trains: [Train] = []
 	
 	let locationManager = CLLocationManager()
-	var currentLocation: CLLocation = CLLocation()
-	
-	var selectedStation: Station = Station.A01
-	var sixClosestStations: [Station] = []
 	
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
@@ -57,9 +50,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		self.settingsViewController = SettingsViewController.init(nibName: "SettingsViewController", bundle: NSBundle.mainBundle())
+		
 		locationManager.delegate = self
-		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-		locationManager.distanceFilter = kCLDistanceFilterNone;
+		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+		locationManager.distanceFilter = kCLDistanceFilterNone
 	}
 	
 	override func viewDidAppear() {
@@ -116,18 +111,18 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func handleTwoLevelStation() {
 		let twoLevelStations = [Station.B01, Station.B06, Station.D03, Station.A01]
 		
-		if twoLevelStations.contains(self.selectedStation) {
+		if twoLevelStations.contains(selectedStation) {
 			let trainsGroup1 = self.trains
 			
-			switch self.selectedStation {
-			case Station.A01: self.selectedStation = Station.C01
-			case Station.B01: self.selectedStation = Station.F01
-			case Station.B06: self.selectedStation = Station.E06
-			case Station.D03: self.selectedStation = Station.F03
+			switch selectedStation {
+			case Station.A01: selectedStation = Station.C01
+			case Station.B01: selectedStation = Station.F01
+			case Station.B06: selectedStation = Station.E06
+			case Station.D03: selectedStation = Station.F03
 			default: break
 			}
 			
-			getPrediction(self.selectedStation.rawValue, onCompleted: {
+			getPrediction(selectedStation.rawValue, onCompleted: {
 				result in
 				self.predictionJSON = result!
 				self.trains = []
@@ -138,18 +133,24 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	var widgetAllowsEditing: Bool {
-		return true
+		return false
 	}
 	
 	func widgetDidBeginEditing() {
 		debugPrint("began editing")
+		// This causes the view to flash back and forth
+//		presentViewControllerInWidget(settingsViewController)
 	}
 	
 	func widgetDidEndEditing() {
-		debugPrint("ended editing in main")
+		debugPrint("ended editing")
 	}
 	
-	func setSelectedStationAndGetPredictions() {
+	@IBAction func touchSettings(sender: NSButton) {
+		presentViewControllerInWidget(settingsViewController)
+	}
+	
+	func setSelectedStationLabelAndGetPredictions() {
 		selectedStationLabel.stringValue = selectedStation.description
 		selectedStationLabelHeightConstraint.constant = 23
 		
@@ -160,6 +161,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			self.populateTrainArray()
 			self.handleTwoLevelStation()
 			self.reloadTableView()
+			timeBefore = NSDate()
 		})
 	}
 	
@@ -198,42 +200,23 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		return nil
 	}
 	
-	@IBAction func touchStationRadioButton(sender: NSButton) {
-		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
-		
-		for radioButton in stationRadioButtons {
-			radioButton.state = NSOffState
-		}
-		
-		sender.state = NSOnState
-		
-		let selectedStationCode = sixClosestStations[sender.tag].rawValue
-		
-		selectedStation = Station(rawValue: selectedStationCode)!
-		
-		setSelectedStationAndGetPredictions()
-	}
-	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-		let stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
-		
-		currentLocation = locationManager.location!
-		
-		sixClosestStations = getSixClosestStations(currentLocation)
-		
-		for (index, radioButton) in stationRadioButtons.enumerate() {
-			radioButton.hidden = false
-			stationRadioButtons[index].title = sixClosestStations[index].description
-		}
-		
-		getCurrentLocationButton.hidden = true
-		
-		// Display the closest station
-		selectedStation = sixClosestStations[0]
-		
-		setSelectedStationAndGetPredictions()
-		
 		locationManager.stopUpdatingLocation()
+		
+		let timeAfter = NSDate()
+		
+		// only fetch new predictions if it has been at least one second since they were last fetched
+		if timeBefore == nil || timeAfter.timeIntervalSinceDate(timeBefore!) > 1 {
+			getCurrentLocationButton.hidden = true
+			currentLocation = locationManager.location!
+			sixClosestStations = getSixClosestStations(currentLocation)
+			
+			if !radioButtonClicked {
+				selectedStation = sixClosestStations[0]
+			}
+			
+			setSelectedStationLabelAndGetPredictions()
+		}
 	}
 	
 	@IBAction func getCurrentLocation(sender: NSButton) {
