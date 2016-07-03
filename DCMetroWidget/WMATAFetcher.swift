@@ -25,7 +25,7 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 	request.setValue("[WMATA_KEY_GOES_HERE]", forHTTPHeaderField:"api_key")
 	
 	session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
-		if error == nil {			
+		if error == nil {
 			onCompleted(result: JSON(data: data!))
 		} else {
 			debugPrint(error)
@@ -62,6 +62,14 @@ func populateTrainArray() {
 			min: min ?? subJson["Min"].stringValue))
 	}
 	
+	trains.sortInPlace { (train1: Train, train2: Train) -> Bool in
+		if train1.min == "BRD" || train1.min == "ARR" {
+			return true
+		} else if train2.min == "BRD" || train2.min == "ARR" {
+			return false
+		}
+		return train1.min < train2.min
+	}
 	trains.sortInPlace({ $0.destination.description.compare($1.destination.description) == .OrderedAscending })
 	trains.sortInPlace({ $0.group < $1.group })
 }
