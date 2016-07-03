@@ -42,7 +42,7 @@ func getSixClosestStations(location: CLLocation) -> [Station] {
 	
 	for (index, key) in sortedDistancesKeys.enumerate() {
 		sixClosestStations.append(Station(rawValue: distancesDictionary[key]!)!)
-		if index == 6 {
+		if index == 5 {
 			break;
 		}
 	}
