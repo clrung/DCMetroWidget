@@ -14,7 +14,6 @@ import CoreLocation
 var currentLocation: CLLocation = CLLocation()
 var sixClosestStations: [Station] = []
 var timeBefore: NSDate? = nil
-var errorText: String = ""
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
@@ -55,15 +54,15 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
 		locationManager.distanceFilter = kCLDistanceFilterNone
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setSelectedStationLabelAndReloadTable(_:)),name:"reloadTable", object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayError(_:)),name:"error", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setSelectedStationLabelAndReloadTable(_:)), name:"reloadTable", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayError(_:)), name:"error", object: nil)
 	}
 	
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
 		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
-			selectedStationLabel.stringValue = "Calculating closest station"
+			selectedStationLabel.stringValue = "Determining closest station..."
 			locationManager.startUpdatingLocation()
 		} else {
 			selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
@@ -93,10 +92,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func displayError(notification: NSNotification) {
+		let userInfo:Dictionary<String, String> = notification.userInfo as! Dictionary<String, String>
+		
 		dispatch_async(dispatch_get_main_queue(), {
 			self.getCurrentLocationButton.hidden = true
 			self.errorTextField.hidden = false
-			self.errorTextField.stringValue = errorText
+			self.errorTextField.stringValue = userInfo["errorString"]!
 			self.mainPredictionView.hidden = true
 		})
 	}
@@ -181,10 +182,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		if error.code == CLError.Denied.rawValue {
 			locationManager.stopUpdatingLocation()
-			errorText = "Location services denied"
+			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Location services denied"])
 		} else if error.code == CLError.LocationUnknown.rawValue {
 			locationManager.stopUpdatingLocation()
-			errorText = "Location is unknown"
+			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Location is unknown"])
 		}
 		selectedStationLabel.stringValue = selectStationString
 	}

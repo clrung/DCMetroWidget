@@ -32,7 +32,12 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 	
 	session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
 		if error == nil {
-			onCompleted(result: JSON(data: data!))
+			let statusCode = (response as! NSHTTPURLResponse).statusCode
+			if statusCode == 200 { // success
+				onCompleted(result: JSON(data: data!))
+			} else { // error
+				NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Prediction fetch failed. Code: \(statusCode)"])
+			}
 		} else {
 			onCompleted(result: nil)
 			debugPrint(error)
@@ -69,15 +74,6 @@ func populateTrainArray() {
 			min: min ?? subJson["Min"].stringValue))
 	}
 	
-	trains.sortInPlace { (train1: Train, train2: Train) -> Bool in
-		if train1.min == "BRD" || train1.min == "ARR" {
-			return true
-		} else if train2.min == "BRD" || train2.min == "ARR" {
-			return false
-		}
-		return train1.min < train2.min
-	}
-	trains.sortInPlace({ $0.destination.description.compare($1.destination.description) == .OrderedAscending })
 	trains.sortInPlace({ $0.group < $1.group })
 }
 
@@ -90,8 +86,7 @@ func setSelectedStationLabelAndGetPredictions() {
 		populateTrainArray()
 		handleTwoLevelStation()
 		if trains.count == 0 {
-			errorText = "Prediction data is currently unavailable"
-			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil)
+			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"No trains are currently arriving"])
 		} else {
 			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
 		}
