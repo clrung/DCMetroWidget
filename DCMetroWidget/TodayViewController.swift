@@ -27,9 +27,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	var settingsViewController: SettingsViewController?
 	
-	var predictionJSON: JSON = JSON.null
-	var trains: [Train] = []
-	
 	let locationManager = CLLocationManager()
 	
 	let HEADER_HEIGHT = 23
@@ -50,120 +47,43 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		self.settingsViewController = SettingsViewController.init(nibName: "SettingsViewController", bundle: NSBundle.mainBundle())
-		
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
 		locationManager.distanceFilter = kCLDistanceFilterNone
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TodayViewController.setSelectedStationLabelAndReloadTable(_:)),name:"reloadTable", object: nil)
 	}
 	
-	override func viewDidAppear() {
+	override func viewWillAppear() {
+		super.viewWillAppear()
+		
 		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
 			locationManager.startUpdatingLocation()
+		} else {
+			predictionTableView.hidden = true
+			selectedStationLabel.hidden = true
 		}
 	}
 	
-	func populateTrainArray() {
-		// the JSON only contains one root element, "Trains"
-		self.predictionJSON = self.predictionJSON["Trains"]
-		
-		for (_, subJson): (String, JSON) in self.predictionJSON {
-			var line: Line? = nil
-			var min: String? = nil
-			var numCars: String? = nil
-			var destination: Station? = nil
-			
-			if subJson["DestinationName"].stringValue == Station.No.description || subJson["DestinationName"].stringValue == Station.Train.description {
-				line = Line.NO
-				min = subJson["Min"] == nil ? "-" : subJson["Min"].stringValue
-				numCars = "-"
-				destination = subJson["DestinationName"].stringValue == Station.No.description ? Station.No : Station.Train
-			}
-			
-			if subJson["Min"].stringValue == "" {
-				continue
-			}
-			
-			self.trains.append(Train(numCars: numCars ?? subJson["Car"].stringValue,
-				destination: destination ?? Station(rawValue: subJson["DestinationCode"].stringValue)!,
-				group: subJson["Group"].stringValue,
-				line: line ?? Line(rawValue: subJson["Line"].stringValue)!,
-				location: Station(rawValue: subJson["LocationCode"].stringValue)!,
-				min: min ?? subJson["Min"].stringValue))
+	@IBAction func touchSettings(sender: NSButton) {
+		if settingsViewController == nil {
+			settingsViewController = SettingsViewController.init(nibName: "SettingsViewController", bundle: NSBundle.mainBundle())
 		}
 		
-		self.trains.sortInPlace({ $0.destination.description.compare($1.destination.description) == .OrderedAscending })
-		self.trains.sortInPlace({ $0.group < $1.group })
+		presentViewControllerInWidget(settingsViewController)
 	}
 	
-	func reloadTableView() {
+	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {
 		dispatch_async(dispatch_get_main_queue(), {
-			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
+			self.self.selectedStationLabel.stringValue = selectedStation.description
+			self.selectedStationLabelHeightConstraint.constant = 23
+			
+			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
 			self.predictionTableView.reloadData()
 		})
 	}
 	
-	/**
-	Checks the selected station to see if it is one of the four metro stations that have two levels.  If it is, fetch the predictions for the second station code, add it to the trains array, and reload the table view.
-	
-	WMATA API: "Some stations have two platforms (e.g.: Gallery Place, Fort Totten, L'Enfant Plaza, and Metro Center). To retrieve complete predictions for these stations, be sure to pass in both StationCodes.
-	*/
-	func handleTwoLevelStation() {
-		let twoLevelStations = [Station.B01, Station.B06, Station.D03, Station.A01]
-		
-		if twoLevelStations.contains(selectedStation) {
-			let trainsGroup1 = self.trains
-			
-			switch selectedStation {
-			case Station.A01: selectedStation = Station.C01
-			case Station.B01: selectedStation = Station.F01
-			case Station.B06: selectedStation = Station.E06
-			case Station.D03: selectedStation = Station.F03
-			default: break
-			}
-			
-			getPrediction(selectedStation.rawValue, onCompleted: {
-				result in
-				self.predictionJSON = result!
-				self.trains = []
-				self.populateTrainArray()
-				self.trains = self.trains + trainsGroup1
-			})
-		}
-	}
-	
-	var widgetAllowsEditing: Bool {
-		return false
-	}
-	
-	func widgetDidBeginEditing() {
-		debugPrint("began editing")
-		// This causes the view to flash back and forth
-//		presentViewControllerInWidget(settingsViewController)
-	}
-	
-	func widgetDidEndEditing() {
-		debugPrint("ended editing")
-	}
-	
-	@IBAction func touchSettings(sender: NSButton) {
-		presentViewControllerInWidget(settingsViewController)
-	}
-	
-	func setSelectedStationLabelAndGetPredictions() {
-		selectedStationLabel.stringValue = selectedStation.description
-		selectedStationLabelHeightConstraint.constant = 23
-		
-		getPrediction(selectedStation.rawValue, onCompleted: {
-			result in
-			self.predictionJSON = result!
-			self.trains = []
-			self.populateTrainArray()
-			self.handleTwoLevelStation()
-			self.reloadTableView()
-			timeBefore = NSDate()
-		})
-	}
+// MARK: TableView
 	
 	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
 		return trains.count ?? 0
@@ -200,6 +120,21 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		return nil
 	}
 	
+	// from http://stackoverflow.com/a/25952895
+	func getTintedImage(image:NSImage, tint:NSColor) -> NSImage {
+		let tinted = image.copy() as! NSImage
+		tinted.lockFocus()
+		tint.set()
+		
+		let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
+		NSRectFillUsingOperation(imageRect, NSCompositingOperation.CompositeSourceAtop)
+		
+		tinted.unlockFocus()
+		return tinted
+	}
+	
+// MARK: Location
+	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
 		locationManager.stopUpdatingLocation()
 		
@@ -208,6 +143,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		// only fetch new predictions if it has been at least one second since they were last fetched
 		if timeBefore == nil || timeAfter.timeIntervalSinceDate(timeBefore!) > 1 {
 			getCurrentLocationButton.hidden = true
+			predictionTableView.hidden = false
+			selectedStationLabel.hidden = false
+			
 			currentLocation = locationManager.location!
 			sixClosestStations = getSixClosestStations(currentLocation)
 			
@@ -223,16 +161,19 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		locationManager.startUpdatingLocation()
 	}
 	
-	// from http://stackoverflow.com/a/25952895
-	func getTintedImage(image:NSImage, tint:NSColor) -> NSImage {
-		let tinted = image.copy() as! NSImage
-		tinted.lockFocus()
-		tint.set()
-		
-		let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
-		NSRectFillUsingOperation(imageRect, NSCompositingOperation.CompositeSourceAtop)
-		
-		tinted.unlockFocus()
-		return tinted
+// MARK: Editing
+	
+	var widgetAllowsEditing: Bool {
+		return false
+	}
+	
+	func widgetDidBeginEditing() {
+		debugPrint("began editing")
+		// This causes the view to flash back and forth
+		//		presentViewControllerInWidget(settingsViewController)
+	}
+	
+	func widgetDidEndEditing() {
+		debugPrint("ended editing")
 	}
 }

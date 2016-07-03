@@ -66,6 +66,8 @@ class SettingsViewController: NCWidgetListViewController {
 		selectedStation = Station(rawValue: selectedStationCode)!
 		
 		radioButtonClicked = true
+		
+		dismissViewController(self)
 	}
 	
 }
