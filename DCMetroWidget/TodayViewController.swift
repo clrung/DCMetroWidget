@@ -12,7 +12,7 @@ import SwiftyJSON
 import CoreLocation
 
 var currentLocation: CLLocation = CLLocation()
-var sixClosestStations: [Station] = []
+var fiveClosestStations: [Station] = []
 var timeBefore: NSDate? = nil
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
@@ -166,17 +166,16 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		// only fetch new predictions if it has been at least one second since they were last fetched
 		if timeBefore == nil || timeAfter.timeIntervalSinceDate(timeBefore!) > 1 {
 			currentLocation = locationManager.location!
-			sixClosestStations = getSixClosestStations(currentLocation)
+			fiveClosestStations = getfiveClosestStations(currentLocation)
 			
 			if !radioButtonClicked {
-				selectedStation = sixClosestStations[0]
+				selectedStation = fiveClosestStations[0]
 			}
 			
 			setSelectedStationLabelAndGetPredictions()
 		}
 		
 		selectedStationLabel.stringValue = selectedStation.description
-		
 	}
 	
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -187,6 +186,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			locationManager.stopUpdatingLocation()
 			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Location is unknown"])
 		}
+
 		selectedStationLabel.stringValue = selectStationString
 	}
 	

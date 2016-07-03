@@ -20,7 +20,6 @@ class SettingsViewController: NCWidgetListViewController {
 	@IBOutlet weak var stationRadioButton3: NSButton!
 	@IBOutlet weak var stationRadioButton4: NSButton!
 	@IBOutlet weak var stationRadioButton5: NSButton!
-	@IBOutlet weak var stationRadioButton6: NSButton!
 	
 	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
 	
@@ -39,12 +38,12 @@ class SettingsViewController: NCWidgetListViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5, stationRadioButton6]
+		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
 		
 		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
 			for (index, radioButton) in stationRadioButtons.enumerate() {
 				radioButton.hidden = false
-				stationRadioButtons[index].title = sixClosestStations[index].description
+				stationRadioButtons[index].title = fiveClosestStations[index].description
 			}
 		}
 	}
@@ -61,7 +60,7 @@ class SettingsViewController: NCWidgetListViewController {
 		
 		sender.state = NSOnState
 		
-		let selectedStationCode = sixClosestStations[sender.tag].rawValue
+		let selectedStationCode = fiveClosestStations[sender.tag].rawValue
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
 		

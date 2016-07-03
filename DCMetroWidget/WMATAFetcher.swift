@@ -122,8 +122,8 @@ func handleTwoLevelStation() {
 	}
 }
 
-func getSixClosestStations(location: CLLocation) -> [Station] {
-	var sixClosestStations = [Station]()
+func getfiveClosestStations(location: CLLocation) -> [Station] {
+	var fiveClosestStations = [Station]()
 	var distancesDictionary: [CLLocationDistance:String] = [:]
 	
 	for station in Station.allValues {
@@ -133,11 +133,11 @@ func getSixClosestStations(location: CLLocation) -> [Station] {
 	let sortedDistancesKeys = Array(distancesDictionary.keys).sort(<)
 	
 	for (index, key) in sortedDistancesKeys.enumerate() {
-		sixClosestStations.append(Station(rawValue: distancesDictionary[key]!)!)
-		if index == 5 {
+		fiveClosestStations.append(Station(rawValue: distancesDictionary[key]!)!)
+		if index == 4 {
 			break;
 		}
 	}
 	
-	return sixClosestStations
+	return fiveClosestStations
 }

@@ -13,18 +13,17 @@
                 <outlet property="stationRadioButton3" destination="29H-9T-FQH" id="7QF-0f-Tei"/>
                 <outlet property="stationRadioButton4" destination="ZB3-pD-WWY" id="vEA-1d-x8T"/>
                 <outlet property="stationRadioButton5" destination="mxj-Dq-bje" id="3j7-F4-TYC"/>
-                <outlet property="stationRadioButton6" destination="lAd-SH-Gcp" id="Oti-WK-c72"/>
                 <outlet property="view" destination="JgP-0H-vEi" id="8As-2b-9vS"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView simulatedAppContext="notificationCenter" id="JgP-0H-vEi" userLabel="Settings">
-            <rect key="frame" x="0.0" y="0.0" width="432" height="165"/>
+            <rect key="frame" x="0.0" y="0.0" width="432" height="215"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xNW-am-S4d">
-                    <rect key="frame" x="33" y="133" width="164" height="17"/>
+                    <rect key="frame" x="33" y="183" width="164" height="17"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="0iA-Xd-IdR"/>
                         <constraint firstAttribute="height" constant="17" id="nL3-Nz-erb"/>
@@ -36,10 +35,10 @@
                     </textFieldCell>
                 </textField>
                 <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="QvI-Dz-j8t">
-                    <rect key="frame" x="34" y="102" width="133" height="27"/>
+                    <rect key="frame" x="34" y="152" width="263" height="27"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="1J3-0y-G7s"/>
-                        <constraint firstAttribute="width" constant="130" id="xQb-1F-xY5"/>
+                        <constraint firstAttribute="width" constant="260" id="xQb-1F-xY5"/>
                     </constraints>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="naJ-89-tum">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -50,7 +49,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="H0v-Mt-35W">
-                    <rect key="frame" x="34" y="77" width="133" height="27"/>
+                    <rect key="frame" x="34" y="127" width="263" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="Gle-RQ-wvA">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -60,7 +59,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="29H-9T-FQH">
-                    <rect key="frame" x="34" y="52" width="133" height="27"/>
+                    <rect key="frame" x="34" y="102" width="263" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="8O1-rY-1Fd">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -70,7 +69,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZB3-pD-WWY">
-                    <rect key="frame" x="164" y="102" width="133" height="27"/>
+                    <rect key="frame" x="34" y="77" width="263" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="vgc-Eb-fZ1">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -80,23 +79,13 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="mxj-Dq-bje">
-                    <rect key="frame" x="164" y="77" width="133" height="27"/>
+                    <rect key="frame" x="34" y="52" width="263" height="27"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="lcb-LK-gg9">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
                         <action selector="touchStationRadioButton:" target="-2" id="9Gq-2I-1IK"/>
-                    </connections>
-                </button>
-                <button hidden="YES" focusRingType="none" tag="5" translatesAutoresizingMaskIntoConstraints="NO" id="lAd-SH-Gcp">
-                    <rect key="frame" x="164" y="52" width="133" height="27"/>
-                    <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="dze-tE-G5O">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="touchStationRadioButton:" target="-2" id="MTh-66-WaP"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xmy-pV-tMg">
@@ -120,43 +109,33 @@
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="y06-Zb-bUO">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="Iz3-az-TBi">
-                            <items>
-                                <menuItem title="Item 1" id="Fh4-er-ZMh"/>
-                                <menuItem title="Item 2" id="yUn-Fu-f2h"/>
-                                <menuItem title="Item 3" id="FDz-Cq-NpQ"/>
-                            </items>
-                        </menu>
+                        <menu key="menu" id="Iz3-az-TBi"/>
                     </popUpButtonCell>
                 </popUpButton>
             </subviews>
             <constraints>
                 <constraint firstItem="29H-9T-FQH" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="32X-fq-jqu"/>
                 <constraint firstItem="H0v-Mt-35W" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="4sI-mK-onw"/>
-                <constraint firstItem="lAd-SH-Gcp" firstAttribute="centerY" secondItem="29H-9T-FQH" secondAttribute="centerY" id="96M-4P-1P9"/>
+                <constraint firstItem="xmy-pV-tMg" firstAttribute="top" secondItem="mxj-Dq-bje" secondAttribute="bottom" id="Adr-93-dP7"/>
                 <constraint firstItem="xNW-am-S4d" firstAttribute="top" secondItem="JgP-0H-vEi" secondAttribute="top" constant="15" id="Akw-p9-AXU"/>
-                <constraint firstItem="mxj-Dq-bje" firstAttribute="centerX" secondItem="ZB3-pD-WWY" secondAttribute="centerX" id="Cgn-DQ-CQf"/>
-                <constraint firstItem="ZB3-pD-WWY" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="HKI-RW-byc"/>
+                <constraint firstItem="ZB3-pD-WWY" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="Cyi-Hg-c25"/>
+                <constraint firstItem="ZB3-pD-WWY" firstAttribute="centerX" secondItem="QvI-Dz-j8t" secondAttribute="centerX" id="IOr-l9-VQn"/>
+                <constraint firstItem="mxj-Dq-bje" firstAttribute="top" secondItem="ZB3-pD-WWY" secondAttribute="bottom" id="Jr1-bT-rgL"/>
                 <constraint firstItem="29H-9T-FQH" firstAttribute="centerX" secondItem="QvI-Dz-j8t" secondAttribute="centerX" id="LAH-zT-suB"/>
                 <constraint firstItem="H0v-Mt-35W" firstAttribute="centerX" secondItem="QvI-Dz-j8t" secondAttribute="centerX" id="LVd-y4-gGT"/>
                 <constraint firstItem="xmy-pV-tMg" firstAttribute="leading" secondItem="QvI-Dz-j8t" secondAttribute="leading" id="LxS-96-Wiz"/>
-                <constraint firstItem="mxj-Dq-bje" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="NdV-WQ-54m"/>
                 <constraint firstItem="QvI-Dz-j8t" firstAttribute="top" secondItem="xNW-am-S4d" secondAttribute="bottom" constant="5" id="OYc-ww-L5h"/>
                 <constraint firstItem="xNW-am-S4d" firstAttribute="leading" secondItem="QvI-Dz-j8t" secondAttribute="leading" id="Ot2-Wy-gsZ"/>
                 <constraint firstItem="QvI-Dz-j8t" firstAttribute="leading" secondItem="JgP-0H-vEi" secondAttribute="leading" constant="35" id="P98-aS-UWh"/>
                 <constraint firstItem="29H-9T-FQH" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="PVD-H6-BBG"/>
                 <constraint firstItem="29H-9T-FQH" firstAttribute="top" secondItem="H0v-Mt-35W" secondAttribute="bottom" id="Qal-B0-vUx"/>
-                <constraint firstItem="ZB3-pD-WWY" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="Sbe-eo-kXN"/>
-                <constraint firstItem="mxj-Dq-bje" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="TXu-Nr-wBI"/>
-                <constraint firstItem="mxj-Dq-bje" firstAttribute="centerY" secondItem="H0v-Mt-35W" secondAttribute="centerY" id="Ufe-pK-Bof"/>
+                <constraint firstItem="29H-9T-FQH" firstAttribute="bottom" secondItem="ZB3-pD-WWY" secondAttribute="top" id="R5N-i8-m0n"/>
                 <constraint firstItem="xmy-pV-tMg" firstAttribute="leading" secondItem="p4G-cj-99R" secondAttribute="leading" id="Va8-d1-edw"/>
-                <constraint firstItem="lAd-SH-Gcp" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="dmA-ST-BRa"/>
-                <constraint firstItem="ZB3-pD-WWY" firstAttribute="leading" secondItem="QvI-Dz-j8t" secondAttribute="trailing" id="gg2-LI-Dij"/>
-                <constraint firstItem="ZB3-pD-WWY" firstAttribute="centerY" secondItem="QvI-Dz-j8t" secondAttribute="centerY" id="jyl-Rk-URH"/>
-                <constraint firstItem="xmy-pV-tMg" firstAttribute="top" secondItem="29H-9T-FQH" secondAttribute="bottom" id="k8Y-lv-Mhf"/>
-                <constraint firstItem="lAd-SH-Gcp" firstAttribute="centerX" secondItem="ZB3-pD-WWY" secondAttribute="centerX" id="nFb-ZV-iSF"/>
+                <constraint firstItem="mxj-Dq-bje" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="aug-Dx-IpT"/>
+                <constraint firstItem="ZB3-pD-WWY" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="e6I-IU-0D9"/>
+                <constraint firstItem="mxj-Dq-bje" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="nhI-hx-JWu"/>
                 <constraint firstItem="H0v-Mt-35W" firstAttribute="top" secondItem="QvI-Dz-j8t" secondAttribute="bottom" id="pFI-mD-ldM"/>
-                <constraint firstItem="lAd-SH-Gcp" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="pWk-Lk-juU"/>
+                <constraint firstItem="mxj-Dq-bje" firstAttribute="centerX" secondItem="QvI-Dz-j8t" secondAttribute="centerX" id="po6-CX-Jd4"/>
                 <constraint firstItem="H0v-Mt-35W" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="sfW-cF-Fjc"/>
                 <constraint firstItem="p4G-cj-99R" firstAttribute="top" secondItem="xmy-pV-tMg" secondAttribute="bottom" constant="5" id="tV6-Fy-dwA"/>
                 <constraint firstAttribute="bottom" secondItem="p4G-cj-99R" secondAttribute="bottom" constant="10" id="ybd-Oi-a0w"/>
