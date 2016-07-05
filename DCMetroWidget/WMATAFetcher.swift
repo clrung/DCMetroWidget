@@ -36,7 +36,7 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 			if statusCode == 200 { // success
 				onCompleted(result: JSON(data: data!))
 			} else { // error
-				NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Prediction fetch failed. Code: \(statusCode)"])
+				NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Prediction fetch failed (Code: \(statusCode))"])
 			}
 		} else {
 			onCompleted(result: nil)

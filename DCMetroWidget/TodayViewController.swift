@@ -61,13 +61,17 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
-		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
-			selectedStationLabel.stringValue = "Determining closest station..."
-			locationManager.startUpdatingLocation()
+		if didSelectStationInSettings {
+			setSelectedStationLabelAndGetPredictions()
 		} else {
-			selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
-			getCurrentLocationButton.hidden = false
-			mainPredictionView.hidden = true
+			if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
+				selectedStationLabel.stringValue = "Determining closest station..."
+				locationManager.startUpdatingLocation()
+			} else {
+				selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
+				getCurrentLocationButton.hidden = false
+				mainPredictionView.hidden = true
+			}
 		}
 	}
 	
@@ -168,7 +172,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			currentLocation = locationManager.location!
 			fiveClosestStations = getfiveClosestStations(currentLocation)
 			
-			if !radioButtonClicked {
+			if !didSelectStationInSettings {
 				selectedStation = fiveClosestStations[0]
 			}
 			

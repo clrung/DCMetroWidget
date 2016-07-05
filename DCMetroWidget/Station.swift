@@ -46,7 +46,7 @@ enum Station: String, CustomStringConvertible {
 		case A06: return "Van Ness-UDC"
 		case A07: return "Tenleytown-AU"
 		case A08: return "Friendship Heights"
-		case A09: return "Bethesda"
+		case A09: return "Bethesda"	
 		case A10: return "Medical Center"
 		case A11: return "Grosvenor-Strathmore"
 		case A12: return "White Flint"

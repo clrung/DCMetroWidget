@@ -101,16 +101,18 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="p4G-cj-99R">
-                    <rect key="frame" x="33" y="7" width="155" height="26"/>
+                    <rect key="frame" x="33" y="7" width="265" height="26"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="MDz-uH-oIH"/>
-                        <constraint firstAttribute="width" constant="150" id="pBH-uB-OcQ"/>
                     </constraints>
                     <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="y06-Zb-bUO">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="Iz3-az-TBi"/>
                     </popUpButtonCell>
+                    <connections>
+                        <action selector="touchStationPopUpButton:" target="-2" id="THL-jL-ILs"/>
+                    </connections>
                 </popUpButton>
             </subviews>
             <constraints>
@@ -121,6 +123,7 @@
                 <constraint firstItem="ZB3-pD-WWY" firstAttribute="height" secondItem="QvI-Dz-j8t" secondAttribute="height" id="Cyi-Hg-c25"/>
                 <constraint firstItem="ZB3-pD-WWY" firstAttribute="centerX" secondItem="QvI-Dz-j8t" secondAttribute="centerX" id="IOr-l9-VQn"/>
                 <constraint firstItem="mxj-Dq-bje" firstAttribute="top" secondItem="ZB3-pD-WWY" secondAttribute="bottom" id="Jr1-bT-rgL"/>
+                <constraint firstItem="p4G-cj-99R" firstAttribute="width" secondItem="QvI-Dz-j8t" secondAttribute="width" id="K3b-LF-WaZ"/>
                 <constraint firstItem="29H-9T-FQH" firstAttribute="centerX" secondItem="QvI-Dz-j8t" secondAttribute="centerX" id="LAH-zT-suB"/>
                 <constraint firstItem="H0v-Mt-35W" firstAttribute="centerX" secondItem="QvI-Dz-j8t" secondAttribute="centerX" id="LVd-y4-gGT"/>
                 <constraint firstItem="xmy-pV-tMg" firstAttribute="leading" secondItem="QvI-Dz-j8t" secondAttribute="leading" id="LxS-96-Wiz"/>

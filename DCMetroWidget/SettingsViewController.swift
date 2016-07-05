@@ -11,7 +11,7 @@ import NotificationCenter
 import CoreLocation
 
 var selectedStation: Station = Station.No
-var radioButtonClicked: Bool = false
+var didSelectStationInSettings: Bool = false
 
 class SettingsViewController: NCWidgetListViewController {
 	
@@ -38,19 +38,22 @@ class SettingsViewController: NCWidgetListViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
+		didSelectStationInSettings = false
 		
+		let sortedStations = Station.allValues.sort( { $0.description < $1.description } )
+		
+		for station in sortedStations {
+			stationPopUpButton.addItemWithTitle(station.description)
+			stationPopUpButton.itemWithTitle(station.description)?.representedObject = station.rawValue
+		}
+		
+		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
 		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
 			for (index, radioButton) in stationRadioButtons.enumerate() {
 				radioButton.hidden = false
 				stationRadioButtons[index].title = fiveClosestStations[index].description
 			}
 		}
-	}
-	
-	override func viewDidAppear() {
-		super.viewDidAppear()
-		radioButtonClicked = false
 	}
 	
 	@IBAction func touchStationRadioButton(sender: NSButton) {
@@ -64,7 +67,21 @@ class SettingsViewController: NCWidgetListViewController {
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
 		
-		radioButtonClicked = true
+		didSelectStationInSettings = true
+		
+		dismissViewController(self)
+	}
+	
+	@IBAction func touchStationPopUpButton(sender: NSPopUpButton) {
+		for radioButton in stationRadioButtons {
+			radioButton.state = NSOffState
+		}
+		
+		let selectedStationCode = sender.selectedItem?.representedObject as! String
+		
+		selectedStation = Station(rawValue: selectedStationCode)!
+		
+		didSelectStationInSettings = true
 		
 		dismissViewController(self)
 	}
