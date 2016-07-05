@@ -12,6 +12,10 @@ import CoreLocation
 
 var predictionJSON: JSON = JSON.null
 var trains: [Train] = []
+let twoLevelStations = [Station.A01, Station.C01,	// Metro Center
+	Station.B01, Station.F01,	// Gallery Pl-Chinatown
+	Station.B06, Station.E06,	// Fort Totten
+	Station.D03, Station.F03]	// L'Enfant Plaza
 
 /**
 Gets the stationCode's prediction
@@ -79,16 +83,19 @@ func populateTrainArray() {
 
 func setSelectedStationLabelAndGetPredictions() {
 	timeBefore = NSDate()
+	
 	getPrediction(selectedStation.rawValue, onCompleted: {
 		result in
-		predictionJSON = result!
-		trains = []
-		populateTrainArray()
-		handleTwoLevelStation()
-		if trains.count == 0 {
-			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"No trains are currently arriving"])
-		} else {
-			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
+		if result != nil {
+			predictionJSON = result!
+			trains = []
+			populateTrainArray()
+			handleTwoLevelStation()
+			if trains.count == 0 {
+				NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"No trains are currently arriving"])
+			} else {
+				NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
+			}
 		}
 	})
 }
@@ -99,8 +106,6 @@ Checks the selected station to see if it is one of the four metro stations that 
 WMATA API: "Some stations have two platforms (e.g.: Gallery Place, Fort Totten, L'Enfant Plaza, and Metro Center). To retrieve complete predictions for these stations, be sure to pass in both StationCodes.
 */
 func handleTwoLevelStation() {
-	let twoLevelStations = [Station.B01, Station.B06, Station.D03, Station.A01]
-	
 	if twoLevelStations.contains(selectedStation) {
 		let trainsGroup1 = trains
 		
@@ -118,6 +123,7 @@ func handleTwoLevelStation() {
 			trains = []
 			populateTrainArray()
 			trains = trains + trainsGroup1
+			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
 		})
 	}
 }

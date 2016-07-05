@@ -61,6 +61,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
+		selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
+		
 		if didSelectStationInSettings {
 			setSelectedStationLabelAndGetPredictions()
 		} else {
@@ -68,7 +70,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 				selectedStationLabel.stringValue = "Determining closest station..."
 				locationManager.startUpdatingLocation()
 			} else {
-				selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
 				getCurrentLocationButton.hidden = false
 				mainPredictionView.hidden = true
 			}
@@ -84,12 +85,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {
+		self.getCurrentLocationButton.hidden = true
+		self.errorTextField.hidden = true
+		self.mainPredictionView.hidden = false
+		
+		self.selectedStationLabel.stringValue = selectedStation.description
+		
 		dispatch_async(dispatch_get_main_queue(), {
-			self.getCurrentLocationButton.hidden = true
-			self.errorTextField.hidden = true
-			self.mainPredictionView.hidden = false
-			
-			self.selectedStationLabel.stringValue = selectedStation.description
 			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
 			self.predictionTableView.reloadData()
 		})
@@ -98,12 +100,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func displayError(notification: NSNotification) {
 		let userInfo:Dictionary<String, String> = notification.userInfo as! Dictionary<String, String>
 		
-		dispatch_async(dispatch_get_main_queue(), {
-			self.getCurrentLocationButton.hidden = true
-			self.errorTextField.hidden = false
-			self.errorTextField.stringValue = userInfo["errorString"]!
-			self.mainPredictionView.hidden = true
-		})
+		self.getCurrentLocationButton.hidden = true
+		self.errorTextField.hidden = false
+		self.errorTextField.stringValue = userInfo["errorString"]!
+		self.mainPredictionView.hidden = true
 	}
 	
 	// MARK: TableView
@@ -113,31 +113,33 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		let item = trains[row]
-		
-		var lineImage = NSImage(named: "lineImage")
-		var text = ""
-		var cellIdentifier: String = ""
-		
-		if tableColumn == tableView.tableColumns[0] {
-			cellIdentifier = "lineCell"
-			lineImage = item.line != Line.NO ? getTintedImage(lineImage!, tint: item.line.color) : nil
-		} else if tableColumn == tableView.tableColumns[1] {
-			cellIdentifier = "carsCell"
-			text = String(item.numCars)
-		} else if tableColumn == tableView.tableColumns[2] {
-			cellIdentifier = "destinationCell"
-			text = item.destination.description
-		} else if tableColumn == tableView.tableColumns[3] {
-			cellIdentifier = "minCell"
-			text = String(item.min)
-		}
-		
-		if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
-			predictionTableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: 1))
-			cell.textField?.stringValue = text
-			cell.imageView?.image = lineImage ?? nil
-			return cell
+		if row < trains.count {
+			let item = trains[row]
+			
+			var lineImage = NSImage(named: "lineImage")
+			var text = ""
+			var cellIdentifier: String = ""
+			
+			if tableColumn == tableView.tableColumns[0] {
+				cellIdentifier = "lineCell"
+				lineImage = item.line != Line.NO ? getTintedImage(lineImage!, tint: item.line.color) : nil
+			} else if tableColumn == tableView.tableColumns[1] {
+				cellIdentifier = "carsCell"
+				text = String(item.numCars)
+			} else if tableColumn == tableView.tableColumns[2] {
+				cellIdentifier = "destinationCell"
+				text = item.destination.description
+			} else if tableColumn == tableView.tableColumns[3] {
+				cellIdentifier = "minCell"
+				text = String(item.min)
+			}
+			
+			if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
+				predictionTableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: 1))
+				cell.textField?.stringValue = text
+				cell.imageView?.image = lineImage ?? nil
+				return cell
+			}
 		}
 		
 		return nil
@@ -183,14 +185,17 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+		locationManager.stopUpdatingLocation()
+		
+		var errorString = ""
 		if error.code == CLError.Denied.rawValue {
-			locationManager.stopUpdatingLocation()
-			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Location services denied"])
+			errorString = "Location services denied"
 		} else if error.code == CLError.LocationUnknown.rawValue {
-			locationManager.stopUpdatingLocation()
-			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Location is unknown"])
+			errorString = "Location is unknown"
 		}
 
+		NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":errorString])
+		
 		selectedStationLabel.stringValue = selectStationString
 	}
 	

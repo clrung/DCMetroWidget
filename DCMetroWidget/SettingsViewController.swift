@@ -44,7 +44,17 @@ class SettingsViewController: NCWidgetListViewController {
 		
 		for station in sortedStations {
 			stationPopUpButton.addItemWithTitle(station.description)
-			stationPopUpButton.itemWithTitle(station.description)?.representedObject = station.rawValue
+			
+			var rawValue = station.rawValue
+			switch station.rawValue {
+			case Station.C01.rawValue: rawValue = Station.A01.rawValue
+			case Station.F01.rawValue: rawValue = Station.B01.rawValue
+			case Station.E06.rawValue: rawValue = Station.B06.rawValue
+			case Station.F03.rawValue: rawValue = Station.D03.rawValue
+			default: break
+			}
+			
+			stationPopUpButton.itemWithTitle(station.description)?.representedObject = rawValue
 		}
 		
 		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]

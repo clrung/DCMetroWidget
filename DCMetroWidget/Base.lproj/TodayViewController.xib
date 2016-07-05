@@ -29,12 +29,12 @@
                     </constraints>
                 </progressIndicator>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZUe-4O-rwA">
-                    <rect key="frame" x="43" y="56" width="264" height="18"/>
+                    <rect key="frame" x="73" y="56" width="204" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="260" id="L8U-iC-PGV"/>
+                        <constraint firstAttribute="width" constant="200" id="L8U-iC-PGV"/>
                         <constraint firstAttribute="height" constant="18" id="itb-Sm-5Ne"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Station" id="m4M-Tc-fBG">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Station" id="m4M-Tc-fBG">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
