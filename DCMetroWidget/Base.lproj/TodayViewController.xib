@@ -29,9 +29,9 @@
                     </constraints>
                 </progressIndicator>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZUe-4O-rwA">
-                    <rect key="frame" x="73" y="56" width="204" height="18"/>
+                    <rect key="frame" x="58" y="56" width="224" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="L8U-iC-PGV"/>
+                        <constraint firstAttribute="width" constant="220" id="L8U-iC-PGV"/>
                         <constraint firstAttribute="height" constant="18" id="itb-Sm-5Ne"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Station" id="m4M-Tc-fBG">
@@ -269,16 +269,16 @@
             </subviews>
             <constraints>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="1Bq-GQ-QtD"/>
+                <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="9Rs-VA-cXR"/>
+                <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" id="Agz-lO-mNJ"/>
                 <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="BZ7-Wr-7c0"/>
                 <constraint firstItem="vrG-qf-P78" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="Bam-iz-qbf"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
                 <constraint firstItem="dcM-pR-Uci" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="-10" id="O5B-bc-EvD"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerY" secondItem="ne8-JS-SDK" secondAttribute="centerY" id="ZZ2-0s-H52"/>
-                <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" id="bhV-oE-ulc"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="dcM-pR-Uci" secondAttribute="bottom" constant="5" id="eCM-l3-ctI"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="l4f-9L-5Xz"/>
-                <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="o18-yP-Y40"/>
                 <constraint firstAttribute="bottom" secondItem="ne8-JS-SDK" secondAttribute="bottom" id="s7Y-Rf-WMb"/>
                 <constraint firstItem="dcM-pR-Uci" firstAttribute="centerY" secondItem="ZUe-4O-rwA" secondAttribute="centerY" id="zPm-W9-8S4"/>
                 <constraint firstItem="dcM-pR-Uci" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="zlC-0x-dfa"/>

@@ -10,7 +10,8 @@ import Cocoa
 import NotificationCenter
 import CoreLocation
 
-var selectedStation: Station = Station.No
+let defaults = NSUserDefaults.standardUserDefaults()
+var selectedStation: Station = Station(rawValue: defaults.stringForKey("selectedStation") ?? "No")!
 var didSelectStationInSettings: Bool = false
 
 class SettingsViewController: NCWidgetListViewController {
@@ -58,7 +59,7 @@ class SettingsViewController: NCWidgetListViewController {
 		}
 		
 		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
-		if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
+		if currentLocation != nil {
 			for (index, radioButton) in stationRadioButtons.enumerate() {
 				radioButton.hidden = false
 				stationRadioButtons[index].title = fiveClosestStations[index].description
@@ -76,6 +77,7 @@ class SettingsViewController: NCWidgetListViewController {
 		let selectedStationCode = fiveClosestStations[sender.tag].rawValue
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
+		defaults.setObject(selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStationInSettings = true
 		
@@ -90,6 +92,7 @@ class SettingsViewController: NCWidgetListViewController {
 		let selectedStationCode = sender.selectedItem?.representedObject as! String
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
+		defaults.setObject(selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStationInSettings = true
 		

@@ -16,6 +16,7 @@ let twoLevelStations = [Station.A01, Station.C01,	// Metro Center
 	Station.B01, Station.F01,	// Gallery Pl-Chinatown
 	Station.B06, Station.E06,	// Fort Totten
 	Station.D03, Station.F03]	// L'Enfant Plaza
+var timeBefore: NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval(-2))
 
 /**
 Gets the stationCode's prediction
@@ -24,29 +25,39 @@ Gets the stationCode's prediction
 - returns: result, a JSON containing prediction data, or nil if there was an error
 */
 func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
-	guard let wmataURL = NSURL(string: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + stationCode) else {
-		debugPrint("Error: cannot create URL")
-		return
-	}
+	let timeAfter = NSDate()
 	
-	let request = NSMutableURLRequest(URL: wmataURL)
-	let session = NSURLSession.sharedSession()
-	
-	request.setValue("[WMATA_KEY_GOES_HERE]", forHTTPHeaderField:"api_key")
-	
-	session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
-		if error == nil {
-			let statusCode = (response as! NSHTTPURLResponse).statusCode
-			if statusCode == 200 { // success
-				onCompleted(result: JSON(data: data!))
-			} else { // error
-				NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Prediction fetch failed (Code: \(statusCode))"])
-			}
-		} else {
-			onCompleted(result: nil)
-			debugPrint(error)
+	// only fetch new predictions if it has been at least one second since they were last fetched
+	if timeAfter.timeIntervalSinceDate(timeBefore) > 1 {
+		print("WMATAFetcher: fetching predictions for \((Station(rawValue: stationCode)?.description)!)")
+		
+		timeBefore = NSDate()
+		
+		guard let wmataURL = NSURL(string: "https://api.wmata.com/StationPrediction.svc/json/GetPrediction/" + stationCode) else {
+			return
 		}
-	}).resume()
+		
+		let request = NSMutableURLRequest(URL: wmataURL)
+		let session = NSURLSession.sharedSession()
+		
+		request.setValue("[WMATA_KEY_GOES_HERE]", forHTTPHeaderField:"api_key")
+		
+		session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
+			if error == nil {
+				let statusCode = (response as! NSHTTPURLResponse).statusCode
+				if statusCode == 200 { // success
+					onCompleted(result: JSON(data: data!))
+				} else { // error
+					NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Prediction fetch failed (Code: \(statusCode))"])
+				}
+			} else {
+				onCompleted(result: nil)
+				if error?.code == -1009 {
+					NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Internet connection is offline"])
+				}
+			}
+		}).resume()
+	}
 }
 
 func populateTrainArray() {
@@ -82,8 +93,6 @@ func populateTrainArray() {
 }
 
 func setSelectedStationLabelAndGetPredictions() {
-	timeBefore = NSDate()
-	
 	getPrediction(selectedStation.rawValue, onCompleted: {
 		result in
 		if result != nil {

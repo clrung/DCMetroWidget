@@ -11,9 +11,8 @@ import NotificationCenter
 import SwiftyJSON
 import CoreLocation
 
-var currentLocation: CLLocation = CLLocation()
+var currentLocation: CLLocation! = nil
 var fiveClosestStations: [Station] = []
-var timeBefore: NSDate? = nil
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
@@ -66,12 +65,15 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		if didSelectStationInSettings {
 			setSelectedStationLabelAndGetPredictions()
 		} else {
-			if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Authorized || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.NotDetermined {
+			switch CLLocationManager.authorizationStatus() {
+			case CLAuthorizationStatus.Authorized:
 				selectedStationLabel.stringValue = "Determining closest station..."
 				locationManager.startUpdatingLocation()
-			} else {
+			case CLAuthorizationStatus.NotDetermined:
 				getCurrentLocationButton.hidden = false
 				mainPredictionView.hidden = true
+			default:	// Denied or Restricted
+				selectedStationLabel.stringValue = selectStationString
 			}
 		}
 	}
@@ -100,10 +102,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func displayError(notification: NSNotification) {
 		let userInfo:Dictionary<String, String> = notification.userInfo as! Dictionary<String, String>
 		
-		self.getCurrentLocationButton.hidden = true
-		self.errorTextField.hidden = false
-		self.errorTextField.stringValue = userInfo["errorString"]!
-		self.mainPredictionView.hidden = true
+		dispatch_async(dispatch_get_main_queue(), {
+			self.getCurrentLocationButton.hidden = true
+			self.errorTextField.hidden = false
+			self.errorTextField.stringValue = userInfo["errorString"]!
+			self.mainPredictionView.hidden = true
+		})
 	}
 	
 	// MARK: TableView
@@ -145,7 +149,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		return nil
 	}
 	
-	// from http://stackoverflow.com/a/25952895
+	// Source: http://stackoverflow.com/a/25952895
 	func getTintedImage(image:NSImage, tint:NSColor) -> NSImage {
 		let tinted = image.copy() as! NSImage
 		tinted.lockFocus()
@@ -167,11 +171,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
 		locationManager.stopUpdatingLocation()
 		
-		let timeAfter = NSDate()
-		
-		// only fetch new predictions if it has been at least one second since they were last fetched
-		if timeBefore == nil || timeAfter.timeIntervalSinceDate(timeBefore!) > 1 {
+		if locationManager.location != nil {
 			currentLocation = locationManager.location!
+			
 			fiveClosestStations = getfiveClosestStations(currentLocation)
 			
 			if !didSelectStationInSettings {
@@ -179,24 +181,28 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			}
 			
 			setSelectedStationLabelAndGetPredictions()
+			
+			selectedStationLabel.stringValue = selectedStation.description
 		}
-		
-		selectedStationLabel.stringValue = selectedStation.description
 	}
 	
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		locationManager.stopUpdatingLocation()
 		
-		var errorString = ""
-		if error.code == CLError.Denied.rawValue {
-			errorString = "Location services denied"
-		} else if error.code == CLError.LocationUnknown.rawValue {
-			errorString = "Location is unknown"
-		}
-
-		NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":errorString])
-		
 		selectedStationLabel.stringValue = selectStationString
+		
+		var errorString = ""
+		
+		switch error.code {
+		case CLError.Denied.rawValue:
+			errorString = "Location services denied"
+		case CLError.LocationUnknown.rawValue:
+			errorString = "Current location could not be determined"
+		default:
+			return
+		}
+		
+		NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":errorString])
 	}
 	
 	// MARK: Editing
@@ -206,12 +212,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func widgetDidBeginEditing() {
-		debugPrint("began editing")
+		print("began editing")
 		// This causes the view to flash back and forth
 		//		presentViewControllerInWidget(settingsViewController)
 	}
 	
 	func widgetDidEndEditing() {
-		debugPrint("ended editing")
+		print("ended editing")
 	}
 }
