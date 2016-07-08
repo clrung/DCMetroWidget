@@ -68,28 +68,18 @@ class SettingsViewController: NCWidgetListViewController {
 	}
 	
 	@IBAction func touchStationRadioButton(sender: NSButton) {
-		for radioButton in stationRadioButtons {
-			radioButton.state = NSOffState
-		}
-		
+		setSelectedStationAndDismiss(fiveClosestStations[sender.tag].rawValue)
 		sender.state = NSOnState
-		
-		let selectedStationCode = fiveClosestStations[sender.tag].rawValue
-		
-		selectedStation = Station(rawValue: selectedStationCode)!
-		defaults.setObject(selectedStation.rawValue, forKey: "selectedStation")
-		
-		didSelectStationInSettings = true
-		
-		dismissViewController(self)
 	}
 	
 	@IBAction func touchStationPopUpButton(sender: NSPopUpButton) {
+		setSelectedStationAndDismiss(sender.selectedItem?.representedObject as! String)
+	}
+
+	func setSelectedStationAndDismiss(selectedStationCode: String) {
 		for radioButton in stationRadioButtons {
 			radioButton.state = NSOffState
 		}
-		
-		let selectedStationCode = sender.selectedItem?.representedObject as! String
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
 		defaults.setObject(selectedStation.rawValue, forKey: "selectedStation")
