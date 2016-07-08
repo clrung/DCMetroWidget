@@ -12,10 +12,9 @@ import CoreLocation
 
 var predictionJSON: JSON = JSON.null
 var trains: [Train] = []
-let twoLevelStations = [Station.A01, Station.C01,	// Metro Center
-	Station.B01, Station.F01,	// Gallery Pl-Chinatown
-	Station.B06, Station.E06,	// Fort Totten
-	Station.D03, Station.F03]	// L'Enfant Plaza
+//						Metro Center	Gallery Pl		Fort Totten		L'Enfant Plaza
+let twoLevelStations = [Station.A01,	Station.B01,	Station.B06,	Station.D03,
+						Station.C01,	Station.F01,	Station.E06,	Station.F03]
 var timeBefore: NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval(-2))
 
 /**
@@ -27,8 +26,14 @@ Gets the stationCode's prediction
 func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 	let timeAfter = NSDate()
 	
-	// only fetch new predictions if it has been at least one second since they were last fetched
-	if timeAfter.timeIntervalSinceDate(timeBefore) > 1 {
+	let secondHalfTwoLevelStations: [Station] = Array(twoLevelStations.split(Station.D03).last!)
+	var secondHalfTwoLevelStationCodes: [String] = []
+	for station in secondHalfTwoLevelStations {
+		secondHalfTwoLevelStationCodes.append(station.rawValue)
+	}
+	
+	// only fetch new predictions if it has been at least one second since they were last fetched or it is the second part of a two level station fetch
+	if timeAfter.timeIntervalSinceDate(timeBefore) > 1 || secondHalfTwoLevelStationCodes.contains(stationCode) {
 		print("WMATAFetcher: fetching predictions for \((Station(rawValue: stationCode)?.description)!)")
 		
 		timeBefore = NSDate()
