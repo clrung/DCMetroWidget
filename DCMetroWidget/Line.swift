@@ -16,10 +16,10 @@ enum Line: String {
     var color : NSColor {
         switch self {
         case .RD: return NSColor.redColor()
-        case .BL: return NSColor.blueColor()
+        case .BL: return NSColor(red: 80/255, green: 150/255, blue: 240/255, alpha: 1)
         case .YL: return NSColor.yellowColor()
         case .OR: return NSColor.orangeColor()
-        case .GR: return NSColor.greenColor()
+        case .GR: return NSColor(red: 50/255, green: 220/255, blue: 50/255, alpha: 1)
         case .SV: return NSColor.grayColor()
         case .NO: return NSColor.clearColor()
         }
