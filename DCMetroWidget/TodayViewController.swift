@@ -60,21 +60,21 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
+		if selectedStation != Station.No {
+			didSelectStation = true
+		}
+		
 		selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
 		
-		if didSelectStationInSettings {
-			setSelectedStationLabelAndGetPredictions()
-		} else {
-			switch CLLocationManager.authorizationStatus() {
-			case CLAuthorizationStatus.Authorized:
-				selectedStationLabel.stringValue = "Determining closest station..."
-				locationManager.startUpdatingLocation()
-			case CLAuthorizationStatus.NotDetermined:
-				getCurrentLocationButton.hidden = false
-				mainPredictionView.hidden = true
-			default:	// Denied or Restricted
-				selectedStationLabel.stringValue = selectStationString
-			}
+		switch CLLocationManager.authorizationStatus() {
+		case CLAuthorizationStatus.Authorized:
+			selectedStationLabel.stringValue = "Determining closest station..."
+			locationManager.startUpdatingLocation()
+		case CLAuthorizationStatus.NotDetermined:
+			getCurrentLocationButton.hidden = false
+			mainPredictionView.hidden = true
+		default:	// Denied or Restricted
+			break
 		}
 	}
 	
@@ -176,11 +176,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			
 			fiveClosestStations = getfiveClosestStations(currentLocation)
 			
-			if !didSelectStationInSettings {
+			if !didSelectStation {
 				selectedStation = fiveClosestStations[0]
 			}
 			
-			setSelectedStationLabelAndGetPredictions()
+			getPredictionsForSelectedStation()
 			
 			selectedStationLabel.stringValue = selectedStation.description
 		}
@@ -189,7 +189,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		locationManager.stopUpdatingLocation()
 		
-		selectedStationLabel.stringValue = selectStationString
+		if didSelectStation {
+			selectedStationLabel.stringValue = selectedStation.description
+			getPredictionsForSelectedStation()
+		} else {
+			selectedStationLabel.stringValue = selectStationString
+		}
 		
 		var errorString = ""
 		

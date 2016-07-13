@@ -12,7 +12,7 @@ import CoreLocation
 
 let defaults = NSUserDefaults.standardUserDefaults()
 var selectedStation: Station = Station(rawValue: defaults.stringForKey("selectedStation") ?? "No")!
-var didSelectStationInSettings: Bool = false
+var didSelectStation: Bool = false
 
 class SettingsViewController: NCWidgetListViewController {
 	
@@ -38,8 +38,6 @@ class SettingsViewController: NCWidgetListViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		didSelectStationInSettings = false
 		
 		let sortedStations = Station.allValues.sort( { $0.description < $1.description } )
 		
@@ -84,7 +82,7 @@ class SettingsViewController: NCWidgetListViewController {
 		selectedStation = Station(rawValue: selectedStationCode)!
 		defaults.setObject(selectedStation.rawValue, forKey: "selectedStation")
 		
-		didSelectStationInSettings = true
+		didSelectStation = true
 		
 		dismissViewController(self)
 	}

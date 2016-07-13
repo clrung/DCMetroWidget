@@ -14,14 +14,14 @@ var predictionJSON: JSON = JSON.null
 var trains: [Train] = []
 //						Metro Center	Gallery Pl		Fort Totten		L'Enfant Plaza
 let twoLevelStations = [Station.A01,	Station.B01,	Station.B06,	Station.D03,
-						Station.C01,	Station.F01,	Station.E06,	Station.F03]
+                        Station.C01,	Station.F01,	Station.E06,	Station.F03]
 var timeBefore: NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval(-2))
 
 /**
 Gets the stationCode's prediction
 
 - parameter stationCode: the two digit station code
-- returns: result, a JSON containing prediction data, or nil if there was an error
+- returns: A JSON containing prediction data, or nil if there was an error
 */
 func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 	let timeAfter = NSDate()
@@ -56,7 +56,6 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 					NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Prediction fetch failed (Code: \(statusCode))"])
 				}
 			} else {
-				onCompleted(result: nil)
 				if error?.code == -1009 {
 					NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Internet connection is offline"])
 				}
@@ -97,19 +96,17 @@ func populateTrainArray() {
 	trains.sortInPlace({ $0.group < $1.group })
 }
 
-func setSelectedStationLabelAndGetPredictions() {
+func getPredictionsForSelectedStation() {
 	getPrediction(selectedStation.rawValue, onCompleted: {
 		result in
-		if result != nil {
-			predictionJSON = result!
-			trains = []
-			populateTrainArray()
-			handleTwoLevelStation()
-			if trains.count == 0 {
-				NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"No trains are currently arriving"])
-			} else {
-				NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
-			}
+		predictionJSON = result!
+		trains = []
+		populateTrainArray()
+		handleTwoLevelStation()
+		if trains.count == 0 {
+			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"No trains are currently arriving"])
+		} else {
+			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
 		}
 	})
 }
@@ -121,8 +118,6 @@ WMATA API: "Some stations have two platforms (e.g.: Gallery Place, Fort Totten, 
 */
 func handleTwoLevelStation() {
 	if twoLevelStations.contains(selectedStation) {
-		let trainsGroup1 = trains
-		
 		switch selectedStation {
 		case Station.A01: selectedStation = Station.C01
 		case Station.B01: selectedStation = Station.F01
@@ -134,9 +129,12 @@ func handleTwoLevelStation() {
 		getPrediction(selectedStation.rawValue, onCompleted: {
 			result in
 			predictionJSON = result!
+			
+			let trainsGroup1 = trains
 			trains = []
 			populateTrainArray()
 			trains = trains + trainsGroup1
+			
 			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
 		})
 	}
