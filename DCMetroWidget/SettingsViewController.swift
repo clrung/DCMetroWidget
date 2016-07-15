@@ -63,6 +63,8 @@ class SettingsViewController: NCWidgetListViewController {
 				stationRadioButtons[index].title = fiveClosestStations[index].description
 			}
 		}
+		
+		stationPopUpButton.selectItemWithTitle(selectedStation.description)
 	}
 	
 	@IBAction func touchStationRadioButton(sender: NSButton) {

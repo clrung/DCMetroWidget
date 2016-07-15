@@ -34,7 +34,7 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 	
 	// only fetch new predictions if it has been at least one second since they were last fetched or it is the second part of a two level station fetch
 	if timeAfter.timeIntervalSinceDate(timeBefore) > 1 || secondHalfTwoLevelStationCodes.contains(stationCode) {
-		print("WMATAFetcher: fetching predictions for \((Station(rawValue: stationCode)?.description)!)")
+		print("WMATAFetcher: fetching predictions for \((Station(rawValue: stationCode)?.rawValue)!) (\((Station(rawValue: stationCode)?.description)!))")
 		
 		timeBefore = NSDate()
 		
@@ -65,6 +65,8 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 }
 
 func populateTrainArray() {
+	trains = []
+	
 	// the JSON only contains one root element, "Trains"
 	predictionJSON = predictionJSON["Trains"]
 	
@@ -100,7 +102,6 @@ func getPredictionsForSelectedStation() {
 	getPrediction(selectedStation.rawValue, onCompleted: {
 		result in
 		predictionJSON = result!
-		trains = []
 		populateTrainArray()
 		handleTwoLevelStation()
 		if trains.count == 0 {
@@ -117,6 +118,7 @@ Checks the selected station to see if it is one of the four metro stations that 
 WMATA API: "Some stations have two platforms (e.g.: Gallery Place, Fort Totten, L'Enfant Plaza, and Metro Center). To retrieve complete predictions for these stations, be sure to pass in both StationCodes.
 */
 func handleTwoLevelStation() {
+	let stationBefore = selectedStation
 	if twoLevelStations.contains(selectedStation) {
 		switch selectedStation {
 		case Station.A01: selectedStation = Station.C01
@@ -131,13 +133,13 @@ func handleTwoLevelStation() {
 			predictionJSON = result!
 			
 			let trainsGroup1 = trains
-			trains = []
 			populateTrainArray()
 			trains = trains + trainsGroup1
 			
 			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
 		})
 	}
+	selectedStation = stationBefore
 }
 
 func getfiveClosestStations(location: CLLocation) -> [Station] {
