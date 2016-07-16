@@ -21,13 +21,17 @@ class Train {
 	var location: Station = Station.A01
 	var min: String = "0"
 	
-	required init(numCars: String, destination: Station, group: String, line: Line, location: Station, min: String ) {
+	required init(numCars: String, destination: Station, group: String, line: Line, location: Station, min: String) {
 		self.numCars = numCars
 		self.destination = destination
 		self.group = group
 		self.line = line
 		self.location = location
 		self.min = min
+	}
+	
+	static func initSpace() -> Train {
+		return Train(numCars: "", destination: Station.Space, group: "-1", line: Line.NO, location: Station.Space, min: "")
 	}
 	
 	var debugDescription: String {

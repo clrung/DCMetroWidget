@@ -34,6 +34,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
 	let ROW_SPACING = 6
+	let SPACE_HEIGHT = 3
 	
 	override var nibName: String? {
 		return "TodayViewController"
@@ -68,7 +69,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		switch CLLocationManager.authorizationStatus() {
 		case CLAuthorizationStatus.Authorized:
-			selectedStationLabel.stringValue = "Determining closest station..."
+			if !didSelectStation {
+				selectedStationLabel.stringValue = "Determining closest station..."
+			}
 			locationManager.startUpdatingLocation()
 		case CLAuthorizationStatus.NotDetermined:
 			getCurrentLocationButton.hidden = false
@@ -94,7 +97,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		self.selectedStationLabel.stringValue = selectedStation.description
 		
 		dispatch_async(dispatch_get_main_queue(), {
-			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trains.count * (self.ROW_HEIGHT + self.ROW_SPACING))
+			let trainsHeight = trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
+			let spacesHeight = spaceCount * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
+			
+			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trainsHeight - spacesHeight)
 			self.predictionTableView.reloadData()
 		})
 	}
@@ -111,10 +117,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	// MARK: TableView
-	
-	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-		return trains.count ?? 0
-	}
 	
 	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		if row < trains.count {
@@ -160,6 +162,18 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		tinted.unlockFocus()
 		return tinted
+	}
+	
+	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+		return trains.count ?? 0
+	}
+	
+	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+		if trains[row].group != "-1" {
+			return CGFloat(ROW_HEIGHT)
+		} else {
+			return CGFloat(SPACE_HEIGHT)
+		}
 	}
 	
 	// MARK: Location

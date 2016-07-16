@@ -10,8 +10,7 @@ import Cocoa
 import NotificationCenter
 import CoreLocation
 
-let defaults = NSUserDefaults.standardUserDefaults()
-var selectedStation: Station = Station(rawValue: defaults.stringForKey("selectedStation") ?? "No")!
+var selectedStation: Station = Station(rawValue: NSUserDefaults.standardUserDefaults().stringForKey("selectedStation") ?? "No")!
 var didSelectStation: Bool = false
 
 class SettingsViewController: NCWidgetListViewController {
@@ -82,7 +81,7 @@ class SettingsViewController: NCWidgetListViewController {
 		}
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
-		defaults.setObject(selectedStation.rawValue, forKey: "selectedStation")
+		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStation = true
 		

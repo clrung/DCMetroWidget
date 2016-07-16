@@ -22,7 +22,8 @@ enum Station: String, CustomStringConvertible {
 	K01, K02, K03, K04, K05, K06, K07, K08,
 	N01, N02, N03, N04, N06,
 	Train,
-	No
+	No,
+	Space
 	
 	// facilitates enumeration (Source: http://www.swift-studies.com/blog/2014/6/10/enumerating-enums-in-swift)
 	static let allValues = [A01, A02, A03, A04, A05, A06, A07, A08, A09, A10, A11, A12, A13, A14, A15,
@@ -135,6 +136,7 @@ enum Station: String, CustomStringConvertible {
 		case N06: return "Wiehle-Reston East"
 		case Train: return "Train"
 		case No: return "No Passenger"
+		case Space: return ""
 		}
 	}
 	
@@ -237,6 +239,7 @@ enum Station: String, CustomStringConvertible {
 		case N06: return CLLocation(latitude: 38.947753, longitude: -77.340179)
 		case Train: return CLLocation()
 		case No: return CLLocation()
+		case Space: return CLLocation()
 		}
 	}
 	
