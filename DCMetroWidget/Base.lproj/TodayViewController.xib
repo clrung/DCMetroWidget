@@ -67,14 +67,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="lineCell" id="mRO-Px-N1G">
-                                                <rect key="frame" x="1" y="3" width="35" height="17"/>
+                                                <rect key="frame" x="1" y="3" width="35" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-nN-pEb">
-                                                        <rect key="frame" x="0.0" y="0.0" width="32" height="17"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="17" id="QOy-oT-ASJ"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="lineImage" id="6d1-Pg-cJn"/>
                                                     </imageView>
                                                 </subviews>

@@ -16,6 +16,7 @@ var trains: [Train] = []
 let twoLevelStations = [Station.A01,	Station.B01,	Station.B06,	Station.D03,
                         Station.C01,	Station.F01,	Station.E06,	Station.F03]
 var timeBefore: NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval(-2))
+var spaceCount = 0
 
 /**
 Gets the stationCode's prediction
@@ -96,12 +97,32 @@ func populateTrainArray() {
 	}
 	
 	trains.sortInPlace({ $0.group < $1.group })
+
+	for (index, train) in trains.enumerate() {
+		if trains.get(index + 1) != nil && train.group != trains[index + 1].group {
+			trains.insert(Train.initSpace(), atIndex: index + 1)
+			spaceCount += 1
+		}
+	}
+}
+
+// Adapted from http://stackoverflow.com/questions/25329186/safe-bounds-checked-array-lookup-in-swift-through-optional-bindings
+extension Array {
+	// Safely lookup an index that might be out of bounds, returning nil if it does not exist
+	func get(index: Int) -> Element? {
+		if 0 <= index && index < count {
+			return self[index]
+		} else {
+			return nil
+		}
+	}
 }
 
 func getPredictionsForSelectedStation() {
 	getPrediction(selectedStation.rawValue, onCompleted: {
 		result in
 		predictionJSON = result!
+		spaceCount = 0
 		populateTrainArray()
 		handleTwoLevelStation()
 		if trains.count == 0 {
@@ -134,6 +155,8 @@ func handleTwoLevelStation() {
 			
 			let trainsGroup1 = trains
 			populateTrainArray()
+			trains.append(Train.initSpace())
+			spaceCount += 1
 			trains = trains + trainsGroup1
 			
 			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
