@@ -15,15 +15,17 @@ var didSelectStation: Bool = false
 
 class SettingsViewController: NCWidgetListViewController {
 	
+	@IBOutlet weak var selectStationTextField: NSTextField!
+	@IBOutlet weak var selectStationAndRadioButtonsHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var stationRadioButton1: NSButton!
 	@IBOutlet weak var stationRadioButton2: NSButton!
 	@IBOutlet weak var stationRadioButton3: NSButton!
 	@IBOutlet weak var stationRadioButton4: NSButton!
 	@IBOutlet weak var stationRadioButton5: NSButton!
-	
-	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
-	
 	var stationRadioButtons: [NSButton] = []
+	
+	@IBOutlet weak var chooseFromListTextField: NSTextField!
+	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
 	
 	override var nibName: String? {
 		return "SettingsViewController"
@@ -55,15 +57,23 @@ class SettingsViewController: NCWidgetListViewController {
 			stationPopUpButton.itemWithTitle(station.description)?.representedObject = rawValue
 		}
 		
+		stationPopUpButton.selectItemWithTitle(selectedStation.description)
+		
 		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
 		if currentLocation != nil {
+			selectStationAndRadioButtonsHeightConstraint.constant = 25
+			chooseFromListTextField.stringValue = "or choose from the list"
 			for (index, radioButton) in stationRadioButtons.enumerate() {
 				radioButton.hidden = false
 				stationRadioButtons[index].title = fiveClosestStations[index].description
 			}
+		} else {
+			selectStationAndRadioButtonsHeightConstraint.constant = 0
+			chooseFromListTextField.stringValue = "Choose a station from the list"
+			for radioButton in stationRadioButtons {
+				radioButton.hidden = false
+			}
 		}
-		
-		stationPopUpButton.selectItemWithTitle(selectedStation.description)
 	}
 	
 	@IBAction func touchStationRadioButton(sender: NSButton) {
