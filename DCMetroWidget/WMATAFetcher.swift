@@ -19,7 +19,25 @@ var timeBefore: NSDate = NSDate(timeIntervalSinceNow: NSTimeInterval(-2))
 var spaceCount = 0
 
 /**
-Gets the stationCode's prediction
+Wrapper method that calls getPrediction(), passing it the selectedStation.
+*/
+func getPredictionsForSelectedStation() {
+	getPrediction(selectedStation.rawValue, onCompleted: {
+		result in
+		predictionJSON = result!
+		spaceCount = 0
+		populateTrainArray()
+		handleTwoLevelStation()
+		if trains.count == 0 {
+			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"No trains are currently arriving"])
+		} else {
+			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
+		}
+	})
+}
+
+/**
+Queries WMATA's API to fetch the stationCode's next train arrivals
 
 - parameter stationCode: the two digit station code
 - returns: A JSON containing prediction data, or nil if there was an error
@@ -65,6 +83,9 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 	}
 }
 
+/**
+Parses the predictionJSON object to populate the train array.
+*/
 func populateTrainArray() {
 	trains = []
 	
@@ -106,37 +127,10 @@ func populateTrainArray() {
 	}
 }
 
-// Adapted from http://stackoverflow.com/questions/25329186/safe-bounds-checked-array-lookup-in-swift-through-optional-bindings
-extension Array {
-	// Safely lookup an index that might be out of bounds, returning nil if it does not exist
-	func get(index: Int) -> Element? {
-		if 0 <= index && index < count {
-			return self[index]
-		} else {
-			return nil
-		}
-	}
-}
-
-func getPredictionsForSelectedStation() {
-	getPrediction(selectedStation.rawValue, onCompleted: {
-		result in
-		predictionJSON = result!
-		spaceCount = 0
-		populateTrainArray()
-		handleTwoLevelStation()
-		if trains.count == 0 {
-			NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"No trains are currently arriving"])
-		} else {
-			NSNotificationCenter.defaultCenter().postNotificationName("reloadTable", object: nil)
-		}
-	})
-}
-
 /**
 Checks the selected station to see if it is one of the four metro stations that have two levels.  If it is, fetch the predictions for the second station code, add it to the trains array, and reload the table view.
 
-WMATA API: "Some stations have two platforms (e.g.: Gallery Place, Fort Totten, L'Enfant Plaza, and Metro Center). To retrieve complete predictions for these stations, be sure to pass in both StationCodes.
+WMATA API: "Some stations have two platforms (e.g.: Gallery Place, Fort Totten, L'Enfant Plaza, and Metro Center). To retrieve complete predictions for these stations, be sure to pass in both StationCodes."
 */
 func handleTwoLevelStation() {
 	let stationBefore = selectedStation
@@ -165,6 +159,12 @@ func handleTwoLevelStation() {
 	selectedStation = stationBefore
 }
 
+/**
+Gets the five closest metro stations to location.
+
+- parameter location: The location
+- returns: A Station array containing the five closest stations to location.
+*/
 func getfiveClosestStations(location: CLLocation) -> [Station] {
 	var fiveClosestStations = [Station]()
 	var distancesDictionary: [CLLocationDistance:String] = [:]
@@ -183,4 +183,22 @@ func getfiveClosestStations(location: CLLocation) -> [Station] {
 	}
 	
 	return fiveClosestStations
+}
+
+extension Array {
+	/**
+	Safely lookup an index that might be out of bounds
+	
+	Adapted from http://stackoverflow.com/questions/25329186/safe-bounds-checked-array-lookup-in-swift-through-optional-bindings
+	
+	- parameter index: the index of the element to return
+	- returns: the element if it exists, otherwise nil
+	*/
+	func get(index: Int) -> Element? {
+		if 0 <= index && index < count {
+			return self[index]
+		} else {
+			return nil
+		}
+	}
 }

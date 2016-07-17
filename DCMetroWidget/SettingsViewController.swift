@@ -58,6 +58,10 @@ class SettingsViewController: NCWidgetListViewController {
 		}
 		
 		stationPopUpButton.selectItemWithTitle(selectedStation.description)
+	}
+	
+	override func viewWillLayout() {
+		super.viewWillLayout()
 		
 		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
 		if currentLocation != nil {

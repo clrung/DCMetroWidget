@@ -90,11 +90,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {
+		self.selectedStationLabel.stringValue = selectedStation.description
+		
 		self.getCurrentLocationButton.hidden = true
 		self.errorTextField.hidden = true
 		self.mainPredictionView.hidden = false
-		
-		self.selectedStationLabel.stringValue = selectedStation.description
 		
 		dispatch_async(dispatch_get_main_queue(), {
 			let trainsHeight = trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
