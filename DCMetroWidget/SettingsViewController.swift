@@ -65,17 +65,17 @@ class SettingsViewController: NCWidgetListViewController {
 		
 		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
 		if currentLocation != nil {
-			selectStationAndRadioButtonsHeightConstraint.constant = 25
+			selectStationAndRadioButtonsHeightConstraint.constant = 23
 			chooseFromListTextField.stringValue = "or choose from the list"
 			for (index, radioButton) in stationRadioButtons.enumerate() {
 				radioButton.hidden = false
 				stationRadioButtons[index].title = fiveClosestStations[index].description
 			}
 		} else {
-			selectStationAndRadioButtonsHeightConstraint.constant = 0
+			selectStationAndRadioButtonsHeightConstraint.constant = 2
 			chooseFromListTextField.stringValue = "Choose a station from the list"
 			for radioButton in stationRadioButtons {
-				radioButton.hidden = false
+				radioButton.hidden = true
 			}
 		}
 	}

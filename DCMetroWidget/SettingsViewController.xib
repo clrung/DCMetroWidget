@@ -22,14 +22,14 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView simulatedAppContext="notificationCenter" id="JgP-0H-vEi" userLabel="Settings">
-            <rect key="frame" x="0.0" y="0.0" width="432" height="215"/>
+            <rect key="frame" x="0.0" y="0.0" width="432" height="203"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xNW-am-S4d">
-                    <rect key="frame" x="33" y="175" width="164" height="25"/>
+                    <rect key="frame" x="33" y="165" width="164" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="160" id="0iA-Xd-IdR"/>
-                        <constraint firstAttribute="height" constant="25" id="nL3-Nz-erb"/>
+                        <constraint firstAttribute="height" constant="23" id="nL3-Nz-erb"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select a station near you" id="fU0-w7-NE8">
                         <font key="font" metaFont="system"/>
@@ -38,7 +38,7 @@
                     </textFieldCell>
                 </textField>
                 <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="QvI-Dz-j8t">
-                    <rect key="frame" x="34" y="152" width="263" height="27"/>
+                    <rect key="frame" x="34" y="144" width="263" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="260" id="xQb-1F-xY5"/>
                     </constraints>
@@ -51,7 +51,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="H0v-Mt-35W">
-                    <rect key="frame" x="34" y="127" width="263" height="27"/>
+                    <rect key="frame" x="34" y="121" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="Gle-RQ-wvA">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -61,7 +61,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="29H-9T-FQH">
-                    <rect key="frame" x="34" y="102" width="263" height="27"/>
+                    <rect key="frame" x="34" y="98" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="8O1-rY-1Fd">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -71,7 +71,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZB3-pD-WWY">
-                    <rect key="frame" x="34" y="77" width="263" height="27"/>
+                    <rect key="frame" x="34" y="75" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="vgc-Eb-fZ1">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -81,7 +81,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="mxj-Dq-bje">
-                    <rect key="frame" x="34" y="52" width="263" height="27"/>
+                    <rect key="frame" x="34" y="52" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="lcb-LK-gg9">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
