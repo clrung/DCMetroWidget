@@ -15,7 +15,7 @@
 		588D7C651CD1A1DE008A2A22 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */; };
 		588D7C681CD1A1DE008A2A22 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */; };
 		588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C6A1CD1A1DE008A2A22 /* InfoPlist.strings */; };
-		588D7C6F1CD1A1DE008A2A22 /* DCMetroWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 588D7C5D1CD1A1DE008A2A22 /* DCMetroWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		588D7C6F1CD1A1DE008A2A22 /* DC Metro.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 588D7C5D1CD1A1DE008A2A22 /* DC Metro.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		588EA6611CE55FD600ACDF41 /* Train.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EA6601CE55FD600ACDF41 /* Train.swift */; };
 		588EA6631CE56A0700ACDF41 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588EA6621CE56A0700ACDF41 /* Line.swift */; };
 		588EA6651CFF2C6E00ACDF41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */; };
@@ -44,7 +44,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				588D7C6F1CD1A1DE008A2A22 /* DCMetroWidget.appex in Embed App Extensions */,
+				588D7C6F1CD1A1DE008A2A22 /* DC Metro.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,13 +55,13 @@
 		0173406AC54A6A0C25CE6766 /* Pods-DCMetroWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCMetroWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget.release.xcconfig"; sourceTree = "<group>"; };
 		3DB602CAA446AAA90B4D630D /* Pods-DCMetroWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCMetroWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCMetroWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		588D7C471CD1A1CB008A2A22 /* DCMetro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCMetro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		588D7C471CD1A1CB008A2A22 /* DC Metro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DC Metro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		588D7C4A1CD1A1CB008A2A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		588D7C4C1CD1A1CB008A2A22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		588D7C4E1CD1A1CB008A2A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		588D7C511CD1A1CB008A2A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		588D7C531CD1A1CB008A2A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		588D7C5D1CD1A1DE008A2A22 /* DCMetroWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DCMetroWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		588D7C5D1CD1A1DE008A2A22 /* DC Metro.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DC Metro.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		588D7C5F1CD1A1DE008A2A22 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		588D7C631CD1A1DE008A2A22 /* DCMetroWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCMetroWidget.entitlements; sourceTree = "<group>"; };
 		588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -122,8 +122,8 @@
 		588D7C481CD1A1CB008A2A22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				588D7C471CD1A1CB008A2A22 /* DCMetro.app */,
-				588D7C5D1CD1A1DE008A2A22 /* DCMetroWidget.appex */,
+				588D7C471CD1A1CB008A2A22 /* DC Metro.app */,
+				588D7C5D1CD1A1DE008A2A22 /* DC Metro.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,9 +180,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		588D7C461CD1A1CB008A2A22 /* DCMetro */ = {
+		588D7C461CD1A1CB008A2A22 /* DC Metro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 588D7C561CD1A1CB008A2A22 /* Build configuration list for PBXNativeTarget "DCMetro" */;
+			buildConfigurationList = 588D7C561CD1A1CB008A2A22 /* Build configuration list for PBXNativeTarget "DC Metro" */;
 			buildPhases = (
 				588D7C431CD1A1CB008A2A22 /* Sources */,
 				588D7C441CD1A1CB008A2A22 /* Frameworks */,
@@ -194,14 +194,14 @@
 			dependencies = (
 				588D7C6E1CD1A1DE008A2A22 /* PBXTargetDependency */,
 			);
-			name = DCMetro;
+			name = "DC Metro";
 			productName = DCMetro;
-			productReference = 588D7C471CD1A1CB008A2A22 /* DCMetro.app */;
+			productReference = 588D7C471CD1A1CB008A2A22 /* DC Metro.app */;
 			productType = "com.apple.product-type.application";
 		};
-		588D7C5C1CD1A1DE008A2A22 /* DCMetroWidget */ = {
+		588D7C5C1CD1A1DE008A2A22 /* DC Metro  */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 588D7C701CD1A1DE008A2A22 /* Build configuration list for PBXNativeTarget "DCMetroWidget" */;
+			buildConfigurationList = 588D7C701CD1A1DE008A2A22 /* Build configuration list for PBXNativeTarget "DC Metro " */;
 			buildPhases = (
 				C0A2447646B98748148EAEE9 /* 📦 Check Pods Manifest.lock */,
 				588D7C591CD1A1DE008A2A22 /* Sources */,
@@ -214,9 +214,9 @@
 			);
 			dependencies = (
 			);
-			name = DCMetroWidget;
+			name = "DC Metro ";
 			productName = DCMetroWidget;
-			productReference = 588D7C5D1CD1A1DE008A2A22 /* DCMetroWidget.appex */;
+			productReference = 588D7C5D1CD1A1DE008A2A22 /* DC Metro.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -239,7 +239,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 588D7C421CD1A1CB008A2A22 /* Build configuration list for PBXProject "DCMetro" */;
+			buildConfigurationList = 588D7C421CD1A1CB008A2A22 /* Build configuration list for PBXProject "DC Metro" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -252,8 +252,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				588D7C461CD1A1CB008A2A22 /* DCMetro */,
-				588D7C5C1CD1A1DE008A2A22 /* DCMetroWidget */,
+				588D7C461CD1A1CB008A2A22 /* DC Metro */,
+				588D7C5C1CD1A1DE008A2A22 /* DC Metro  */,
 			);
 		};
 /* End PBXProject section */
@@ -357,7 +357,7 @@
 /* Begin PBXTargetDependency section */
 		588D7C6E1CD1A1DE008A2A22 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 588D7C5C1CD1A1DE008A2A22 /* DCMetroWidget */;
+			target = 588D7C5C1CD1A1DE008A2A22 /* DC Metro  */;
 			targetProxy = 588D7C6D1CD1A1DE008A2A22 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -482,7 +482,7 @@
 				INFOPLIST_FILE = DCMetro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "DC Metro";
 			};
 			name = Debug;
 		};
@@ -496,7 +496,7 @@
 				INFOPLIST_FILE = DCMetro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "DC Metro";
 			};
 			name = Release;
 		};
@@ -510,7 +510,7 @@
 				INFOPLIST_FILE = DCMetroWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro.DCMetroWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "DC Metro";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -525,7 +525,7 @@
 				INFOPLIST_FILE = DCMetroWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro.DCMetroWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "DC Metro";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -533,7 +533,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		588D7C421CD1A1CB008A2A22 /* Build configuration list for PBXProject "DCMetro" */ = {
+		588D7C421CD1A1CB008A2A22 /* Build configuration list for PBXProject "DC Metro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				588D7C541CD1A1CB008A2A22 /* Debug */,
@@ -542,7 +542,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		588D7C561CD1A1CB008A2A22 /* Build configuration list for PBXNativeTarget "DCMetro" */ = {
+		588D7C561CD1A1CB008A2A22 /* Build configuration list for PBXNativeTarget "DC Metro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				588D7C571CD1A1CB008A2A22 /* Debug */,
@@ -551,7 +551,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		588D7C701CD1A1DE008A2A22 /* Build configuration list for PBXNativeTarget "DCMetroWidget" */ = {
+		588D7C701CD1A1DE008A2A22 /* Build configuration list for PBXNativeTarget "DC Metro " */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				588D7C711CD1A1DE008A2A22 /* Debug */,

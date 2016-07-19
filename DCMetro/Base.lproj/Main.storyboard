@@ -642,7 +642,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DCMetro" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DC_Metro" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -651,10 +651,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <window key="window" title="DC Metro" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="600" y="400" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -668,10 +668,74 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DCMetro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DC_Metro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="160"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tyL-2P-q97">
+                                <rect key="frame" x="18" y="114" width="324" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="gOd-hF-Mpo"/>
+                                    <constraint firstAttribute="width" constant="320" id="jth-BU-FrE"/>
+                                </constraints>
+                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="You may now activate the DC Metro widget in Notification Center." id="kCp-IB-DnF">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lng-Nf-Unw">
+                                <rect key="frame" x="18" y="58" width="324" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="YBD-9q-4os"/>
+                                    <constraint firstAttribute="height" constant="36" id="fbk-Rc-XLK"/>
+                                </constraints>
+                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Developed and designed by Christopher Rung.         This project is in no way affiliated with WMATA." id="8fA-SX-rD1">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="5OK-e8-VDJ">
+                                <rect key="frame" x="-3" y="3" width="100" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="1bi-U2-s7b"/>
+                                    <constraint firstAttribute="width" constant="100" id="l7n-1O-Yjp"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Github Logo" imagePosition="only" alignment="center" controlSize="mini" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="zID-oR-RpS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickGithubButton:" target="XfG-lQ-9wD" id="vfx-yo-WJk"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7fQ-9c-LvU">
+                                <rect key="frame" x="184" y="4" width="172" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="3YW-Is-i94"/>
+                                    <constraint firstAttribute="width" constant="160" id="iMb-kU-Pll"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Open Personal Website" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ecr-ZK-2Ea">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clickPersonalWebsiteButton:" target="XfG-lQ-9wD" id="H1u-ai-2q2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="lng-Nf-Unw" firstAttribute="top" secondItem="tyL-2P-q97" secondAttribute="bottom" constant="20" id="B6x-Mr-lEW"/>
+                            <constraint firstItem="7fQ-9c-LvU" firstAttribute="centerY" secondItem="5OK-e8-VDJ" secondAttribute="centerY" id="Cqd-NC-phU"/>
+                            <constraint firstAttribute="bottom" secondItem="5OK-e8-VDJ" secondAttribute="bottom" constant="3" id="Lng-as-6lL"/>
+                            <constraint firstItem="tyL-2P-q97" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Lrh-Pe-pH9"/>
+                            <constraint firstItem="5OK-e8-VDJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="-3" id="Rce-U0-cyb"/>
+                            <constraint firstAttribute="trailing" secondItem="7fQ-9c-LvU" secondAttribute="trailing" constant="10" id="dm4-DM-U2k"/>
+                            <constraint firstItem="tyL-2P-q97" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="ipN-68-0UT"/>
+                            <constraint firstItem="lng-Nf-Unw" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="oAV-h1-fGm"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -679,4 +743,7 @@
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Github Logo" width="1125" height="417"/>
+    </resources>
 </document>

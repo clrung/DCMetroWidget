@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SettingsViewController" customModule="DCMetroWidget" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="SettingsViewController" customModule="DC_Metro" customModuleProvider="target">
             <connections>
                 <outlet property="chooseFromListTextField" destination="xmy-pV-tMg" id="9sT-BB-UF1"/>
                 <outlet property="selectStationAndRadioButtonsHeightConstraint" destination="nL3-Nz-erb" id="z1h-jb-SQz"/>

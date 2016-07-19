@@ -9,19 +9,25 @@
 import Cocoa
 
 class ViewController: NSViewController {
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		// Do any additional setup after loading the view.
+	}
+	
+	override var representedObject: AnyObject? {
+		didSet {
+			// Update the view, if already loaded.
+		}
+	}
+	
+	@IBAction func clickGithubButton(sender: NSButton) {
+		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://github.com/clrung/DCMetroWidget")!)
+	}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-
+	@IBAction func clickPersonalWebsiteButton(sender: NSButton) {
+		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://christopherrung.com")!)
+	}
+	
 }
-
