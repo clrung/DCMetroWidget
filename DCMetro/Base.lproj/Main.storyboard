@@ -712,12 +712,12 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7fQ-9c-LvU">
-                                <rect key="frame" x="184" y="4" width="172" height="32"/>
+                                <rect key="frame" x="214" y="4" width="142" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3YW-Is-i94"/>
-                                    <constraint firstAttribute="width" constant="160" id="iMb-kU-Pll"/>
+                                    <constraint firstAttribute="width" constant="130" id="iMb-kU-Pll"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Open Personal Website" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ecr-ZK-2Ea">
+                                <buttonCell key="cell" type="push" title="Submit Feedback" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ecr-ZK-2Ea">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>

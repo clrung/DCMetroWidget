@@ -20,7 +20,7 @@ enum Line: String {
         case .YL: return NSColor.yellowColor()
         case .OR: return NSColor.orangeColor()
         case .GR: return NSColor(red: 50/255, green: 220/255, blue: 50/255, alpha: 1)
-        case .SV: return NSColor.grayColor()
+        case .SV: return NSColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
         case .NO: return NSColor.clearColor()
         }
     }

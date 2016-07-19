@@ -27,7 +27,7 @@ class ViewController: NSViewController {
 	}
 
 	@IBAction func clickPersonalWebsiteButton(sender: NSButton) {
-		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://christopherrung.com")!)
+		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://christopherrung.com/contact/")!)
 	}
 	
 }
