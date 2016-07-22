@@ -31,12 +31,6 @@ class SettingsViewController: NCWidgetListViewController {
 		return "SettingsViewController"
 	}
 	
-	override func loadView() {
-		super.loadView()
-		
-		self.preferredContentSize = NSSize(width: self.view.frame.size.width, height: self.view.frame.size.height)
-	}
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
