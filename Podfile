@@ -1,5 +1,5 @@
 use_frameworks!
 
-target 'DCMetroWidget' do
+target 'DC Metro ' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
 end
