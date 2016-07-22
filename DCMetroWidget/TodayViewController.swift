@@ -77,7 +77,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			getCurrentLocationButton.hidden = false
 			mainPredictionView.hidden = true
 		default:	// Denied or Restricted
-			break
+			getPredictionsForSelectedStation()
 		}
 	}
 	

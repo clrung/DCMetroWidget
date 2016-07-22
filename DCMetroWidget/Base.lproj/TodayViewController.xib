@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="DCMetroWidget" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="DC_Metro" customModuleProvider="target">
             <connections>
                 <outlet property="errorTextField" destination="lHc-Kj-KoE" id="Aex-39-eFb"/>
                 <outlet property="getCurrentLocationButton" destination="vrG-qf-P78" id="fJf-o2-VYW"/>
