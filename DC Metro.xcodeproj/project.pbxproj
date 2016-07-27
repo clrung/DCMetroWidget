@@ -233,9 +233,13 @@
 				TargetAttributes = {
 					588D7C461CD1A1CB008A2A22 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 2848SVWH7M;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
 							};
 						};
 					};

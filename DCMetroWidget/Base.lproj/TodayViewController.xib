@@ -236,7 +236,7 @@
                     </textFieldCell>
                 </textField>
                 <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-qf-P78">
-                    <rect key="frame" x="79" y="20" width="162" height="32"/>
+                    <rect key="frame" x="89" y="15" width="162" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="MLk-cC-h9E"/>
                         <constraint firstAttribute="width" constant="150" id="uLm-1L-u1K"/>
@@ -268,8 +268,8 @@
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="1Bq-GQ-QtD"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="9Rs-VA-cXR"/>
                 <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" id="Agz-lO-mNJ"/>
-                <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="BZ7-Wr-7c0"/>
-                <constraint firstItem="vrG-qf-P78" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="Bam-iz-qbf"/>
+                <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" constant="5" id="BZ7-Wr-7c0"/>
+                <constraint firstItem="vrG-qf-P78" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="He2-up-xxd"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
                 <constraint firstItem="dcM-pR-Uci" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="-10" id="O5B-bc-EvD"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
