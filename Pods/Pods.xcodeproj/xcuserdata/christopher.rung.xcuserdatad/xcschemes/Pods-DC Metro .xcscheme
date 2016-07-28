@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F2F86E02EADE92563952DDDAF9135D1F"
-               BuildableName = "Pods_DCMetroWidget.framework"
-               BlueprintName = "Pods-DCMetroWidget"
+               BlueprintIdentifier = "726B9EF67D08AFDE5F60F971623C8335"
+               BuildableName = "Pods_DC_Metro_.framework"
+               BlueprintName = "Pods-DC Metro "
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F2F86E02EADE92563952DDDAF9135D1F"
-            BuildableName = "Pods_DCMetroWidget.framework"
-            BlueprintName = "Pods-DCMetroWidget"
+            BlueprintIdentifier = "726B9EF67D08AFDE5F60F971623C8335"
+            BuildableName = "Pods_DC_Metro_.framework"
+            BlueprintName = "Pods-DC Metro "
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
