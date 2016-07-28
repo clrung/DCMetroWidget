@@ -24,7 +24,7 @@
 		58D1C0F61D253E5400F21B3B /* WMATAFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */; };
 		58D1C0F81D26134700F21B3B /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D1C0F71D26134700F21B3B /* SettingsViewController.xib */; };
 		58D1C0FA1D26135C00F21B3B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */; };
-		59581C8AFE7C75792E46675F /* Pods_DCMetroWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */; };
+		80610A915760ED5410A43568 /* Pods_DC_Metro_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C85410114C4E44EA2234CB /* Pods_DC_Metro_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0173406AC54A6A0C25CE6766 /* Pods-DCMetroWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCMetroWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget.release.xcconfig"; sourceTree = "<group>"; };
-		3DB602CAA446AAA90B4D630D /* Pods-DCMetroWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DCMetroWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCMetroWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5870A1291D467FAF000D79A1 /* DC Metro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "DC Metro.entitlements"; sourceTree = "<group>"; };
 		588D7C471CD1A1CB008A2A22 /* DC Metro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DC Metro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +75,9 @@
 		58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMATAFetcher.swift; sourceTree = "<group>"; };
 		58D1C0F71D26134700F21B3B /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		71C85410114C4E44EA2234CB /* Pods_DC_Metro_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DC_Metro_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		761AA16F0AAF38F768900A8C /* Pods-DC Metro .debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DC Metro .debug.xcconfig"; path = "Pods/Target Support Files/Pods-DC Metro /Pods-DC Metro .debug.xcconfig"; sourceTree = "<group>"; };
+		B6E12B9D6CD46C1716EEA6C8 /* Pods-DC Metro .release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DC Metro .release.xcconfig"; path = "Pods/Target Support Files/Pods-DC Metro /Pods-DC Metro .release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +94,7 @@
 			files = (
 				588EA6651CFF2C6E00ACDF41 /* CoreLocation.framework in Frameworks */,
 				588D7C601CD1A1DE008A2A22 /* NotificationCenter.framework in Frameworks */,
-				59581C8AFE7C75792E46675F /* Pods_DCMetroWidget.framework in Frameworks */,
+				80610A915760ED5410A43568 /* Pods_DC_Metro_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,8 +104,8 @@
 		1B66F1D9DFB81FFC550EF9F5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3DB602CAA446AAA90B4D630D /* Pods-DCMetroWidget.debug.xcconfig */,
-				0173406AC54A6A0C25CE6766 /* Pods-DCMetroWidget.release.xcconfig */,
+				761AA16F0AAF38F768900A8C /* Pods-DC Metro .debug.xcconfig */,
+				B6E12B9D6CD46C1716EEA6C8 /* Pods-DC Metro .release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -148,6 +149,7 @@
 				588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */,
 				588D7C5F1CD1A1DE008A2A22 /* NotificationCenter.framework */,
 				55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */,
+				71C85410114C4E44EA2234CB /* Pods_DC_Metro_.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,7 +241,7 @@
 								enabled = 0;
 							};
 							com.apple.Sandbox = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -304,7 +306,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DC Metro /Pods-DC Metro -resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6E2F60FCB3375BA2B2C12A90 /* 📦 Embed Pods Frameworks */ = {
@@ -319,7 +321,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DC Metro /Pods-DC Metro -frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C0A2447646B98748148EAEE9 /* 📦 Check Pods Manifest.lock */ = {
@@ -514,7 +516,7 @@
 		};
 		588D7C711CD1A1DE008A2A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3DB602CAA446AAA90B4D630D /* Pods-DCMetroWidget.debug.xcconfig */;
+			baseConfigurationReference = 761AA16F0AAF38F768900A8C /* Pods-DC Metro .debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = DCMetroWidget/DCMetroWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -531,7 +533,7 @@
 		};
 		588D7C721CD1A1DE008A2A22 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0173406AC54A6A0C25CE6766 /* Pods-DCMetroWidget.release.xcconfig */;
+			baseConfigurationReference = B6E12B9D6CD46C1716EEA6C8 /* Pods-DC Metro .release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = DCMetroWidget/DCMetroWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
