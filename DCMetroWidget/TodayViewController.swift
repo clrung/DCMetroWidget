@@ -10,6 +10,8 @@ import Cocoa
 import NotificationCenter
 import SwiftyJSON
 import CoreLocation
+import Fabric
+import Crashlytics
 
 var currentLocation: CLLocation! = nil
 var fiveClosestStations: [Station] = []
@@ -45,6 +47,16 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		// with NoData if nothing has changed or NewData if there is new data since the last
 		// time we called you
 		completionHandler(.NoData)
+	}
+	
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)!
+		Crashlytics.sharedInstance().debugMode = true
+		Fabric.with([Crashlytics.self])
+	}
+	
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 	}
 	
 	override func viewDidLoad() {
