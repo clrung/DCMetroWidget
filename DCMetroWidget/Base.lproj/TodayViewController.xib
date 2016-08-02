@@ -9,11 +9,13 @@
             <connections>
                 <outlet property="errorTextField" destination="lHc-Kj-KoE" id="Aex-39-eFb"/>
                 <outlet property="getCurrentLocationButton" destination="vrG-qf-P78" id="fJf-o2-VYW"/>
+                <outlet property="homeFavoriteButton" destination="vhR-94-OpT" id="M8a-Fw-kUu"/>
                 <outlet property="mainPredictionView" destination="ne8-JS-SDK" id="VzF-fa-frW"/>
                 <outlet property="predictionTableView" destination="jAJ-D1-e6X" id="ec9-C3-no1"/>
                 <outlet property="predictionTableViewHeightConstraint" destination="EAt-qh-G7Q" id="Gs9-9g-jeZ"/>
                 <outlet property="selectedStationLabel" destination="ZUe-4O-rwA" id="wuO-su-wLZ"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="workFavoriteButton" destination="zyn-Yv-uM6" id="fhb-pg-K8X"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -260,19 +262,49 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="touchSettings:" target="-2" id="7L5-1r-e3U"/>
+                        <action selector="clickSettings:" target="-2" id="mEM-zZ-F4e"/>
+                    </connections>
+                </button>
+                <button identifier="home station button" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vhR-94-OpT">
+                    <rect key="frame" x="10" y="57" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="2su-PU-Ed9"/>
+                        <constraint firstAttribute="width" constant="18" id="Fzi-O5-LEe"/>
+                    </constraints>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Home" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="xFD-bj-DNO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickFavoriteStation:" target="-2" id="rnm-Yv-uNX"/>
+                    </connections>
+                </button>
+                <button identifier="work station button" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-Yv-uM6">
+                    <rect key="frame" x="38" y="57" width="18" height="18"/>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Work" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="vY8-qT-ogv">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickFavoriteStation:" target="-2" id="2ps-RL-1B3"/>
                     </connections>
                 </button>
             </subviews>
             <constraints>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="1Bq-GQ-QtD"/>
+                <constraint firstItem="zyn-Yv-uM6" firstAttribute="centerY" secondItem="vhR-94-OpT" secondAttribute="centerY" id="2P2-li-rna"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="9Rs-VA-cXR"/>
                 <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" id="Agz-lO-mNJ"/>
+                <constraint firstItem="zyn-Yv-uM6" firstAttribute="height" secondItem="vhR-94-OpT" secondAttribute="height" id="As0-dU-EPr"/>
                 <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" constant="5" id="BZ7-Wr-7c0"/>
                 <constraint firstItem="vrG-qf-P78" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="He2-up-xxd"/>
+                <constraint firstItem="zyn-Yv-uM6" firstAttribute="leading" secondItem="vhR-94-OpT" secondAttribute="trailing" constant="10" id="HnR-9e-c0y"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
+                <constraint firstItem="zyn-Yv-uM6" firstAttribute="width" secondItem="vhR-94-OpT" secondAttribute="width" id="J7W-t8-aQq"/>
                 <constraint firstItem="dcM-pR-Uci" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="-10" id="O5B-bc-EvD"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
+                <constraint firstItem="vhR-94-OpT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="Owj-iO-kZD"/>
+                <constraint firstItem="vhR-94-OpT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="U6c-0n-eJ4"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerY" secondItem="ne8-JS-SDK" secondAttribute="centerY" id="ZZ2-0s-H52"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="dcM-pR-Uci" secondAttribute="bottom" constant="5" id="eCM-l3-ctI"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="l4f-9L-5Xz"/>
@@ -284,7 +316,9 @@
         </customView>
     </objects>
     <resources>
+        <image name="Home" width="85" height="85"/>
         <image name="NSAdvanced" width="32" height="32"/>
+        <image name="Work" width="85" height="81"/>
         <image name="lineImage" width="30" height="30"/>
     </resources>
 </document>

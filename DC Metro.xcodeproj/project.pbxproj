@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		586AE5071D513B3B005BF5BA /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BA39911D162F3600378A1E /* Station.swift */; };
+		586AE5081D514693005BF5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C4E1CD1A1CB008A2A22 /* Assets.xcassets */; };
 		588D7C4B1CD1A1CB008A2A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C4A1CD1A1CB008A2A22 /* AppDelegate.swift */; };
 		588D7C4D1CD1A1CB008A2A22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C4C1CD1A1CB008A2A22 /* ViewController.swift */; };
 		588D7C4F1CD1A1CB008A2A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C4E1CD1A1CB008A2A22 /* Assets.xcassets */; };
@@ -251,7 +253,7 @@
 						DevelopmentTeam = 2848SVWH7M;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -261,6 +263,11 @@
 					588D7C5C1CD1A1DE008A2A22 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = 2848SVWH7M;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -301,6 +308,7 @@
 				588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */,
 				58BA39941D1B3C4D00378A1E /* lineImage.png in Resources */,
 				58D1C0F81D26134700F21B3B /* SettingsViewController.xib in Resources */,
+				586AE5081D514693005BF5BA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				588D7C4D1CD1A1CB008A2A22 /* ViewController.swift in Sources */,
+				586AE5071D513B3B005BF5BA /* Station.swift in Sources */,
 				588D7C4B1CD1A1CB008A2A22 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

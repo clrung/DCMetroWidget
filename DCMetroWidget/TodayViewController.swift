@@ -21,6 +21,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	@IBOutlet weak var selectedStationLabel: NSTextField!
 	var selectStationString = "Please select a station in Settings"
 	
+	@IBOutlet weak var homeFavoriteButton: NSButton!
+	@IBOutlet weak var workFavoriteButton: NSButton!
+	
 	@IBOutlet weak var mainPredictionView: NSScrollView!
 	@IBOutlet weak var predictionTableView: NSTableView!
 	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
@@ -32,6 +35,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	var settingsViewController: SettingsViewController?
 	
 	let locationManager = CLLocationManager()
+	
+	let sharedDefaults = NSUserDefaults.init(suiteName: "com.clrungdev.DCMetroGroup")!
 	
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
@@ -79,6 +84,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
 		
+		homeFavoriteButton.hidden = sharedDefaults.stringForKey("homeStation") == nil ? true : false
+		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
+		
 		switch CLLocationManager.authorizationStatus() {
 		case CLAuthorizationStatus.Authorized:
 			if !didSelectStation {
@@ -93,12 +101,23 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		}
 	}
 	
-	@IBAction func touchSettings(sender: NSButton) {
+	@IBAction func clickSettings(sender: NSButton) {
 		if settingsViewController == nil {
 			settingsViewController = SettingsViewController.init(nibName: "SettingsViewController", bundle: NSBundle.mainBundle())
 		}
 		
 		presentViewControllerInWidget(settingsViewController)
+	}
+	
+	@IBAction func clickFavoriteStation(sender: NSButton) {
+		if sender.identifier == "homeStation" {
+			selectedStation = Station(rawValue: sharedDefaults.stringForKey("homeStation")!)!
+		} else if sender.identifier == "workStation" {
+			selectedStation = Station(rawValue: sharedDefaults.stringForKey("workStation")!)!
+		}
+		
+		selectedStationLabel.stringValue = selectedStation.description
+		getPredictionsForSelectedStation()
 	}
 	
 	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {

@@ -34,24 +34,7 @@ class SettingsViewController: NCWidgetListViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		let sortedStations = Station.allValues.sort( { $0.description < $1.description } )
-		
-		for station in sortedStations {
-			stationPopUpButton.addItemWithTitle(station.description)
-			
-			var rawValue = station.rawValue
-			switch station.rawValue {
-			case Station.C01.rawValue: rawValue = Station.A01.rawValue
-			case Station.F01.rawValue: rawValue = Station.B01.rawValue
-			case Station.E06.rawValue: rawValue = Station.B06.rawValue
-			case Station.F03.rawValue: rawValue = Station.D03.rawValue
-			default: break
-			}
-			
-			stationPopUpButton.itemWithTitle(station.description)?.representedObject = rawValue
-		}
-		
-		stationPopUpButton.selectItemWithTitle(selectedStation.description)
+		setupPopUpButton()
 	}
 	
 	override func viewWillLayout() {
@@ -74,6 +57,27 @@ class SettingsViewController: NCWidgetListViewController {
 		}
 	}
 	
+	func setupPopUpButton() {
+		let sortedStations = Station.allValues.sort( { $0.description < $1.description } )
+		
+		for station in sortedStations {
+			stationPopUpButton.addItemWithTitle(station.description)
+			
+			var rawValue = station.rawValue
+			switch rawValue {
+			case Station.C01.rawValue: rawValue = Station.A01.rawValue
+			case Station.F01.rawValue: rawValue = Station.B01.rawValue
+			case Station.E06.rawValue: rawValue = Station.B06.rawValue
+			case Station.F03.rawValue: rawValue = Station.D03.rawValue
+			default: break
+			}
+			
+			stationPopUpButton.itemWithTitle(station.description)?.representedObject = rawValue
+		}
+		
+		stationPopUpButton.selectItemWithTitle(selectedStation.description)
+	}
+	
 	@IBAction func touchStationRadioButton(sender: NSButton) {
 		setSelectedStationAndDismiss(fiveClosestStations[sender.tag].rawValue)
 		sender.state = NSOnState
@@ -82,7 +86,7 @@ class SettingsViewController: NCWidgetListViewController {
 	@IBAction func touchStationPopUpButton(sender: NSPopUpButton) {
 		setSelectedStationAndDismiss(sender.selectedItem?.representedObject as! String)
 	}
-
+	
 	func setSelectedStationAndDismiss(selectedStationCode: String) {
 		for radioButton in stationRadioButtons {
 			radioButton.state = NSOffState

@@ -118,11 +118,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="DC_Metro" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="160"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="200"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tyL-2P-q97">
-                                <rect key="frame" x="18" y="114" width="324" height="36"/>
+                                <rect key="frame" x="18" y="154" width="324" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="gOd-hF-Mpo"/>
                                     <constraint firstAttribute="width" constant="320" id="jth-BU-FrE"/>
@@ -134,7 +134,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="lng-Nf-Unw">
-                                <rect key="frame" x="18" y="58" width="324" height="36"/>
+                                <rect key="frame" x="18" y="98" width="324" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="YBD-9q-4os"/>
                                     <constraint firstAttribute="height" constant="36" id="fbk-Rc-XLK"/>
@@ -173,18 +173,94 @@
                                     <action selector="clickPersonalWebsiteButton:" target="XfG-lQ-9wD" id="H1u-ai-2q2"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g3b-aF-H9b">
+                                <rect key="frame" x="28" y="73" width="104" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="cjr-iz-alk"/>
+                                    <constraint firstAttribute="width" constant="100" id="elH-zw-nOQ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Home station:" placeholderString="" id="CDp-8W-Wui">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton identifier="homeStation" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bWD-AB-awT">
+                                <rect key="frame" x="138" y="68" width="175" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="170" id="qxf-yt-Iso"/>
+                                    <constraint firstAttribute="height" constant="21" id="yOd-OE-pdD"/>
+                                </constraints>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="n3T-fc-d9X">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="v92-Aj-S0s">
+                                        <items>
+                                            <menuItem id="bCI-2d-xft">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                    <connections>
+                                        <action selector="touchStationPopupbutton:" target="XfG-lQ-9wD" id="i8t-T8-Evc"/>
+                                    </connections>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <popUpButton identifier="workStation" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y24-Sl-gvo">
+                                <rect key="frame" x="138" y="43" width="175" height="26"/>
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="pvL-5B-qFM" id="bQi-Dg-6jU">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="gLW-Zn-aUX">
+                                        <items>
+                                            <menuItem state="on" id="pvL-5B-qFM">
+                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                            </menuItem>
+                                        </items>
+                                    </menu>
+                                    <connections>
+                                        <action selector="touchStationPopupbutton:" target="XfG-lQ-9wD" id="wpi-cx-O6e"/>
+                                    </connections>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ygS-0M-qVf">
+                                <rect key="frame" x="46" y="48" width="86" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="Vc0-pV-cL5"/>
+                                    <constraint firstAttribute="width" constant="82" id="dMD-ak-QaE"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Work station:" id="muK-fe-EHD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="ygS-0M-qVf" firstAttribute="trailing" secondItem="g3b-aF-H9b" secondAttribute="trailing" id="9n5-Wh-wSr"/>
                             <constraint firstItem="lng-Nf-Unw" firstAttribute="top" secondItem="tyL-2P-q97" secondAttribute="bottom" constant="20" id="B6x-Mr-lEW"/>
                             <constraint firstItem="7fQ-9c-LvU" firstAttribute="centerY" secondItem="5OK-e8-VDJ" secondAttribute="centerY" id="Cqd-NC-phU"/>
+                            <constraint firstItem="bWD-AB-awT" firstAttribute="leading" secondItem="g3b-aF-H9b" secondAttribute="trailing" constant="10" id="HNb-Cw-dHF"/>
                             <constraint firstAttribute="bottom" secondItem="5OK-e8-VDJ" secondAttribute="bottom" constant="3" id="Lng-as-6lL"/>
                             <constraint firstItem="tyL-2P-q97" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Lrh-Pe-pH9"/>
+                            <constraint firstItem="g3b-aF-H9b" firstAttribute="top" secondItem="lng-Nf-Unw" secondAttribute="bottom" constant="8" id="PJ6-td-tas"/>
                             <constraint firstItem="5OK-e8-VDJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="-3" id="Rce-U0-cyb"/>
+                            <constraint firstItem="y24-Sl-gvo" firstAttribute="height" secondItem="bWD-AB-awT" secondAttribute="height" id="SUf-RK-smx"/>
+                            <constraint firstItem="y24-Sl-gvo" firstAttribute="width" secondItem="bWD-AB-awT" secondAttribute="width" id="SzH-Xa-Vqu"/>
+                            <constraint firstItem="y24-Sl-gvo" firstAttribute="centerY" secondItem="ygS-0M-qVf" secondAttribute="centerY" id="Zor-bK-hxR"/>
                             <constraint firstAttribute="trailing" secondItem="7fQ-9c-LvU" secondAttribute="trailing" constant="10" id="dm4-DM-U2k"/>
+                            <constraint firstItem="g3b-aF-H9b" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" constant="-100" id="eWy-hd-Slc"/>
+                            <constraint firstItem="bWD-AB-awT" firstAttribute="centerY" secondItem="g3b-aF-H9b" secondAttribute="centerY" id="hdn-lZ-SgQ"/>
                             <constraint firstItem="tyL-2P-q97" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="ipN-68-0UT"/>
+                            <constraint firstItem="ygS-0M-qVf" firstAttribute="top" secondItem="g3b-aF-H9b" secondAttribute="bottom" constant="8" id="mCr-NU-zYc"/>
                             <constraint firstItem="lng-Nf-Unw" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="oAV-h1-fGm"/>
+                            <constraint firstItem="y24-Sl-gvo" firstAttribute="centerX" secondItem="bWD-AB-awT" secondAttribute="centerX" id="vwp-rx-z1b"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="homeStationPopUpButton" destination="bWD-AB-awT" id="k6L-Uq-nFz"/>
+                        <outlet property="workStationPopUpButton" destination="y24-Sl-gvo" id="cAV-Pa-meE"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
