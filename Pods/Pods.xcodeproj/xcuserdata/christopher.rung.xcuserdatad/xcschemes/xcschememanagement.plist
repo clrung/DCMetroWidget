@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-DCMetroWidget.xcscheme</key>
+		<key>Pods-DC Metro .xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-DC Metro.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E917EB2751F9CE20D593E875E537999F</key>
+		<key>2322749B632C7200CB6C788FD5908926</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F2F86E02EADE92563952DDDAF9135D1F</key>
+		<key>6BF888C6BF6294ED2D9EC250E0A1EF77</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>726B9EF67D08AFDE5F60F971623C8335</key>
 		<dict>
 			<key>primary</key>
 			<true/>

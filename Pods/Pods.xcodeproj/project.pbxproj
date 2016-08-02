@@ -7,76 +7,109 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		235F365F7B56070F2A18F45F2C2B7422 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA6EBC2E57D96052268211209D6AA52 /* Cocoa.framework */; };
-		41CA64B2BF47275D93A3278B41C4DBBB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */; };
-		5599F2EC4887B6589363FBFB5CF94198 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA6EBC2E57D96052268211209D6AA52 /* Cocoa.framework */; };
-		56F813BE29BEE391B9476A942E8235A9 /* Pods-DCMetroWidget-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B8C0E5512B9A350FF90859AF116DFC6 /* Pods-DCMetroWidget-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		68600A7E3D85E9D62B224E1299B0049D /* Pods-DCMetroWidget-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC241A4110417A40E06D477C43347A /* Pods-DCMetroWidget-dummy.m */; };
-		B942F96595AFF8C5976DCF195452ED85 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */; };
-		F911206CFEEAC232F971953B8892BE45 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B946FAF1032F0A0CDD8E494C0932D92 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 72E7BC0741627416525B0F5CD04D4691 /* SwiftyJSON-dummy.m */; };
+		242000A15CA1F6CDF8501739498AEE34 /* Pods-DC Metro-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BAFBA32DA390847888F0F195895D5FB6 /* Pods-DC Metro-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		366EA0C177BE85D95A3BFB676F41196A /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71171470CD559A1D83D4E11372029166 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		777BB890CBEB2FC03C0941ECB955E3DE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA6EBC2E57D96052268211209D6AA52 /* Cocoa.framework */; };
+		8948D6D621E076021D0BF4113D806198 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA6EBC2E57D96052268211209D6AA52 /* Cocoa.framework */; };
+		9117C4804A7621A3CA3F8630ECC235AD /* Pods-DC Metro -umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A7C8DA9AAF41D81AF48B3FFEA3AB9EC /* Pods-DC Metro -umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE269B0EA231A08DC828D621A34971F5 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC63A5FB83E6A1F7CBC9D8B15DB8EA /* SwiftyJSON.swift */; };
+		D7557FC7AA324052E5E046C0F37B9113 /* Pods-DC Metro-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 218077C48FB76F82B5A25A78BE14EB29 /* Pods-DC Metro-dummy.m */; };
+		FA5F4C7119349DC30D5992AE37414DF1 /* Pods-DC Metro -dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28294D9C7ECE9C5863E5E0B3FC9FB590 /* Pods-DC Metro -dummy.m */; };
+		FD319EF50C729C6B4F62F184567E569D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CA6EBC2E57D96052268211209D6AA52 /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F908B486CC29B6CFFFBB5EF0C0F7EEC2 /* PBXContainerItemProxy */ = {
+		C97C58312449FEA16610422864817013 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E917EB2751F9CE20D593E875E537999F;
+			remoteGlobalIDString = 6BF888C6BF6294ED2D9EC250E0A1EF77;
 			remoteInfo = SwiftyJSON;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		18D6461FB8B5D3E26B964A73B3C19471 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B66EB4AC7082B6C08ECDD52D666023F /* Pods-DCMetroWidget-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DCMetroWidget-frameworks.sh"; sourceTree = "<group>"; };
+		0772AFD7A99383F19E61C367479B4204 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = OSX/Crashlytics.framework; sourceTree = "<group>"; };
+		08DC80673CB460ACF8F42D6CA978D6AD /* Pods-DC Metro-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DC Metro-resources.sh"; sourceTree = "<group>"; };
+		0B90912B4650F0AB14F3077BCEE04F48 /* Pods-DC Metro.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DC Metro.modulemap"; sourceTree = "<group>"; };
 		1CA6EBC2E57D96052268211209D6AA52 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
-		2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
-		32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		4D66A2EA21E13CAACDA6E4F9D9B34496 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		614A1218F749639DFAA9A67D4E391CFB /* Pods-DCMetroWidget-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DCMetroWidget-resources.sh"; sourceTree = "<group>"; };
-		6B8C0E5512B9A350FF90859AF116DFC6 /* Pods-DCMetroWidget-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DCMetroWidget-umbrella.h"; sourceTree = "<group>"; };
-		6D1E7A1E9467022E6DF6642310698D1E /* Pods-DCMetroWidget.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DCMetroWidget.modulemap"; sourceTree = "<group>"; };
-		711C058792B92B7F8FB18A4CB83327B2 /* Pods_DCMetroWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCMetroWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		77224768E6AF7A7A4B1F27E8E9D1219A /* Pods-DCMetroWidget-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DCMetroWidget-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7BAC241A4110417A40E06D477C43347A /* Pods-DCMetroWidget-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DCMetroWidget-dummy.m"; sourceTree = "<group>"; };
-		921E6CEF4DD2C706AA856A4675B87D9A /* Pods-DCMetroWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DCMetroWidget.release.xcconfig"; sourceTree = "<group>"; };
+		218077C48FB76F82B5A25A78BE14EB29 /* Pods-DC Metro-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DC Metro-dummy.m"; sourceTree = "<group>"; };
+		2262A088487BB2D5620AF8E3A201E3EB /* Pods-DC Metro -frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DC Metro -frameworks.sh"; sourceTree = "<group>"; };
+		23EE443A486C24F3009F223F1BB5FFE3 /* Pods-DC Metro-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DC Metro-acknowledgements.markdown"; sourceTree = "<group>"; };
+		265E3C52F801A1AFA86F284368D20512 /* Pods-DC Metro -acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DC Metro -acknowledgements.plist"; sourceTree = "<group>"; };
+		279A9BCB136B3E9A24AF9C68F501D1E1 /* Pods-DC Metro.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DC Metro.debug.xcconfig"; sourceTree = "<group>"; };
+		28294D9C7ECE9C5863E5E0B3FC9FB590 /* Pods-DC Metro -dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-DC Metro -dummy.m"; sourceTree = "<group>"; };
+		2999FEA9015832295CDB4A17C84599BF /* Pods_DC_Metro.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DC_Metro.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CF1BCEB8C9578840DD16EF27655B813 /* Pods-DC Metro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DC Metro.release.xcconfig"; sourceTree = "<group>"; };
+		32EA22ADAD6C7E9F20F8D83DB454119F /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = OSX/Fabric.framework; sourceTree = "<group>"; };
+		36A21C720A91155AA459322E6C57ABCD /* Pods-DC Metro .debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DC Metro .debug.xcconfig"; sourceTree = "<group>"; };
+		36EC63A5FB83E6A1F7CBC9D8B15DB8EA /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		452093F81A7A3CEC1ECC1CC6DBE90C69 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5486CFB7145EF4EADA8BADF25A243FAC /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		5A7C8DA9AAF41D81AF48B3FFEA3AB9EC /* Pods-DC Metro -umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DC Metro -umbrella.h"; sourceTree = "<group>"; };
+		5DB8479E8C76F77FEE8CBB461BBCF01F /* Pods-DC Metro-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DC Metro-acknowledgements.plist"; sourceTree = "<group>"; };
+		6BE76D60137815859BC1AC08ADAB4E38 /* Pods-DC Metro -resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DC Metro -resources.sh"; sourceTree = "<group>"; };
+		71171470CD559A1D83D4E11372029166 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		72E7BC0741627416525B0F5CD04D4691 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		8D48C6B9D43DBE7571D61293A3927E0B /* Pods-DC Metro-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-DC Metro-frameworks.sh"; sourceTree = "<group>"; };
+		8F811EF4254FC434E590263340C407E4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		C13955C7E82A9AD3633F5B3EF5E98291 /* Pods-DCMetroWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DCMetroWidget.debug.xcconfig"; sourceTree = "<group>"; };
-		C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		F88072DB8BC86572ADBBE823868ABF8C /* Pods-DCMetroWidget-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-DCMetroWidget-acknowledgements.plist"; sourceTree = "<group>"; };
+		96461C5A8CCFDF136EE2F9922C734D6D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		965321BCAB80DE5D1306E533E6915721 /* Pods_DC_Metro_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DC_Metro_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97B04DFC1CB0880D51B4665788575F7A /* Pods-DC Metro .modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-DC Metro .modulemap"; sourceTree = "<group>"; };
+		BAFBA32DA390847888F0F195895D5FB6 /* Pods-DC Metro-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-DC Metro-umbrella.h"; sourceTree = "<group>"; };
+		C4BE87B7A9815674EE04E28AD7B3515B /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		D05B43ECD9B796DEC7EAB28C213544D9 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		DB2F09A0373AF388F8D105C64CB08B69 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E106C74B03F80F3C1BCA239013181AB2 /* Pods-DC Metro -acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-DC Metro -acknowledgements.markdown"; sourceTree = "<group>"; };
+		EE477930E0A7B62F986758511E27572E /* Pods-DC Metro .release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-DC Metro .release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		79488D9D53C9CD26E55FFB2BB67F89E5 /* Frameworks */ = {
+		3171D5450D3AFD386E507A67805FEAC8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5599F2EC4887B6589363FBFB5CF94198 /* Cocoa.framework in Frameworks */,
+				8948D6D621E076021D0BF4113D806198 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DED7097023065509709B87B0302EE8AF /* Frameworks */ = {
+		6799C528AC678CF933EE0AB0577BB0FB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				235F365F7B56070F2A18F45F2C2B7422 /* Cocoa.framework in Frameworks */,
+				FD319EF50C729C6B4F62F184567E569D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AD2DCE6400BB2C09F88989C1D3AC34BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				777BB890CBEB2FC03C0941ECB955E3DE /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		020A63C106233DD1FE901E6FAFB9C1F4 /* Products */ = {
+		029F457000FD2C9DD9E1B5527EA69A28 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				711C058792B92B7F8FB18A4CB83327B2 /* Pods_DCMetroWidget.framework */,
-				18D6461FB8B5D3E26B964A73B3C19471 /* SwiftyJSON.framework */,
+				2999FEA9015832295CDB4A17C84599BF /* Pods_DC_Metro.framework */,
+				965321BCAB80DE5D1306E533E6915721 /* Pods_DC_Metro_.framework */,
+				DB2F09A0373AF388F8D105C64CB08B69 /* SwiftyJSON.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		16CC8AC7B0ABB081A41C6DF7482CF4FD /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				8E9166EE187BE7B8CB4184383AD0F277 /* Frameworks */,
+			);
+			path = Fabric;
 			sourceTree = "<group>";
 		};
 		28C17CEF104526ACA07B6EEE217EC43E /* OS X */ = {
@@ -87,6 +120,16 @@
 			name = "OS X";
 			sourceTree = "<group>";
 		};
+		358949B3A9EE5F5165570EB826645EE4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA975FE6EE63B140C75E1CDD687A91A5 /* Crashlytics */,
+				16CC8AC7B0ABB081A41C6DF7482CF4FD /* Fabric */,
+				E60C196A433B35059F03F187C9F200C3 /* SwiftyJSON */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,103 +138,163 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3DCCCD789DDB0C2E8BCA2AFD8A1BB2BA /* Pods-DCMetroWidget */ = {
-			isa = PBXGroup;
-			children = (
-				4D66A2EA21E13CAACDA6E4F9D9B34496 /* Info.plist */,
-				6D1E7A1E9467022E6DF6642310698D1E /* Pods-DCMetroWidget.modulemap */,
-				77224768E6AF7A7A4B1F27E8E9D1219A /* Pods-DCMetroWidget-acknowledgements.markdown */,
-				F88072DB8BC86572ADBBE823868ABF8C /* Pods-DCMetroWidget-acknowledgements.plist */,
-				7BAC241A4110417A40E06D477C43347A /* Pods-DCMetroWidget-dummy.m */,
-				1B66EB4AC7082B6C08ECDD52D666023F /* Pods-DCMetroWidget-frameworks.sh */,
-				614A1218F749639DFAA9A67D4E391CFB /* Pods-DCMetroWidget-resources.sh */,
-				6B8C0E5512B9A350FF90859AF116DFC6 /* Pods-DCMetroWidget-umbrella.h */,
-				C13955C7E82A9AD3633F5B3EF5E98291 /* Pods-DCMetroWidget.debug.xcconfig */,
-				921E6CEF4DD2C706AA856A4675B87D9A /* Pods-DCMetroWidget.release.xcconfig */,
-			);
-			name = "Pods-DCMetroWidget";
-			path = "Target Support Files/Pods-DCMetroWidget";
-			sourceTree = "<group>";
-		};
-		70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */,
-				8EC39E1DC11846207722B71AAFE40F98 /* Support Files */,
-			);
-			path = SwiftyJSON;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				39E9EE8210D861DFD82346C1F5EB7218 /* Frameworks */,
-				BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */,
-				020A63C106233DD1FE901E6FAFB9C1F4 /* Products */,
-				EEB6596EB7507892406E7E62575875B5 /* Targets Support Files */,
+				358949B3A9EE5F5165570EB826645EE4 /* Pods */,
+				029F457000FD2C9DD9E1B5527EA69A28 /* Products */,
+				A0C68EB8DECC4C8878BB4D815B219544 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8EC39E1DC11846207722B71AAFE40F98 /* Support Files */ = {
+		8E9166EE187BE7B8CB4184383AD0F277 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */,
-				D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */,
-				2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */,
-				32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */,
-				BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */,
-				05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */,
+				32EA22ADAD6C7E9F20F8D83DB454119F /* Fabric.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93FFBFA9928D65276982837B708181BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0772AFD7A99383F19E61C367479B4204 /* Crashlytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		99DAEE7054F61CFF1FCC1B1B30CADCAD /* Pods-DC Metro */ = {
+			isa = PBXGroup;
+			children = (
+				452093F81A7A3CEC1ECC1CC6DBE90C69 /* Info.plist */,
+				0B90912B4650F0AB14F3077BCEE04F48 /* Pods-DC Metro.modulemap */,
+				23EE443A486C24F3009F223F1BB5FFE3 /* Pods-DC Metro-acknowledgements.markdown */,
+				5DB8479E8C76F77FEE8CBB461BBCF01F /* Pods-DC Metro-acknowledgements.plist */,
+				218077C48FB76F82B5A25A78BE14EB29 /* Pods-DC Metro-dummy.m */,
+				8D48C6B9D43DBE7571D61293A3927E0B /* Pods-DC Metro-frameworks.sh */,
+				08DC80673CB460ACF8F42D6CA978D6AD /* Pods-DC Metro-resources.sh */,
+				BAFBA32DA390847888F0F195895D5FB6 /* Pods-DC Metro-umbrella.h */,
+				279A9BCB136B3E9A24AF9C68F501D1E1 /* Pods-DC Metro.debug.xcconfig */,
+				2CF1BCEB8C9578840DD16EF27655B813 /* Pods-DC Metro.release.xcconfig */,
+			);
+			name = "Pods-DC Metro";
+			path = "Target Support Files/Pods-DC Metro";
+			sourceTree = "<group>";
+		};
+		A0C68EB8DECC4C8878BB4D815B219544 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				99DAEE7054F61CFF1FCC1B1B30CADCAD /* Pods-DC Metro */,
+				B551EDDCB5B55BD0B415039E4F8F572B /* Pods-DC Metro  */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B551EDDCB5B55BD0B415039E4F8F572B /* Pods-DC Metro  */ = {
+			isa = PBXGroup;
+			children = (
+				8F811EF4254FC434E590263340C407E4 /* Info.plist */,
+				97B04DFC1CB0880D51B4665788575F7A /* Pods-DC Metro .modulemap */,
+				E106C74B03F80F3C1BCA239013181AB2 /* Pods-DC Metro -acknowledgements.markdown */,
+				265E3C52F801A1AFA86F284368D20512 /* Pods-DC Metro -acknowledgements.plist */,
+				28294D9C7ECE9C5863E5E0B3FC9FB590 /* Pods-DC Metro -dummy.m */,
+				2262A088487BB2D5620AF8E3A201E3EB /* Pods-DC Metro -frameworks.sh */,
+				6BE76D60137815859BC1AC08ADAB4E38 /* Pods-DC Metro -resources.sh */,
+				5A7C8DA9AAF41D81AF48B3FFEA3AB9EC /* Pods-DC Metro -umbrella.h */,
+				36A21C720A91155AA459322E6C57ABCD /* Pods-DC Metro .debug.xcconfig */,
+				EE477930E0A7B62F986758511E27572E /* Pods-DC Metro .release.xcconfig */,
+			);
+			name = "Pods-DC Metro ";
+			path = "Target Support Files/Pods-DC Metro ";
+			sourceTree = "<group>";
+		};
+		CA975FE6EE63B140C75E1CDD687A91A5 /* Crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				93FFBFA9928D65276982837B708181BD /* Frameworks */,
+			);
+			path = Crashlytics;
+			sourceTree = "<group>";
+		};
+		DA74166DBE864CAE00C19007BB985E9F /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				96461C5A8CCFDF136EE2F9922C734D6D /* Info.plist */,
+				D05B43ECD9B796DEC7EAB28C213544D9 /* SwiftyJSON.modulemap */,
+				C4BE87B7A9815674EE04E28AD7B3515B /* SwiftyJSON.xcconfig */,
+				72E7BC0741627416525B0F5CD04D4691 /* SwiftyJSON-dummy.m */,
+				5486CFB7145EF4EADA8BADF25A243FAC /* SwiftyJSON-prefix.pch */,
+				71171470CD559A1D83D4E11372029166 /* SwiftyJSON-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyJSON";
 			sourceTree = "<group>";
 		};
-		BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */ = {
+		E60C196A433B35059F03F187C9F200C3 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */,
+				36EC63A5FB83E6A1F7CBC9D8B15DB8EA /* SwiftyJSON.swift */,
+				DA74166DBE864CAE00C19007BB985E9F /* Support Files */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		EEB6596EB7507892406E7E62575875B5 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				3DCCCD789DDB0C2E8BCA2AFD8A1BB2BA /* Pods-DCMetroWidget */,
-			);
-			name = "Targets Support Files";
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2AB7117783C632BDA54E995E526398E8 /* Headers */ = {
+		1556DB13AD47AC85308273B7F79507A7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56F813BE29BEE391B9476A942E8235A9 /* Pods-DCMetroWidget-umbrella.h in Headers */,
+				9117C4804A7621A3CA3F8630ECC235AD /* Pods-DC Metro -umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DA83ABCC412BE9D8B5011F9D9E8CB4FF /* Headers */ = {
+		778A3B7F14227A63B3BE87B7BA7A2DC1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F911206CFEEAC232F971953B8892BE45 /* SwiftyJSON-umbrella.h in Headers */,
+				366EA0C177BE85D95A3BFB676F41196A /* SwiftyJSON-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A3639D662C63AAA6DF4948EE3DB920C2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				242000A15CA1F6CDF8501739498AEE34 /* Pods-DC Metro-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E917EB2751F9CE20D593E875E537999F /* SwiftyJSON */ = {
+		2322749B632C7200CB6C788FD5908926 /* Pods-DC Metro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D6FE6F3D4CBD15A7860D0A8CCE2CC9B7 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildConfigurationList = CE067E5A1614966E6EAD1719A7A527E0 /* Build configuration list for PBXNativeTarget "Pods-DC Metro" */;
 			buildPhases = (
-				50406CC1909E665E60B075313F5A8882 /* Sources */,
-				79488D9D53C9CD26E55FFB2BB67F89E5 /* Frameworks */,
-				DA83ABCC412BE9D8B5011F9D9E8CB4FF /* Headers */,
+				DC75092F4FA983C8C5895E10C4782460 /* Sources */,
+				3171D5450D3AFD386E507A67805FEAC8 /* Frameworks */,
+				A3639D662C63AAA6DF4948EE3DB920C2 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-DC Metro";
+			productName = "Pods-DC Metro";
+			productReference = 2999FEA9015832295CDB4A17C84599BF /* Pods_DC_Metro.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6BF888C6BF6294ED2D9EC250E0A1EF77 /* SwiftyJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 146E38CBA9EEA5C9A24E5689D266FD95 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildPhases = (
+				EE99E5D5D92B5C8B496C20A1ED5F758D /* Sources */,
+				6799C528AC678CF933EE0AB0577BB0FB /* Frameworks */,
+				778A3B7F14227A63B3BE87B7BA7A2DC1 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -199,25 +302,25 @@
 			);
 			name = SwiftyJSON;
 			productName = SwiftyJSON;
-			productReference = 18D6461FB8B5D3E26B964A73B3C19471 /* SwiftyJSON.framework */;
+			productReference = DB2F09A0373AF388F8D105C64CB08B69 /* SwiftyJSON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		F2F86E02EADE92563952DDDAF9135D1F /* Pods-DCMetroWidget */ = {
+		726B9EF67D08AFDE5F60F971623C8335 /* Pods-DC Metro  */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 64266D1EBDE0DACEEC0CB88C1C4ACA9E /* Build configuration list for PBXNativeTarget "Pods-DCMetroWidget" */;
+			buildConfigurationList = FD01587A52859BE7A94C8EE6AF897715 /* Build configuration list for PBXNativeTarget "Pods-DC Metro " */;
 			buildPhases = (
-				2DDDBAD0EA0455A38780AB5CAC4ACB39 /* Sources */,
-				DED7097023065509709B87B0302EE8AF /* Frameworks */,
-				2AB7117783C632BDA54E995E526398E8 /* Headers */,
+				B7834E6362FC7800E4DEB6999398B70B /* Sources */,
+				AD2DCE6400BB2C09F88989C1D3AC34BF /* Frameworks */,
+				1556DB13AD47AC85308273B7F79507A7 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				B136ED8C1343D4823CD6488CC203B946 /* PBXTargetDependency */,
+				6C018B5FD22562A319DD18CCEDB40BA0 /* PBXTargetDependency */,
 			);
-			name = "Pods-DCMetroWidget";
-			productName = "Pods-DCMetroWidget";
-			productReference = 711C058792B92B7F8FB18A4CB83327B2 /* Pods_DCMetroWidget.framework */;
+			name = "Pods-DC Metro ";
+			productName = "Pods-DC Metro ";
+			productReference = 965321BCAB80DE5D1306E533E6915721 /* Pods_DC_Metro_.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -237,46 +340,86 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 020A63C106233DD1FE901E6FAFB9C1F4 /* Products */;
+			productRefGroup = 029F457000FD2C9DD9E1B5527EA69A28 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F2F86E02EADE92563952DDDAF9135D1F /* Pods-DCMetroWidget */,
-				E917EB2751F9CE20D593E875E537999F /* SwiftyJSON */,
+				2322749B632C7200CB6C788FD5908926 /* Pods-DC Metro */,
+				726B9EF67D08AFDE5F60F971623C8335 /* Pods-DC Metro  */,
+				6BF888C6BF6294ED2D9EC250E0A1EF77 /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2DDDBAD0EA0455A38780AB5CAC4ACB39 /* Sources */ = {
+		B7834E6362FC7800E4DEB6999398B70B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68600A7E3D85E9D62B224E1299B0049D /* Pods-DCMetroWidget-dummy.m in Sources */,
+				FA5F4C7119349DC30D5992AE37414DF1 /* Pods-DC Metro -dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		50406CC1909E665E60B075313F5A8882 /* Sources */ = {
+		DC75092F4FA983C8C5895E10C4782460 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B942F96595AFF8C5976DCF195452ED85 /* SwiftyJSON-dummy.m in Sources */,
-				41CA64B2BF47275D93A3278B41C4DBBB /* SwiftyJSON.swift in Sources */,
+				D7557FC7AA324052E5E046C0F37B9113 /* Pods-DC Metro-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE99E5D5D92B5C8B496C20A1ED5F758D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B946FAF1032F0A0CDD8E494C0932D92 /* SwiftyJSON-dummy.m in Sources */,
+				CE269B0EA231A08DC828D621A34971F5 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B136ED8C1343D4823CD6488CC203B946 /* PBXTargetDependency */ = {
+		6C018B5FD22562A319DD18CCEDB40BA0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyJSON;
-			target = E917EB2751F9CE20D593E875E537999F /* SwiftyJSON */;
-			targetProxy = F908B486CC29B6CFFFBB5EF0C0F7EEC2 /* PBXContainerItemProxy */;
+			target = 6BF888C6BF6294ED2D9EC250E0A1EF77 /* SwiftyJSON */;
+			targetProxy = C97C58312449FEA16610422864817013 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		025ACFE3D72BEDE8A7B55E81E4D974BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4BE87B7A9815674EE04E28AD7B3515B /* SwiftyJSON.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		0577E960F68FF02722D75DA2D211E3A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -319,42 +462,10 @@
 			};
 			name = Debug;
 		};
-		10562350C709D6DBEA7AC9B48426B8C2 /* Release */ = {
+		20302AEB83BECEC0C47545CB57F8F7C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
+			baseConfigurationReference = 279A9BCB136B3E9A24AF9C68F501D1E1 /* Pods-DC Metro.debug.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_VERSION = A;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1461F90BEC13E5E5C49BEEE5446F8663 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
-			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -366,25 +477,62 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-DC Metro/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/Pods-DC Metro/Pods-DC Metro.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SwiftyJSON;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_DC_Metro;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		41BF229653C4E92555549C137939E40C /* Release */ = {
+		33BA7A7650041A5C3E1FFC10DCB555B5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 921E6CEF4DD2C706AA856A4675B87D9A /* Pods-DCMetroWidget.release.xcconfig */;
+			baseConfigurationReference = 2CF1BCEB8C9578840DD16EF27655B813 /* Pods-DC Metro.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-DC Metro/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MODULEMAP_FILE = "Target Support Files/Pods-DC Metro/Pods-DC Metro.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_DC_Metro;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		47C7E4D6BB2910CAE2385AFA1738AF54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE477930E0A7B62F986758511E27572E /* Pods-DC Metro .release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -398,18 +546,18 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-DCMetroWidget/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-DC Metro /Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-DC Metro /Pods-DC Metro .modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_DCMetroWidget;
+				PRODUCT_NAME = Pods_DC_Metro_;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -455,9 +603,9 @@
 			};
 			name = Release;
 		};
-		620EB38FACC9F4D9CB36C6BD32CD6BB4 /* Debug */ = {
+		CD2AE737F3DAC359853BC52D8675F14A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C13955C7E82A9AD3633F5B3EF5E98291 /* Pods-DCMetroWidget.debug.xcconfig */;
+			baseConfigurationReference = C4BE87B7A9815674EE04E28AD7B3515B /* SwiftyJSON.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -471,18 +619,50 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FRAMEWORK_VERSION = A;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-DCMetroWidget/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D5B764C3BF2D0BE6ED26CC22CA14B39F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36A21C720A91155AA459322E6C57ABCD /* Pods-DC Metro .debug.xcconfig */;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-DC Metro /Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MODULEMAP_FILE = "Target Support Files/Pods-DCMetroWidget/Pods-DCMetroWidget.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-DC Metro /Pods-DC Metro .modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_DCMetroWidget;
+				PRODUCT_NAME = Pods_DC_Metro_;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -494,6 +674,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		146E38CBA9EEA5C9A24E5689D266FD95 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD2AE737F3DAC359853BC52D8675F14A /* Debug */,
+				025ACFE3D72BEDE8A7B55E81E4D974BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -503,20 +692,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		64266D1EBDE0DACEEC0CB88C1C4ACA9E /* Build configuration list for PBXNativeTarget "Pods-DCMetroWidget" */ = {
+		CE067E5A1614966E6EAD1719A7A527E0 /* Build configuration list for PBXNativeTarget "Pods-DC Metro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				620EB38FACC9F4D9CB36C6BD32CD6BB4 /* Debug */,
-				41BF229653C4E92555549C137939E40C /* Release */,
+				20302AEB83BECEC0C47545CB57F8F7C6 /* Debug */,
+				33BA7A7650041A5C3E1FFC10DCB555B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D6FE6F3D4CBD15A7860D0A8CCE2CC9B7 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+		FD01587A52859BE7A94C8EE6AF897715 /* Build configuration list for PBXNativeTarget "Pods-DC Metro " */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1461F90BEC13E5E5C49BEEE5446F8663 /* Debug */,
-				10562350C709D6DBEA7AC9B48426B8C2 /* Release */,
+				D5B764C3BF2D0BE6ED26CC22CA14B39F /* Debug */,
+				47C7E4D6BB2910CAE2385AFA1738AF54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
