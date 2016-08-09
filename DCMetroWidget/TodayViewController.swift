@@ -19,7 +19,7 @@ var fiveClosestStations: [Station] = []
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
 	@IBOutlet weak var selectedStationLabel: NSTextField!
-	var selectStationString = "Please select a station in Settings"
+	var selectStationString = "Select a station in Settings"
 	
 	@IBOutlet weak var homeFavoriteButton: NSButton!
 	@IBOutlet weak var workFavoriteButton: NSButton!
@@ -36,7 +36,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	let locationManager = CLLocationManager()
 	
-	let sharedDefaults = NSUserDefaults.init(suiteName: "com.clrungdev.DCMetroGroup")!
+	let sharedDefaults = NSUserDefaults.init(suiteName: "2848SVWH7M.DCMetro")!
 	
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
@@ -110,12 +110,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	@IBAction func clickFavoriteStation(sender: NSButton) {
-		if sender.identifier == "homeStation" {
-			selectedStation = Station(rawValue: sharedDefaults.stringForKey("homeStation")!)!
-		} else if sender.identifier == "workStation" {
-			selectedStation = Station(rawValue: sharedDefaults.stringForKey("workStation")!)!
-		}
-		
+		selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
 		selectedStationLabel.stringValue = selectedStation.description
 		getPredictionsForSelectedStation()
 	}

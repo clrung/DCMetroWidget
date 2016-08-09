@@ -13,7 +13,7 @@ class ViewController: NSViewController {
 	@IBOutlet weak var homeStationPopUpButton: NSPopUpButton!
 	@IBOutlet weak var workStationPopUpButton: NSPopUpButton!
 	
-	let sharedDefaults = NSUserDefaults.init(suiteName: "com.clrungdev.DCMetroGroup")!
+	let sharedDefaults = NSUserDefaults.init(suiteName: "2848SVWH7M.DCMetro")!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()

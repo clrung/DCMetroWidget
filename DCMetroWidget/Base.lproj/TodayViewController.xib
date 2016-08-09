@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
@@ -36,7 +36,7 @@
                         <constraint firstAttribute="width" constant="220" id="L8U-iC-PGV"/>
                         <constraint firstAttribute="height" constant="18" id="itb-Sm-5Ne"/>
                     </constraints>
-                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Station" id="m4M-Tc-fBG">
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Station" placeholderString="" id="m4M-Tc-fBG">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -265,7 +265,7 @@
                         <action selector="clickSettings:" target="-2" id="mEM-zZ-F4e"/>
                     </connections>
                 </button>
-                <button identifier="home station button" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vhR-94-OpT">
+                <button identifier="homeStation" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vhR-94-OpT">
                     <rect key="frame" x="10" y="57" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="2su-PU-Ed9"/>
@@ -279,7 +279,7 @@
                         <action selector="clickFavoriteStation:" target="-2" id="rnm-Yv-uNX"/>
                     </connections>
                 </button>
-                <button identifier="work station button" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-Yv-uM6">
+                <button identifier="workStation" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-Yv-uM6">
                     <rect key="frame" x="38" y="57" width="18" height="18"/>
                     <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Work" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="vY8-qT-ogv">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
