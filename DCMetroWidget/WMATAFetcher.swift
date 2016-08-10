@@ -72,10 +72,8 @@ func getPrediction(stationCode: String, onCompleted: (result: JSON?) -> ()) {
 				let statusCode = (response as! NSHTTPURLResponse).statusCode
 				if statusCode == 200 { // success
 					onCompleted(result: JSON(data: data!))
-					Answers.logCustomEventWithName("Fetch successful", customAttributes: ["Status code" : statusCode])	// TODO delete
 				} else { // error
 					NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":"Prediction fetch failed (Code: \(statusCode))"])
-					Answers.logCustomEventWithName("Fetch failed", customAttributes: ["Status code" : statusCode])
 				}
 			} else {
 				if error?.code == -1009 {

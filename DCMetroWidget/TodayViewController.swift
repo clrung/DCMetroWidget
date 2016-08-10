@@ -112,18 +112,17 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	@IBAction func clickFavoriteStation(sender: NSButton) {
 		selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
 		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
-		selectedStationLabel.stringValue = selectedStation.description
 		getPredictionsForSelectedStation()
 	}
 	
 	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {
-		self.selectedStationLabel.stringValue = selectedStation.description
-		
 		self.getCurrentLocationButton.hidden = true
 		self.errorTextField.hidden = true
 		self.mainPredictionView.hidden = false
 		
 		dispatch_async(dispatch_get_main_queue(), {
+			self.selectedStationLabel.stringValue = selectedStation.description
+			
 			let trainsHeight = trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
 			let spacesHeight = spaceCount * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
 			
@@ -222,8 +221,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			}
 			
 			getPredictionsForSelectedStation()
-			
-			selectedStationLabel.stringValue = selectedStation.description
 		}
 	}
 	
