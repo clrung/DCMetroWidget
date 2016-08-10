@@ -111,6 +111,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	@IBAction func clickFavoriteStation(sender: NSButton) {
 		selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
+		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
 		selectedStationLabel.stringValue = selectedStation.description
 		getPredictionsForSelectedStation()
 	}
