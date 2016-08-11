@@ -23,6 +23,7 @@
 		588EA6651CFF2C6E00ACDF41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */; };
 		58BA39921D162F3600378A1E /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BA39911D162F3600378A1E /* Station.swift */; };
 		58BA39941D1B3C4D00378A1E /* lineImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 58BA39931D1B3C4D00378A1E /* lineImage.png */; };
+		58C914EE1D5D18F2005F5C32 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C914ED1D5D18F2005F5C32 /* LocationManager.swift */; };
 		58D1C0F61D253E5400F21B3B /* WMATAFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */; };
 		58D1C0F81D26134700F21B3B /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D1C0F71D26134700F21B3B /* SettingsViewController.xib */; };
 		58D1C0FA1D26135C00F21B3B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */; };
@@ -77,6 +78,7 @@
 		588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		58BA39911D162F3600378A1E /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		58BA39931D1B3C4D00378A1E /* lineImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lineImage.png; sourceTree = "<group>"; };
+		58C914ED1D5D18F2005F5C32 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WMATAFetcher.swift; sourceTree = "<group>"; };
 		58D1C0F71D26134700F21B3B /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */,
 				588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */,
 				58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */,
+				58C914ED1D5D18F2005F5C32 /* LocationManager.swift */,
 				58D1C0F71D26134700F21B3B /* SettingsViewController.xib */,
 				58D1C0F51D253E5400F21B3B /* WMATAFetcher.swift */,
 				58BA39911D162F3600378A1E /* Station.swift */,
@@ -451,6 +454,7 @@
 				588D7C651CD1A1DE008A2A22 /* TodayViewController.swift in Sources */,
 				58D1C0F61D253E5400F21B3B /* WMATAFetcher.swift in Sources */,
 				588EA6631CE56A0700ACDF41 /* Line.swift in Sources */,
+				58C914EE1D5D18F2005F5C32 /* LocationManager.swift in Sources */,
 				58BA39921D162F3600378A1E /* Station.swift in Sources */,
 				588EA6611CE55FD600ACDF41 /* Train.swift in Sources */,
 				58D1C0FA1D26135C00F21B3B /* SettingsViewController.swift in Sources */,
@@ -532,7 +536,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -571,7 +575,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -588,6 +592,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DCMetro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro;
 				PRODUCT_NAME = "DC Metro";
 			};
@@ -604,6 +609,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DCMetro/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro;
 				PRODUCT_NAME = "DC Metro";
 			};
@@ -619,6 +625,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DCMetroWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro.DCMetroWidget;
 				PRODUCT_NAME = "DC Metro";
 				PROVISIONING_PROFILE = "";
@@ -636,6 +643,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = DCMetroWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.clrungdev.DCMetro.DCMetroWidget;
 				PRODUCT_NAME = "DC Metro";
 				PROVISIONING_PROFILE = "";

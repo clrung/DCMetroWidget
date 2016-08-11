@@ -13,7 +13,6 @@ import CoreLocation
 import Fabric
 import Crashlytics
 
-var currentLocation: CLLocation! = nil
 var fiveClosestStations: [Station] = []
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
@@ -33,8 +32,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	@IBOutlet weak var errorTextField: NSTextField!
 	
 	var settingsViewController: SettingsViewController?
-	
-	let locationManager = CLLocationManager()
 	
 	let sharedDefaults = NSUserDefaults.init(suiteName: "2848SVWH7M.DCMetro")!
 	
@@ -67,11 +64,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		locationManager.delegate = self
-		locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-		locationManager.distanceFilter = kCLDistanceFilterNone
+		LocationManager.sharedManager.delegate = self
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setSelectedStationLabelAndReloadTable(_:)), name:"reloadTable", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setSelectedStationLabelAndReloadTable(_:)), name: "reloadTable", object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayError(_:)), name:"error", object: nil)
 	}
 	
@@ -88,12 +83,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
 		
 		switch CLLocationManager.authorizationStatus() {
-		case CLAuthorizationStatus.Authorized:
+		case .Authorized:
 			if !didSelectStation {
 				selectedStationLabel.stringValue = "Determining closest station..."
 			}
-			locationManager.startUpdatingLocation()
-		case CLAuthorizationStatus.NotDetermined:
+			LocationManager.sharedManager.startUpdatingLocation()
+		case .NotDetermined:
 			getCurrentLocationButton.hidden = false
 			mainPredictionView.hidden = true
 		default:	// Denied or Restricted
@@ -205,15 +200,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	// MARK: Location
 	
 	@IBAction func getCurrentLocation(sender: NSButton) {
-		locationManager.startUpdatingLocation()
+		LocationManager.sharedManager.startUpdatingLocation()
 	}
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-		locationManager.stopUpdatingLocation()
+		LocationManager.sharedManager.stopUpdatingLocation()
 		
-		if locationManager.location != nil {
-			currentLocation = locationManager.location!
-			
+		if let currentLocation = LocationManager.sharedManager.location {
 			fiveClosestStations = getfiveClosestStations(currentLocation)
 			
 			if !didSelectStation {
@@ -225,7 +218,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-		locationManager.stopUpdatingLocation()
+		LocationManager.sharedManager.stopUpdatingLocation()
 		
 		if didSelectStation {
 			selectedStationLabel.stringValue = selectedStation.description
