@@ -73,7 +73,7 @@
                                                 <subviews>
                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uHo-nN-pEb">
                                                         <rect key="frame" x="0.0" y="0.0" width="32" height="30"/>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="lineImage" id="6d1-Pg-cJn"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Circle" id="6d1-Pg-cJn"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -265,7 +265,7 @@
                     </connections>
                 </button>
                 <button identifier="homeStation" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vhR-94-OpT">
-                    <rect key="frame" x="10" y="57" width="18" height="18"/>
+                    <rect key="frame" x="5" y="57" width="18" height="18"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="18" id="2su-PU-Ed9"/>
                         <constraint firstAttribute="width" constant="18" id="Fzi-O5-LEe"/>
@@ -279,7 +279,7 @@
                     </connections>
                 </button>
                 <button identifier="workStation" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-Yv-uM6">
-                    <rect key="frame" x="38" y="57" width="18" height="18"/>
+                    <rect key="frame" x="30" y="57" width="18" height="18"/>
                     <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Work" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="vY8-qT-ogv">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -297,12 +297,12 @@
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="height" secondItem="vhR-94-OpT" secondAttribute="height" id="As0-dU-EPr"/>
                 <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" constant="5" id="BZ7-Wr-7c0"/>
                 <constraint firstItem="vrG-qf-P78" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="He2-up-xxd"/>
-                <constraint firstItem="zyn-Yv-uM6" firstAttribute="leading" secondItem="vhR-94-OpT" secondAttribute="trailing" constant="10" id="HnR-9e-c0y"/>
+                <constraint firstItem="zyn-Yv-uM6" firstAttribute="leading" secondItem="vhR-94-OpT" secondAttribute="trailing" constant="7" id="HnR-9e-c0y"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="width" secondItem="vhR-94-OpT" secondAttribute="width" id="J7W-t8-aQq"/>
                 <constraint firstItem="dcM-pR-Uci" firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="-10" id="O5B-bc-EvD"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
-                <constraint firstItem="vhR-94-OpT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="10" id="Owj-iO-kZD"/>
+                <constraint firstItem="vhR-94-OpT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="5" id="Owj-iO-kZD"/>
                 <constraint firstItem="vhR-94-OpT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="U6c-0n-eJ4"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerY" secondItem="ne8-JS-SDK" secondAttribute="centerY" id="ZZ2-0s-H52"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="dcM-pR-Uci" secondAttribute="bottom" constant="5" id="eCM-l3-ctI"/>
@@ -315,9 +315,9 @@
         </customView>
     </objects>
     <resources>
+        <image name="Circle" width="20" height="20"/>
         <image name="Home" width="85" height="85"/>
         <image name="NSAdvanced" width="32" height="32"/>
         <image name="Work" width="85" height="81"/>
-        <image name="lineImage" width="30" height="30"/>
     </resources>
 </document>
