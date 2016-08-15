@@ -143,13 +143,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		if row < trains.count {
 			let item = trains[row]
 			
-			var lineImage = NSImage(named: "lineImage")
+			var circleImage = NSImage(named: "Circle")
 			var text = ""
 			var cellIdentifier: String = ""
 			
 			if tableColumn == tableView.tableColumns[0] {
 				cellIdentifier = "lineCell"
-				lineImage = item.line != Line.NO ? getTintedImage(lineImage!, tint: item.line.color) : nil
+				circleImage = item.line != Line.NO ? getTintedImage(circleImage!, tint: item.line.color) : nil
 			} else if tableColumn == tableView.tableColumns[1] {
 				cellIdentifier = "carsCell"
 				text = String(item.numCars)
@@ -164,7 +164,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
 				predictionTableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: 1))
 				cell.textField?.stringValue = text
-				cell.imageView?.image = lineImage ?? nil
+				cell.imageView?.image = circleImage ?? nil
 				return cell
 			}
 		}
