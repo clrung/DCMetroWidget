@@ -12,8 +12,10 @@ import SwiftyJSON
 import CoreLocation
 import Fabric
 import Crashlytics
+import WMATAFetcher
 
 var fiveClosestStations: [Station] = []
+var WMATAfetcher = WMATAFetcher(WMATA_API_KEY: "[WMATA_KEY_GOES_HERE]")
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
@@ -73,11 +75,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
-		if selectedStation != Station.No {
+		if WMATAfetcher.selectedStation != Station.No {
 			didSelectStation = true
 		}
 		
-		selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
+		selectedStationLabel.stringValue = WMATAfetcher.selectedStation == Station.No ? selectStationString : WMATAfetcher.selectedStation.description
 		
 		homeFavoriteButton.hidden = sharedDefaults.stringForKey("homeStation") == nil ? true : false
 		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
@@ -92,7 +94,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			getCurrentLocationButton.hidden = false
 			mainPredictionView.hidden = true
 		default:	// Denied or Restricted
-			getPredictionsForSelectedStation()
+			WMATAfetcher.getPredictionsForSelectedStation()
 		}
 	}
 	
@@ -105,9 +107,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	@IBAction func clickFavoriteStation(sender: NSButton) {
-		selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
-		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
-		getPredictionsForSelectedStation()
+		WMATAfetcher.selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
+		NSUserDefaults.standardUserDefaults().setObject(WMATAfetcher.selectedStation.rawValue, forKey: "selectedStation")
+		WMATAfetcher.getPredictionsForSelectedStation()
 	}
 	
 	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {
@@ -116,10 +118,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		self.mainPredictionView.hidden = false
 		
 		dispatch_async(dispatch_get_main_queue(), {
-			self.selectedStationLabel.stringValue = selectedStation.description
-			
-			let trainsHeight = trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
-			let spacesHeight = spaceCount * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
+			self.selectedStationLabel.stringValue = WMATAfetcher.selectedStation.description
+
+			let trainsHeight = WMATAfetcher.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
+			let spacesHeight = WMATAfetcher.spaceCount * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
 			
 			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trainsHeight - spacesHeight)
 			self.predictionTableView.reloadData()
@@ -140,8 +142,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	// MARK: TableView
 	
 	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		if row < trains.count {
-			let item = trains[row]
+		if row < WMATAfetcher.trains.count {
+			let item = WMATAfetcher.trains[row]
 			
 			var circleImage = NSImage(named: "Circle")
 			var text = ""
@@ -186,11 +188,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-		return trains.count ?? 0
+		return WMATAfetcher.trains.count ?? 0
 	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		if trains[row].group != "-1" {
+		if WMATAfetcher.trains[row].group != "-1" {
 			return CGFloat(ROW_HEIGHT)
 		} else {
 			return CGFloat(SPACE_HEIGHT)
@@ -207,13 +209,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		LocationManager.sharedManager.stopUpdatingLocation()
 		
 		if let currentLocation = LocationManager.sharedManager.location {
-			fiveClosestStations = getfiveClosestStations(currentLocation)
+			fiveClosestStations = WMATAfetcher.getfiveClosestStations(currentLocation)
 			
 			if !didSelectStation {
-				selectedStation = fiveClosestStations[0]
+				WMATAfetcher.selectedStation = fiveClosestStations[0]
 			}
 			
-			getPredictionsForSelectedStation()
+			WMATAfetcher.getPredictionsForSelectedStation()
 		}
 	}
 	
@@ -221,8 +223,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		LocationManager.sharedManager.stopUpdatingLocation()
 		
 		if didSelectStation {
-			selectedStationLabel.stringValue = selectedStation.description
-			getPredictionsForSelectedStation()
+			selectedStationLabel.stringValue = WMATAfetcher.selectedStation.description
+			WMATAfetcher.getPredictionsForSelectedStation()
 		} else {
 			selectedStationLabel.stringValue = selectStationString
 		}
