@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import WMATAFetcher
 
 class ViewController: NSViewController {
 	
