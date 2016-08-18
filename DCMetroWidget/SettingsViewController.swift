@@ -9,8 +9,8 @@
 import Cocoa
 import NotificationCenter
 import CoreLocation
+import WMATAFetcher
 
-var selectedStation: Station = Station(rawValue: NSUserDefaults.standardUserDefaults().stringForKey("selectedStation") ?? "No")!
 var didSelectStation: Bool = false
 
 class SettingsViewController: NCWidgetListViewController {
@@ -75,7 +75,7 @@ class SettingsViewController: NCWidgetListViewController {
 			stationPopUpButton.itemWithTitle(station.description)?.representedObject = rawValue
 		}
 		
-		stationPopUpButton.selectItemWithTitle(selectedStation.description)
+		stationPopUpButton.selectItemWithTitle(WMATAfetcher.selectedStation.description)
 	}
 	
 	@IBAction func touchStationRadioButton(sender: NSButton) {
@@ -92,8 +92,8 @@ class SettingsViewController: NCWidgetListViewController {
 			radioButton.state = NSOffState
 		}
 		
-		selectedStation = Station(rawValue: selectedStationCode)!
-		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
+		WMATAfetcher.selectedStation = Station(rawValue: selectedStationCode)!
+		NSUserDefaults.standardUserDefaults().setObject(WMATAfetcher.selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStation = true
 		
