@@ -1,4 +1,4 @@
-# DC Metro Widget [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/clrung/DCMetroWidget/master/LICENSE) [![platforms](https://img.shields.io/badge/platforms-macOS-lightgrey.svg)]()
+# DC Metro Widget [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/clrung/DCMetroWidget/master/LICENSE) [![platforms](https://img.shields.io/badge/platform-macOS-lightgrey.svg)]()
 
 <p align="center">
 <a href="http://appstore.com/mac/dcmetro"><img src="https://www.mapdiva.com/wp-content/uploads/2011/01/Mac_App_Store_Badge_US_UK1.png" width="400" height="200" alt="Available on the Mac App Store"/></a>
@@ -12,7 +12,7 @@ A Today extension for macOS' Notification Center that tracks DC Metro arrival ti
 
 ## Requirements
 * macOS 10.11+
- * There is currently an [open issue for Yosemite (10.10) support](https://github.com/clrung/DCMetroWidget/issues/15))  I am working on it!
+ * There is currently an [open issue for Yosemite (10.10) support](https://github.com/clrung/DCMetroWidget/issues/15).  I am working on it!
 
 ## Installation
 This project uses [CocoaPods](https://cocoapods.org).  You know what to do:

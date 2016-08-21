@@ -16,6 +16,7 @@ import WMATAFetcher
 
 var fiveClosestStations: [Station] = []
 var WMATAfetcher = WMATAFetcher(WMATA_API_KEY: "[WMATA_KEY_GOES_HERE]")
+var selectedStation: Station = Station(rawValue: NSUserDefaults.standardUserDefaults().stringForKey("selectedStation") ?? "No")!
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
@@ -42,6 +43,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	let ROW_SPACING = 6
 	let SPACE_HEIGHT = 3
 	
+	var trains = [Train]()
+	
 	override var nibName: String? {
 		return "TodayViewController"
 	}
@@ -67,19 +70,16 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		super.viewDidLoad()
 		
 		LocationManager.sharedManager.delegate = self
-		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setSelectedStationLabelAndReloadTable(_:)), name: "reloadTable", object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(displayError(_:)), name:"error", object: nil)
 	}
 	
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
-		if WMATAfetcher.selectedStation != Station.No {
+		if selectedStation != Station.No {
 			didSelectStation = true
 		}
 		
-		selectedStationLabel.stringValue = WMATAfetcher.selectedStation == Station.No ? selectStationString : WMATAfetcher.selectedStation.description
+		selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
 		
 		homeFavoriteButton.hidden = sharedDefaults.stringForKey("homeStation") == nil ? true : false
 		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
@@ -94,7 +94,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			getCurrentLocationButton.hidden = false
 			mainPredictionView.hidden = true
 		default:	// Denied or Restricted
-			WMATAfetcher.getPredictionsForSelectedStation()
+			getPredictionsForSelectedStation()
 		}
 	}
 	
@@ -107,34 +107,32 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	@IBAction func clickFavoriteStation(sender: NSButton) {
-		WMATAfetcher.selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
-		NSUserDefaults.standardUserDefaults().setObject(WMATAfetcher.selectedStation.rawValue, forKey: "selectedStation")
-		WMATAfetcher.getPredictionsForSelectedStation()
+		selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
+		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
+		getPredictionsForSelectedStation()
 	}
 	
-	func setSelectedStationLabelAndReloadTable(notification: NSNotification) {
+	func setSelectedStationLabelAndReloadTable() {
 		self.getCurrentLocationButton.hidden = true
 		self.errorTextField.hidden = true
 		self.mainPredictionView.hidden = false
 		
 		dispatch_async(dispatch_get_main_queue(), {
-			self.selectedStationLabel.stringValue = WMATAfetcher.selectedStation.description
+			self.selectedStationLabel.stringValue = selectedStation.description
 
-			let trainsHeight = WMATAfetcher.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
-			let spacesHeight = WMATAfetcher.spaceCount * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
+			let trainsHeight = self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
+			let spacesHeight = WMATAfetcher.getSpaceCount(self.trains) * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
 			
 			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trainsHeight - spacesHeight)
 			self.predictionTableView.reloadData()
 		})
 	}
 	
-	func displayError(notification: NSNotification) {
-		let userInfo:Dictionary<String, String> = notification.userInfo as! Dictionary<String, String>
-		
+	func displayError(error: String) {
 		dispatch_async(dispatch_get_main_queue(), {
 			self.getCurrentLocationButton.hidden = true
 			self.errorTextField.hidden = false
-			self.errorTextField.stringValue = userInfo["errorString"]!
+			self.errorTextField.stringValue = error
 			self.mainPredictionView.hidden = true
 		})
 	}
@@ -142,8 +140,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	// MARK: TableView
 	
 	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		if row < WMATAfetcher.trains.count {
-			let item = WMATAfetcher.trains[row]
+		if row < self.trains.count {
+			let item = self.trains[row]
 			
 			var circleImage = NSImage(named: "Circle")
 			var text = ""
@@ -162,7 +160,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 				cellIdentifier = "minCell"
 				text = String(item.min)
 			}
-			
 			if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
 				predictionTableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: 1))
 				cell.textField?.stringValue = text
@@ -188,11 +185,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-		return WMATAfetcher.trains.count ?? 0
+		return self.trains.count ?? 0
 	}
 	
 	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		if WMATAfetcher.trains[row].group != "-1" {
+		if self.trains[row].group != "-1" {
 			return CGFloat(ROW_HEIGHT)
 		} else {
 			return CGFloat(SPACE_HEIGHT)
@@ -206,41 +203,51 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-		LocationManager.sharedManager.stopUpdatingLocation()
-		
 		if let currentLocation = LocationManager.sharedManager.location {
-			fiveClosestStations = WMATAfetcher.getfiveClosestStations(currentLocation)
-			
+			fiveClosestStations = WMATAfetcher.getClosestStations(currentLocation, numStations: 5)
 			if !didSelectStation {
-				WMATAfetcher.selectedStation = fiveClosestStations[0]
+				selectedStation = fiveClosestStations[0]
 			}
 			
-			WMATAfetcher.getPredictionsForSelectedStation()
+			getPredictionsForSelectedStation()
 		}
+		
+		LocationManager.sharedManager.stopUpdatingLocation()
 	}
 	
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
 		LocationManager.sharedManager.stopUpdatingLocation()
 		
 		if didSelectStation {
-			selectedStationLabel.stringValue = WMATAfetcher.selectedStation.description
-			WMATAfetcher.getPredictionsForSelectedStation()
+			selectedStationLabel.stringValue = selectedStation.description
+			getPredictionsForSelectedStation()
 		} else {
 			selectedStationLabel.stringValue = selectStationString
 		}
 		
-		var errorString = ""
-		
 		switch error.code {
 		case CLError.Denied.rawValue:
-			errorString = "Location services denied"
+			self.displayError("Location services denied")
 		case CLError.LocationUnknown.rawValue:
-			errorString = "Current location could not be determined"
+			self.displayError("Current location could not be determined")
 		default:
 			return
 		}
-		
-		NSNotificationCenter.defaultCenter().postNotificationName("error", object: nil, userInfo: ["errorString":errorString])
+	}
+	
+	/**
+	Wrapper method that calls getPrediction(), passing it the selectedStation.
+	*/
+	func getPredictionsForSelectedStation() {
+		WMATAfetcher.getStationPredictions(selectedStation.rawValue, onCompleted: {
+			trainResponse in
+			if trainResponse.error == nil {
+				self.trains = trainResponse.trains!
+				self.setSelectedStationLabelAndReloadTable()
+			} else {
+				self.displayError(trainResponse.error!)
+			}
+		})
 	}
 	
 	// MARK: Editing

@@ -75,7 +75,7 @@ class SettingsViewController: NCWidgetListViewController {
 			stationPopUpButton.itemWithTitle(station.description)?.representedObject = rawValue
 		}
 		
-		stationPopUpButton.selectItemWithTitle(WMATAfetcher.selectedStation.description)
+		stationPopUpButton.selectItemWithTitle(selectedStation.description)
 	}
 	
 	@IBAction func touchStationRadioButton(sender: NSButton) {
@@ -92,8 +92,8 @@ class SettingsViewController: NCWidgetListViewController {
 			radioButton.state = NSOffState
 		}
 		
-		WMATAfetcher.selectedStation = Station(rawValue: selectedStationCode)!
-		NSUserDefaults.standardUserDefaults().setObject(WMATAfetcher.selectedStation.rawValue, forKey: "selectedStation")
+		selectedStation = Station(rawValue: selectedStationCode)!
+		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStation = true
 		
