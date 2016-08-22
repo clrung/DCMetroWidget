@@ -17,6 +17,7 @@ import WMATAFetcher
 var fiveClosestStations: [Station] = []
 var WMATAfetcher = WMATAFetcher(WMATA_API_KEY: "[WMATA_KEY_GOES_HERE]")
 var selectedStation: Station = Station(rawValue: NSUserDefaults.standardUserDefaults().stringForKey("selectedStation") ?? "No")!
+var currentLocation: CLLocation? = CLLocation()
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
@@ -29,8 +30,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	@IBOutlet weak var mainPredictionView: NSScrollView!
 	@IBOutlet weak var predictionTableView: NSTableView!
 	@IBOutlet weak var predictionTableViewHeightConstraint: NSLayoutConstraint!
-	
-	@IBOutlet weak var getCurrentLocationButton: NSButton!
 	
 	@IBOutlet weak var errorTextField: NSTextField!
 	
@@ -70,6 +69,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		super.viewDidLoad()
 		
 		LocationManager.sharedManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() == .Authorized || CLLocationManager.authorizationStatus() == .NotDetermined {
+            if !didSelectStation {
+                selectedStationLabel.stringValue = "Determining closest station..."
+            }
+            LocationManager.sharedManager.startUpdatingLocation()
+        }
 	}
 	
 	override func viewWillAppear() {
@@ -84,18 +90,9 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		homeFavoriteButton.hidden = sharedDefaults.stringForKey("homeStation") == nil ? true : false
 		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
 		
-		switch CLLocationManager.authorizationStatus() {
-		case .Authorized:
-			if !didSelectStation {
-				selectedStationLabel.stringValue = "Determining closest station..."
-			}
-			LocationManager.sharedManager.startUpdatingLocation()
-		case .NotDetermined:
-			getCurrentLocationButton.hidden = false
-			mainPredictionView.hidden = true
-		default:	// Denied or Restricted
-			getPredictionsForSelectedStation()
-		}
+        if Station.allValues.contains(selectedStation) {
+            getPredictionsForSelectedStation()
+        }
 	}
 	
 	@IBAction func clickSettings(sender: NSButton) {
@@ -113,7 +110,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	}
 	
 	func setSelectedStationLabelAndReloadTable() {
-		self.getCurrentLocationButton.hidden = true
 		self.errorTextField.hidden = true
 		self.mainPredictionView.hidden = false
 		
@@ -130,7 +126,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	func displayError(error: String) {
 		dispatch_async(dispatch_get_main_queue(), {
-			self.getCurrentLocationButton.hidden = true
 			self.errorTextField.hidden = false
 			self.errorTextField.stringValue = error
 			self.mainPredictionView.hidden = true
@@ -198,13 +193,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	
 	// MARK: Location
 	
-	@IBAction func getCurrentLocation(sender: NSButton) {
-		LocationManager.sharedManager.startUpdatingLocation()
-	}
-	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-		if let currentLocation = LocationManager.sharedManager.location {
-			fiveClosestStations = WMATAfetcher.getClosestStations(currentLocation, numStations: 5)
+        currentLocation = LocationManager.sharedManager.location
+        if currentLocation != nil {
+			fiveClosestStations = WMATAfetcher.getClosestStations(currentLocation!, numStations: 5)
 			if !didSelectStation {
 				selectedStation = fiveClosestStations[0]
 			}

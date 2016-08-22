@@ -11,8 +11,7 @@ A Today extension for macOS' Notification Center that tracks DC Metro arrival ti
 </p>
 
 ## Requirements
-* macOS 10.11+
- * There is currently an [open issue for Yosemite (10.10) support](https://github.com/clrung/DCMetroWidget/issues/15).  I am working on it!
+* macOS 10.10+
 
 ## Installation
 This project uses [CocoaPods](https://cocoapods.org).  You know what to do:
