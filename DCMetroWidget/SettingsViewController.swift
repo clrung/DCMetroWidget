@@ -41,7 +41,7 @@ class SettingsViewController: NCWidgetListViewController {
 		super.viewWillLayout()
 		
 		stationRadioButtons = [stationRadioButton1, stationRadioButton2, stationRadioButton3, stationRadioButton4, stationRadioButton5]
-		if LocationManager.sharedManager.location != nil {
+		if currentLocation != nil {
 			selectStationAndRadioButtonsHeightConstraint.constant = 23
 			chooseFromListTextField.stringValue = "or choose from the list"
 			for (index, radioButton) in stationRadioButtons.enumerate() {
