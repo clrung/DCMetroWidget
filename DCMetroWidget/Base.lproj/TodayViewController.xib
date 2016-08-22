@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1909" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="DC_Metro" customModuleProvider="target">
             <connections>
                 <outlet property="errorTextField" destination="lHc-Kj-KoE" id="Aex-39-eFb"/>
-                <outlet property="getCurrentLocationButton" destination="vrG-qf-P78" id="fJf-o2-VYW"/>
                 <outlet property="homeFavoriteButton" destination="vhR-94-OpT" id="M8a-Fw-kUu"/>
                 <outlet property="mainPredictionView" destination="ne8-JS-SDK" id="VzF-fa-frW"/>
                 <outlet property="predictionTableView" destination="jAJ-D1-e6X" id="ec9-C3-no1"/>
@@ -48,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="By5-lm-lLQ" viewBased="YES" id="jAJ-D1-e6X">
-                                <rect key="frame" x="0.0" y="0.0" width="338" height="26"/>
+                                <rect key="frame" x="0.0" y="0.0" width="338" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="6"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -236,20 +235,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vrG-qf-P78">
-                    <rect key="frame" x="89" y="15" width="162" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="MLk-cC-h9E"/>
-                        <constraint firstAttribute="width" constant="150" id="uLm-1L-u1K"/>
-                    </constraints>
-                    <buttonCell key="cell" type="push" title="Get current location" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Kl4-Pt-13l">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="getCurrentLocation:" target="-2" id="19O-PD-s0a"/>
-                    </connections>
-                </button>
                 <button focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="dcM-pR-Uci">
                     <rect key="frame" x="310" y="55" width="20" height="20"/>
                     <constraints>
@@ -295,8 +280,6 @@
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="9Rs-VA-cXR"/>
                 <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" id="Agz-lO-mNJ"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="height" secondItem="vhR-94-OpT" secondAttribute="height" id="As0-dU-EPr"/>
-                <constraint firstItem="vrG-qf-P78" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" constant="5" id="BZ7-Wr-7c0"/>
-                <constraint firstItem="vrG-qf-P78" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="He2-up-xxd"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="leading" secondItem="vhR-94-OpT" secondAttribute="trailing" constant="7" id="HnR-9e-c0y"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="width" secondItem="vhR-94-OpT" secondAttribute="width" id="J7W-t8-aQq"/>
