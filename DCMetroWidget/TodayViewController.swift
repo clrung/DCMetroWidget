@@ -17,7 +17,7 @@ import WMATAFetcher
 var fiveClosestStations: [Station] = []
 var WMATAfetcher = WMATAFetcher(WMATA_API_KEY: "[WMATA_KEY_GOES_HERE]")
 var selectedStation: Station = Station(rawValue: NSUserDefaults.standardUserDefaults().stringForKey("selectedStation") ?? "No")!
-var currentLocation: CLLocation? = CLLocation()
+var currentLocation: CLLocation? = nil
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
 	
@@ -69,30 +69,28 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		super.viewDidLoad()
 		
 		LocationManager.sharedManager.delegate = self
-        
-        if CLLocationManager.authorizationStatus() == .Authorized || CLLocationManager.authorizationStatus() == .NotDetermined {
-            if !didSelectStation {
-                selectedStationLabel.stringValue = "Determining closest station..."
-            }
-            LocationManager.sharedManager.startUpdatingLocation()
-        }
 	}
 	
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
+		homeFavoriteButton.hidden = sharedDefaults.stringForKey("homeStation") == nil ? true : false
+		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
+		
 		if selectedStation != Station.No {
 			didSelectStation = true
 		}
 		
-		selectedStationLabel.stringValue = selectedStation == Station.No ? selectStationString : selectedStation.description
+		selectedStationLabel.stringValue = didSelectStation ? selectedStation.description : selectStationString
 		
-		homeFavoriteButton.hidden = sharedDefaults.stringForKey("homeStation") == nil ? true : false
-		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
-		
-        if Station.allValues.contains(selectedStation) {
-            getPredictionsForSelectedStation()
-        }
+		if CLLocationManager.authorizationStatus() == .Authorized || CLLocationManager.authorizationStatus() == .NotDetermined {
+			selectedStationLabel.stringValue = "Loading..."
+			LocationManager.sharedManager.startUpdatingLocation()
+		} else {	// Denied or Restricted
+			if didSelectStation {
+				getPredictionsForSelectedStation()
+			}
+		}
 	}
 	
 	@IBAction func clickSettings(sender: NSButton) {
