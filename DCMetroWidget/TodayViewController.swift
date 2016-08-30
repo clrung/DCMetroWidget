@@ -113,7 +113,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 		
 		dispatch_async(dispatch_get_main_queue(), {
 			self.selectedStationLabel.stringValue = selectedStation.description
-
+			
 			let trainsHeight = self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
 			let spacesHeight = WMATAfetcher.getSpaceCount(self.trains) * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
 			
@@ -192,8 +192,10 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	// MARK: Location
 	
 	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
-        currentLocation = LocationManager.sharedManager.location
-        if currentLocation != nil {
+		currentLocation = LocationManager.sharedManager.location
+		LocationManager.sharedManager.stopUpdatingLocation()
+		
+		if currentLocation != nil {
 			fiveClosestStations = WMATAfetcher.getClosestStations(currentLocation!, numStations: 5)
 			if !didSelectStation {
 				selectedStation = fiveClosestStations[0]
@@ -201,8 +203,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 			
 			getPredictionsForSelectedStation()
 		}
-		
-		LocationManager.sharedManager.stopUpdatingLocation()
 	}
 	
 	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -231,11 +231,16 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDeleg
 	func getPredictionsForSelectedStation() {
 		WMATAfetcher.getStationPredictions(selectedStation.rawValue, onCompleted: {
 			trainResponse in
-			if trainResponse.error == nil {
+			if trainResponse.errorCode == nil {
 				self.trains = trainResponse.trains!
 				self.setSelectedStationLabelAndReloadTable()
 			} else {
-				self.displayError(trainResponse.error!)
+				switch trainResponse.errorCode! {
+				case -1009:
+					self.displayError("Internet connection is offline")
+				default:
+					self.displayError("Prediction fetch failed (Code: \(trainResponse.errorCode!))")
+				}
 			}
 		})
 	}
