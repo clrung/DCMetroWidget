@@ -33,8 +33,11 @@ class SettingsViewController: NCWidgetListViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		setupPopUpButton()
+	}
+	
+	override func viewWillAppear() {
+		super.viewWillAppear()
 	}
 	
 	override func viewWillLayout() {
@@ -79,15 +82,15 @@ class SettingsViewController: NCWidgetListViewController {
 	}
 	
 	@IBAction func touchStationRadioButton(sender: NSButton) {
-		setSelectedStationAndDismiss(fiveClosestStations[sender.tag].rawValue)
+		setSelectedStation(fiveClosestStations[sender.tag].rawValue)
 		sender.state = NSOnState
 	}
 	
 	@IBAction func touchStationPopUpButton(sender: NSPopUpButton) {
-		setSelectedStationAndDismiss(sender.selectedItem?.representedObject as! String)
+		setSelectedStation(sender.selectedItem?.representedObject as! String)
 	}
 	
-	func setSelectedStationAndDismiss(selectedStationCode: String) {
+	func setSelectedStation(selectedStationCode: String) {
 		for radioButton in stationRadioButtons {
 			radioButton.state = NSOffState
 		}
@@ -96,8 +99,6 @@ class SettingsViewController: NCWidgetListViewController {
 		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStation = true
-		
-		dismissViewController(self)
 	}
 	
 }

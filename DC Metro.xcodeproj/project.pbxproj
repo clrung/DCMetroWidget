@@ -13,13 +13,13 @@
 		588D7C4F1CD1A1CB008A2A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C4E1CD1A1CB008A2A22 /* Assets.xcassets */; };
 		588D7C521CD1A1CB008A2A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C501CD1A1CB008A2A22 /* Main.storyboard */; };
 		588D7C601CD1A1DE008A2A22 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588D7C5F1CD1A1DE008A2A22 /* NotificationCenter.framework */; };
-		588D7C651CD1A1DE008A2A22 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */; };
+		588D7C651CD1A1DE008A2A22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C641CD1A1DE008A2A22 /* MainViewController.swift */; };
 		588D7C681CD1A1DE008A2A22 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */; };
 		588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C6A1CD1A1DE008A2A22 /* InfoPlist.strings */; };
 		588D7C6F1CD1A1DE008A2A22 /* DC Metro.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 588D7C5D1CD1A1DE008A2A22 /* DC Metro.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		588EA6651CFF2C6E00ACDF41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */; };
+		58A9D1041D7B4F66005CF1A7 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A9D1031D7B4F66005CF1A7 /* TodayViewController.swift */; };
 		58C914EE1D5D18F2005F5C32 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C914ED1D5D18F2005F5C32 /* LocationManager.swift */; };
-		58D1C0F81D26134700F21B3B /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D1C0F71D26134700F21B3B /* SettingsViewController.xib */; };
 		58D1C0FA1D26135C00F21B3B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */; };
 		80610A915760ED5410A43568 /* Pods_DC_Metro_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C85410114C4E44EA2234CB /* Pods_DC_Metro_.framework */; };
 		9C230251773EF6B8EC5DBCDB /* Pods_DC_Metro.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31C8D099DBA76035E3D9D583 /* Pods_DC_Metro.framework */; };
@@ -64,13 +64,13 @@
 		588D7C5D1CD1A1DE008A2A22 /* DC Metro.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DC Metro.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		588D7C5F1CD1A1DE008A2A22 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		588D7C631CD1A1DE008A2A22 /* DCMetroWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCMetroWidget.entitlements; sourceTree = "<group>"; };
-		588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		588D7C641CD1A1DE008A2A22 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		588D7C671CD1A1DE008A2A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
 		588D7C691CD1A1DE008A2A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		588D7C6B1CD1A1DE008A2A22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		58A9D1031D7B4F66005CF1A7 /* TodayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		58C914ED1D5D18F2005F5C32 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		58D1C0F71D26134700F21B3B /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		71C85410114C4E44EA2234CB /* Pods_DC_Metro_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DC_Metro_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		761AA16F0AAF38F768900A8C /* Pods-DC Metro .debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DC Metro .debug.xcconfig"; path = "Pods/Target Support Files/Pods-DC Metro /Pods-DC Metro .debug.xcconfig"; sourceTree = "<group>"; };
@@ -160,10 +160,10 @@
 		588D7C611CD1A1DE008A2A22 /* DCMetroWidget */ = {
 			isa = PBXGroup;
 			children = (
-				588D7C641CD1A1DE008A2A22 /* TodayViewController.swift */,
+				58A9D1031D7B4F66005CF1A7 /* TodayViewController.swift */,
 				588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */,
+				588D7C641CD1A1DE008A2A22 /* MainViewController.swift */,
 				58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */,
-				58D1C0F71D26134700F21B3B /* SettingsViewController.xib */,
 				58C914ED1D5D18F2005F5C32 /* LocationManager.swift */,
 				588D7C691CD1A1DE008A2A22 /* Info.plist */,
 				588D7C6A1CD1A1DE008A2A22 /* InfoPlist.strings */,
@@ -295,7 +295,6 @@
 			files = (
 				588D7C681CD1A1DE008A2A22 /* TodayViewController.xib in Resources */,
 				588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */,
-				58D1C0F81D26134700F21B3B /* SettingsViewController.xib in Resources */,
 				586AE5081D514693005BF5BA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,7 +434,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				588D7C651CD1A1DE008A2A22 /* TodayViewController.swift in Sources */,
+				58A9D1041D7B4F66005CF1A7 /* TodayViewController.swift in Sources */,
+				588D7C651CD1A1DE008A2A22 /* MainViewController.swift in Sources */,
 				58C914EE1D5D18F2005F5C32 /* LocationManager.swift in Sources */,
 				58D1C0FA1D26135C00F21B3B /* SettingsViewController.swift in Sources */,
 			);
