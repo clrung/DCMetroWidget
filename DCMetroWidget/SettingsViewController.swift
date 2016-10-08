@@ -47,24 +47,24 @@ class SettingsViewController: NCWidgetListViewController {
 		if currentLocation != nil {
 			selectStationAndRadioButtonsHeightConstraint.constant = 23
 			chooseFromListTextField.stringValue = "or choose from the list"
-			for (index, radioButton) in stationRadioButtons.enumerate() {
-				radioButton.hidden = false
+			for (index, radioButton) in stationRadioButtons.enumerated() {
+				radioButton.isHidden = false
 				stationRadioButtons[index].title = fiveClosestStations[index].description
 			}
 		} else {
 			selectStationAndRadioButtonsHeightConstraint.constant = 2
 			chooseFromListTextField.stringValue = "Choose a station from the list"
 			for radioButton in stationRadioButtons {
-				radioButton.hidden = true
+				radioButton.isHidden = true
 			}
 		}
 	}
 	
 	func setupPopUpButton() {
-		let sortedStations = Station.allValues.sort( { $0.description < $1.description } )
+		let sortedStations = Station.allValues.sorted( by: { $0.description < $1.description } )
 		
 		for station in sortedStations {
-			stationPopUpButton.addItemWithTitle(station.description)
+			stationPopUpButton.addItem(withTitle: station.description)
 			
 			var rawValue = station.rawValue
 			switch rawValue {
@@ -75,28 +75,28 @@ class SettingsViewController: NCWidgetListViewController {
 			default: break
 			}
 			
-			stationPopUpButton.itemWithTitle(station.description)?.representedObject = rawValue
+			stationPopUpButton.item(withTitle: station.description)?.representedObject = rawValue
 		}
 		
-		stationPopUpButton.selectItemWithTitle(selectedStation.description)
+		stationPopUpButton.selectItem(withTitle: selectedStation.description)
 	}
 	
-	@IBAction func touchStationRadioButton(sender: NSButton) {
+	@IBAction func touchStationRadioButton(_ sender: NSButton) {
 		setSelectedStation(fiveClosestStations[sender.tag].rawValue)
 		sender.state = NSOnState
 	}
 	
-	@IBAction func touchStationPopUpButton(sender: NSPopUpButton) {
+	@IBAction func touchStationPopUpButton(_ sender: NSPopUpButton) {
 		setSelectedStation(sender.selectedItem?.representedObject as! String)
 	}
 	
-	func setSelectedStation(selectedStationCode: String) {
+	func setSelectedStation(_ selectedStationCode: String) {
 		for radioButton in stationRadioButtons {
 			radioButton.state = NSOffState
 		}
 		
 		selectedStation = Station(rawValue: selectedStationCode)!
-		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
+		UserDefaults.standard.set(selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStation = true
 	}

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
@@ -29,9 +29,9 @@
                     </constraints>
                 </progressIndicator>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZUe-4O-rwA">
-                    <rect key="frame" x="68" y="54" width="204" height="18"/>
+                    <rect key="frame" x="68" y="54" width="224" height="18"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="200" id="L8U-iC-PGV"/>
+                        <constraint firstAttribute="width" constant="220" id="L8U-iC-PGV"/>
                         <constraint firstAttribute="height" constant="18" id="itb-Sm-5Ne"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="Station" placeholderString="" usesSingleLineMode="YES" id="m4M-Tc-fBG">
@@ -205,7 +205,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="EAt-qh-G7Q" userLabel="predictionTableViewHeightConstraint"/>
@@ -223,13 +222,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lHc-Kj-KoE">
-                    <rect key="frame" x="28" y="15" width="284" height="20"/>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lHc-Kj-KoE">
+                    <rect key="frame" x="58" y="-5" width="244" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="280" id="9DL-s1-3BI"/>
-                        <constraint firstAttribute="height" constant="20" id="x1G-24-KYL"/>
+                        <constraint firstAttribute="width" constant="240" id="9DL-s1-3BI"/>
+                        <constraint firstAttribute="height" constant="40" id="x1G-24-KYL"/>
                     </constraints>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Prediction data is currently unavailable" id="tpY-dw-tY3">
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Prediction data is currently unavailable" id="tpY-dw-tY3">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -265,7 +264,7 @@
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="centerY" secondItem="vhR-94-OpT" secondAttribute="centerY" id="2P2-li-rna"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="vhR-94-OpT" secondAttribute="bottom" constant="7" id="3X1-0L-eqZ"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="9Rs-VA-cXR"/>
-                <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" id="Agz-lO-mNJ"/>
+                <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" constant="10" id="Agz-lO-mNJ"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="height" secondItem="vhR-94-OpT" secondAttribute="height" id="As0-dU-EPr"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="leading" secondItem="vhR-94-OpT" secondAttribute="trailing" constant="3" id="HnR-9e-c0y"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
@@ -273,7 +272,7 @@
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
                 <constraint firstItem="vhR-94-OpT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Owj-iO-kZD"/>
                 <constraint firstItem="vhR-94-OpT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="U6c-0n-eJ4"/>
-                <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerY" secondItem="ne8-JS-SDK" secondAttribute="centerY" id="ZZ2-0s-H52"/>
+                <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerY" secondItem="ne8-JS-SDK" secondAttribute="centerY" constant="10" id="ZZ2-0s-H52"/>
                 <constraint firstItem="vhR-94-OpT" firstAttribute="centerY" secondItem="ZUe-4O-rwA" secondAttribute="centerY" constant="-3" id="kXU-8K-xWW"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="l4f-9L-5Xz"/>
                 <constraint firstAttribute="bottom" secondItem="ne8-JS-SDK" secondAttribute="bottom" id="s7Y-Rf-WMb"/>
@@ -293,7 +292,7 @@
             </connections>
         </viewController>
         <customView simulatedAppContext="notificationCenter" id="HsN-Qm-UAY" userLabel="Settings">
-            <rect key="frame" x="0.0" y="0.0" width="432" height="188"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACV-B8-Vee">
@@ -417,7 +416,7 @@
                 <constraint firstItem="7g1-b0-6tO" firstAttribute="width" secondItem="dwA-BQ-Qh3" secondAttribute="width" id="u1R-Dv-K9l"/>
                 <constraint firstItem="dwA-BQ-Qh3" firstAttribute="top" secondItem="ACV-B8-Vee" secondAttribute="bottom" constant="-3" id="y9M-7R-4ec"/>
             </constraints>
-            <point key="canvasLocation" x="504" y="766.5"/>
+            <point key="canvasLocation" x="460" y="774"/>
         </customView>
         <viewController id="0Rw-a2-Wa9" customClass="SettingsViewController" customModule="DC_Metro" customModuleProvider="target">
             <connections>

@@ -38,7 +38,7 @@ class TodayViewController: NSViewController {
 		switchFromViewController(settingsViewController, toViewController: mainViewController)
 	}
 	
-	func switchFromViewController(fromViewController: NSViewController?, toViewController: NSViewController?) {
+	func switchFromViewController(_ fromViewController: NSViewController?, toViewController: NSViewController?) {
 		if fromViewController != nil {
 			fromViewController?.removeFromParentViewController()
 			fromViewController?.view.removeFromSuperview()
@@ -49,8 +49,8 @@ class TodayViewController: NSViewController {
 			let view = toViewController!.view
 			self.view.addSubview(view)
 			let views: [String:AnyObject] = ["view" : view]
-			self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[view]|", options: [], metrics: nil, views: views))
-			self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[view]|", options: [], metrics: nil, views: views))
+			self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options: [], metrics: nil, views: views))
+			self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options: [], metrics: nil, views: views))
 		}
 		
 		self.view.layoutSubtreeIfNeeded()

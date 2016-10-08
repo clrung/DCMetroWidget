@@ -10,7 +10,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2DBA7938-36E4-49DF-91E3-E26C83D1109F",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "812A04AA1BCB66AAEE37F57C85F3F9562A85B761" : "DCMetroWidget\/",
-    "458E562282EA72609F22324F3845260D17F5ED9B" : "..\/..\/Downloads\/WMATAFetcher"
+    "458E562282EA72609F22324F3845260D17F5ED9B" : "WMATAFetcher\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "DC Metro",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,

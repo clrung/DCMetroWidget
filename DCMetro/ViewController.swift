@@ -14,7 +14,7 @@ class ViewController: NSViewController {
 	@IBOutlet weak var homeStationPopUpButton: NSPopUpButton!
 	@IBOutlet weak var workStationPopUpButton: NSPopUpButton!
 	
-	let sharedDefaults = NSUserDefaults.init(suiteName: "2848SVWH7M.DCMetro")!
+	let sharedDefaults = UserDefaults.init(suiteName: "2848SVWH7M.DCMetro")!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,46 +22,46 @@ class ViewController: NSViewController {
 		setupPopUpButtons()
 	}
 	
-	override var representedObject: AnyObject? {
+	override var representedObject: Any? {
 		didSet {
 			// Update the view, if already loaded.
 		}
 	}
 	
-	@IBAction func clickGithubButton(sender: NSButton) {
-		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://github.com/clrung/DCMetroWidget")!)
+	@IBAction func clickGithubButton(_ sender: NSButton) {
+		NSWorkspace.shared().open(URL(string: "https://github.com/clrung/DCMetroWidget")!)
 	}
 
-	@IBAction func clickPersonalWebsiteButton(sender: NSButton) {
-		NSWorkspace.sharedWorkspace().openURL(NSURL(string: "https://christopherrung.com/contact/")!)
+	@IBAction func clickPersonalWebsiteButton(_ sender: NSButton) {
+		NSWorkspace.shared().open(URL(string: "https://christopherrung.com/contact/")!)
 	}
 	
 	func setupPopUpButtons() {
-		let sortedStations = Station.allValues.sort( { $0.description < $1.description } )
+		let sortedStations = Station.allValues.sorted( by: { $0.description < $1.description } )
 		for station in sortedStations {
-			homeStationPopUpButton.addItemWithTitle(station.description)
-			homeStationPopUpButton.itemWithTitle(station.description)?.representedObject = station.rawValue
+			homeStationPopUpButton.addItem(withTitle: station.description)
+			homeStationPopUpButton.item(withTitle: station.description)?.representedObject = station.rawValue
 			
-			workStationPopUpButton.addItemWithTitle(station.description)
-			workStationPopUpButton.itemWithTitle(station.description)?.representedObject = station.rawValue
+			workStationPopUpButton.addItem(withTitle: station.description)
+			workStationPopUpButton.item(withTitle: station.description)?.representedObject = station.rawValue
 		}
 		
-		if let homeStationCode = sharedDefaults.stringForKey("homeStation") {
+		if let homeStationCode = sharedDefaults.string(forKey: "homeStation") {
 			let homeStation = Station(rawValue: homeStationCode)!
-			homeStationPopUpButton.selectItemWithTitle(homeStation.description)
+			homeStationPopUpButton.selectItem(withTitle: homeStation.description)
 		} else {
-			homeStationPopUpButton.selectItemWithTitle("")
+			homeStationPopUpButton.selectItem(withTitle: "")
 		}
-		if let workStationCode = sharedDefaults.stringForKey("workStation") {
+		if let workStationCode = sharedDefaults.string(forKey: "workStation") {
 			let workStation = Station(rawValue: workStationCode)!
-			workStationPopUpButton.selectItemWithTitle(workStation.description)
+			workStationPopUpButton.selectItem(withTitle: workStation.description)
 		} else {
-			workStationPopUpButton.selectItemWithTitle("")
+			workStationPopUpButton.selectItem(withTitle: "")
 		}
 	}
 	
-	@IBAction func touchStationPopupbutton(sender: NSPopUpButtonCell) {
-		sharedDefaults.setObject(sender.selectedItem!.representedObject, forKey: sender.identifier!)
+	@IBAction func touchStationPopupbutton(_ sender: NSPopUpButtonCell) {
+		sharedDefaults.set(sender.selectedItem!.representedObject, forKey: sender.identifier!)
 		sharedDefaults.synchronize()
 	}
 	

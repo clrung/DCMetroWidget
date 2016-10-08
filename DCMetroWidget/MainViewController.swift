@@ -16,7 +16,7 @@ import WMATAFetcher
 
 var fiveClosestStations: [Station] = []
 var WMATAfetcher = WMATAFetcher(WMATA_API_KEY: "[WMATA_KEY_GOES_HERE]")
-var selectedStation: Station = Station(rawValue: NSUserDefaults.standardUserDefaults().stringForKey("selectedStation") ?? "No")!
+var selectedStation: Station = Station(rawValue: UserDefaults.standard.string(forKey: "selectedStation") ?? "No")!
 var currentLocation: CLLocation? = nil
 
 class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelegate, NSTableViewDataSource, CLLocationManagerDelegate {
@@ -33,7 +33,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 	
 	@IBOutlet weak var errorTextField: NSTextField!
 	
-	let sharedDefaults = NSUserDefaults.init(suiteName: "2848SVWH7M.DCMetro")!
+	let sharedDefaults = UserDefaults.init(suiteName: "2848SVWH7M.DCMetro")!
 	
 	let HEADER_HEIGHT = 23
 	let ROW_HEIGHT = 17
@@ -46,14 +46,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 		return "TodayViewController"
 	}
 	
-	func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
-		// Update your data and prepare for a snapshot. Call completion handler when you are done
-		// with NoData if nothing has changed or NewData if there is new data since the last
-		// time we called you
-		completionHandler(.NoData)
-	}
-	
-	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)!
 		Crashlytics.sharedInstance().debugMode = true
 		Fabric.with([Crashlytics.self])
@@ -72,8 +65,8 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 	override func viewWillAppear() {
 		super.viewWillAppear()
 		
-		homeFavoriteButton.hidden = sharedDefaults.stringForKey("homeStation") == nil ? true : false
-		workFavoriteButton.hidden = sharedDefaults.stringForKey("workStation") == nil ? true : false
+		homeFavoriteButton.isHidden = sharedDefaults.string(forKey: "homeStation") == nil ? true : false
+		workFavoriteButton.isHidden = sharedDefaults.string(forKey: "workStation") == nil ? true : false
 		
 		if selectedStation != Station.No {
 			didSelectStation = true
@@ -81,7 +74,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 		
 		selectedStationLabel.stringValue = didSelectStation ? selectedStation.description : selectStationString
 		
-		if CLLocationManager.authorizationStatus() == .Authorized || CLLocationManager.authorizationStatus() == .NotDetermined {
+		if CLLocationManager.authorizationStatus() == .authorized || CLLocationManager.authorizationStatus() == .notDetermined {
 			selectedStationLabel.stringValue = "Loading..."
 			LocationManager.sharedManager.startUpdatingLocation()
 		} else {	// Denied or Restricted
@@ -91,17 +84,17 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 		}
 	}
 	
-	@IBAction func clickFavoriteStation(sender: NSButton) {
-		selectedStation = Station(rawValue: sharedDefaults.stringForKey(sender.identifier!)!)!
-		NSUserDefaults.standardUserDefaults().setObject(selectedStation.rawValue, forKey: "selectedStation")
+	@IBAction func clickFavoriteStation(_ sender: NSButton) {
+		selectedStation = Station(rawValue: sharedDefaults.string(forKey: sender.identifier!)!)!
+		UserDefaults.standard.set(selectedStation.rawValue, forKey: "selectedStation")
 		getPredictionsForSelectedStation()
 	}
 	
 	func setSelectedStationLabelAndReloadTable() {
-		self.errorTextField.hidden = true
-		self.mainPredictionView.hidden = false
+		self.errorTextField.isHidden = true
+		self.mainPredictionView.isHidden = false
 		
-		dispatch_async(dispatch_get_main_queue(), {
+		DispatchQueue.main.async(execute: {
 			self.selectedStationLabel.stringValue = selectedStation.description
 			
 			let trainsHeight = self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
@@ -112,17 +105,18 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 		})
 	}
 	
-	func displayError(error: String) {
-		dispatch_async(dispatch_get_main_queue(), {
-			self.errorTextField.hidden = false
+	func displayError(_ error: String) {
+		DispatchQueue.main.async(execute: {
+			self.selectedStationLabel.stringValue = selectedStation.description
+			self.errorTextField.isHidden = false
 			self.errorTextField.stringValue = error
-			self.mainPredictionView.hidden = true
+			self.mainPredictionView.isHidden = true
 		})
 	}
 	
 	// MARK: TableView
 	
-	func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		if row < self.trains.count {
 			let item = self.trains[row]
 			
@@ -143,8 +137,8 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 				cellIdentifier = "minCell"
 				text = String(item.min)
 			}
-			if let cell = tableView.makeViewWithIdentifier(cellIdentifier, owner: nil) as? NSTableCellView {
-				predictionTableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: 1))
+			if let cell = tableView.make(withIdentifier: cellIdentifier, owner: nil) as? NSTableCellView {
+				predictionTableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: 1))
 				cell.textField?.stringValue = text
 				cell.imageView?.image = circleImage ?? nil
 				return cell
@@ -155,23 +149,23 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 	}
 	
 	// Source: http://stackoverflow.com/a/25952895
-	func getTintedImage(image:NSImage, tint:NSColor) -> NSImage {
+	func getTintedImage(_ image:NSImage, tint:NSColor) -> NSImage {
 		let tinted = image.copy() as! NSImage
 		tinted.lockFocus()
 		tint.set()
 		
 		let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
-		NSRectFillUsingOperation(imageRect, NSCompositingOperation.CompositeSourceAtop)
+		NSRectFillUsingOperation(imageRect, NSCompositingOperation.sourceAtop)
 		
 		tinted.unlockFocus()
 		return tinted
 	}
 	
-	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
-		return self.trains.count ?? 0
+	func numberOfRows(in tableView: NSTableView) -> Int {
+		return self.trains.count
 	}
 	
-	func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+	func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
 		if self.trains[row].group != "-1" {
 			return CGFloat(ROW_HEIGHT)
 		} else {
@@ -181,7 +175,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 	
 	// MARK: Location
 	
-	func locationManager(manager: CLLocationManager, didUpdateLocations locations: [AnyObject]) {
+	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		currentLocation = LocationManager.sharedManager.location
 		LocationManager.sharedManager.stopUpdatingLocation()
 		
@@ -195,7 +189,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 		}
 	}
 	
-	func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 		LocationManager.sharedManager.stopUpdatingLocation()
 		
 		if didSelectStation {
@@ -205,10 +199,10 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 			selectedStationLabel.stringValue = selectStationString
 		}
 		
-		switch error.code {
-		case CLError.Denied.rawValue:
+		switch (error as NSError).code {
+		case CLError.Code.denied.rawValue:
 			self.displayError("Location services denied")
-		case CLError.LocationUnknown.rawValue:
+		case CLError.Code.locationUnknown.rawValue:
 			self.displayError("Current location could not be determined")
 		default:
 			return
@@ -223,7 +217,11 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 			trainResponse in
 			if trainResponse.errorCode == nil {
 				self.trains = trainResponse.trains!
-				self.setSelectedStationLabelAndReloadTable()
+				if self.trains.count > 0 {
+					self.setSelectedStationLabelAndReloadTable()
+				} else {
+					self.displayError("No trains are currently arriving at \(selectedStation.description).")
+				}
 			} else {
 				switch trainResponse.errorCode! {
 				case -1009:
@@ -235,14 +233,14 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 		})
 	}
 	
-	func DictionaryOfInstanceVariables(container:AnyObject, objects: String ...) -> [String:AnyObject] {
+	func DictionaryOfInstanceVariables(_ container:AnyObject, objects: String ...) -> [String:AnyObject] {
 		var views = [String:AnyObject]()
 		for objectName in objects {
-			guard let object = object_getIvar(container, class_getInstanceVariable(container.dynamicType, objectName)) else {
+			guard let object = object_getIvar(container, class_getInstanceVariable(type(of: container), objectName)) else {
 				assertionFailure("\(objectName) is not an ivar of: \(container)");
 				continue
 			}
-			views[objectName] = object
+			views[objectName] = object as AnyObject?
 		}
 		return views
 	}
