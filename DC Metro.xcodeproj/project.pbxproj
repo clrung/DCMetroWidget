@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		586AE5081D514693005BF5BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C4E1CD1A1CB008A2A22 /* Assets.xcassets */; };
+		587EA8701DAD3FA4005A5100 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 587EA86E1DAD3FA4005A5100 /* TodayViewController.xib */; };
 		588D7C4B1CD1A1CB008A2A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C4A1CD1A1CB008A2A22 /* AppDelegate.swift */; };
 		588D7C4D1CD1A1CB008A2A22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C4C1CD1A1CB008A2A22 /* ViewController.swift */; };
 		588D7C4F1CD1A1CB008A2A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C4E1CD1A1CB008A2A22 /* Assets.xcassets */; };
 		588D7C521CD1A1CB008A2A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C501CD1A1CB008A2A22 /* Main.storyboard */; };
 		588D7C601CD1A1DE008A2A22 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588D7C5F1CD1A1DE008A2A22 /* NotificationCenter.framework */; };
 		588D7C651CD1A1DE008A2A22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D7C641CD1A1DE008A2A22 /* MainViewController.swift */; };
-		588D7C681CD1A1DE008A2A22 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */; };
 		588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 588D7C6A1CD1A1DE008A2A22 /* InfoPlist.strings */; };
 		588D7C6F1CD1A1DE008A2A22 /* DC Metro.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 588D7C5D1CD1A1DE008A2A22 /* DC Metro.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		588EA6651CFF2C6E00ACDF41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */; };
@@ -57,6 +57,7 @@
 		55520F939D884AD1B4A70B4E /* Pods_DCMetroWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DCMetroWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		586E34CB1D63C1D100AEFE01 /* WMATAFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WMATAFetcher.framework; path = "../../../Library/Developer/Xcode/DerivedData/DC_Metro-aktrovmptnkjzqcuidksappairiq/Build/Products/Debug/WMATAFetcher/WMATAFetcher.framework"; sourceTree = "<group>"; };
 		5870A1291D467FAF000D79A1 /* DC Metro.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "DC Metro.entitlements"; sourceTree = "<group>"; };
+		587EA86F1DAD3FA4005A5100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
 		588D7C471CD1A1CB008A2A22 /* DC Metro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DC Metro.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		588D7C4A1CD1A1CB008A2A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		588D7C4C1CD1A1CB008A2A22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +68,6 @@
 		588D7C5F1CD1A1DE008A2A22 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		588D7C631CD1A1DE008A2A22 /* DCMetroWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DCMetroWidget.entitlements; sourceTree = "<group>"; };
 		588D7C641CD1A1DE008A2A22 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		588D7C671CD1A1DE008A2A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
 		588D7C691CD1A1DE008A2A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		588D7C6B1CD1A1DE008A2A22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		588EA6641CFF2C6E00ACDF41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -167,7 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				58A9D1031D7B4F66005CF1A7 /* TodayViewController.swift */,
-				588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */,
+				587EA86E1DAD3FA4005A5100 /* TodayViewController.xib */,
 				588D7C641CD1A1DE008A2A22 /* MainViewController.swift */,
 				58D1C0F91D26135C00F21B3B /* SettingsViewController.swift */,
 				58C914ED1D5D18F2005F5C32 /* LocationManager.swift */,
@@ -300,9 +300,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				588D7C681CD1A1DE008A2A22 /* TodayViewController.xib in Resources */,
 				588D7C6C1CD1A1DE008A2A22 /* InfoPlist.strings in Resources */,
 				586AE5081D514693005BF5BA /* Assets.xcassets in Resources */,
+				587EA8701DAD3FA4005A5100 /* TodayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,20 +444,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		587EA86E1DAD3FA4005A5100 /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				587EA86F1DAD3FA4005A5100 /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
 		588D7C501CD1A1CB008A2A22 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				588D7C511CD1A1CB008A2A22 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		588D7C661CD1A1DE008A2A22 /* TodayViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				588D7C671CD1A1DE008A2A22 /* Base */,
-			);
-			name = TodayViewController.xib;
 			sourceTree = "<group>";
 		};
 		588D7C6A1CD1A1DE008A2A22 /* InfoPlist.strings */ = {
@@ -474,6 +474,7 @@
 		588D7C541CD1A1CB008A2A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -521,6 +522,7 @@
 		588D7C551CD1A1CB008A2A22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -562,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DB6D7ED1345238A324B24B17 /* Pods-DC Metro.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DC Metro.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -580,7 +582,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F9C11C25531968183F04CAD /* Pods-DC Metro.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "DC Metro.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";

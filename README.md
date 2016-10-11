@@ -6,9 +6,7 @@
 
 A Today extension for macOS' Notification Center that tracks DC Metro arrival times.
 
-<p align="center">
-<img src="http://i.imgur.com/K9iXRGF.png" width="320" height="403" alt="Screenshot"/></a>
-</p>
+<img src="https://raw.githubusercontent.com/clrung/DCMetroWidget/master/Screenshots/GitHub/Main.png" width="331"/> <img src="https://raw.githubusercontent.com/clrung/DCMetroWidget/master/Screenshots/GitHub/Settings.png" width="331"/>
 
 ## Requirements
 * macOS 10.10+

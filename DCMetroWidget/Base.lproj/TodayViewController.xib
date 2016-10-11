@@ -19,17 +19,41 @@
         </customView>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY" userLabel="Main">
-            <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
+            <rect key="frame" x="0.0" y="0.0" width="350" height="70"/>
             <subviews>
                 <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="vMG-YT-uax">
-                    <rect key="frame" x="144" y="21" width="32" height="32"/>
+                    <rect key="frame" x="144" y="19" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="Ue9-JR-Zat"/>
                         <constraint firstAttribute="height" constant="32" id="lyC-I0-Q7o"/>
                     </constraints>
                 </progressIndicator>
+                <button identifier="homeStation" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vhR-94-OpT">
+                    <rect key="frame" x="4" y="54" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="2su-PU-Ed9"/>
+                        <constraint firstAttribute="width" constant="16" id="Fzi-O5-LEe"/>
+                    </constraints>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Home" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="xFD-bj-DNO">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickFavoriteStation:" target="1sr-Uh-37g" id="Orl-Hw-ZRH"/>
+                    </connections>
+                </button>
+                <button identifier="workStation" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-Yv-uM6">
+                    <rect key="frame" x="25" y="54" width="16" height="16"/>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Work" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="vY8-qT-ogv">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="clickFavoriteStation:" target="1sr-Uh-37g" id="gfn-q6-hO8"/>
+                    </connections>
+                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZUe-4O-rwA">
-                    <rect key="frame" x="68" y="54" width="224" height="18"/>
+                    <rect key="frame" x="68" y="51" width="224" height="18"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="220" id="L8U-iC-PGV"/>
                         <constraint firstAttribute="height" constant="18" id="itb-Sm-5Ne"/>
@@ -124,7 +148,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="160" minWidth="10" maxWidth="3.4028234663852886e+38" id="gbm-ZB-sUH">
+                                    <tableColumn identifier="" width="185" minWidth="10" maxWidth="3.4028234663852886e+38" id="gbm-ZB-sUH">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Destination">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -138,11 +162,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="destinationCell" id="ghP-K4-OiV">
-                                                <rect key="frame" x="77" y="3" width="160" height="17"/>
+                                                <rect key="frame" x="77" y="3" width="185" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="155" translatesAutoresizingMaskIntoConstraints="NO" id="8nS-UJ-3oA">
-                                                        <rect key="frame" x="13" y="0.0" width="149" height="17"/>
+                                                        <rect key="frame" x="13" y="0.0" width="174" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="g0w-HM-bxx">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -161,7 +185,7 @@
                                             </tableCellView>
                                         </prototypeCellViews>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="96" minWidth="10" maxWidth="3.4028234663852886e+38" id="5ZI-hE-RMo">
+                                    <tableColumn identifier="" width="71" minWidth="10" maxWidth="3.4028234663852886e+38" id="5ZI-hE-RMo">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="center" title="Min">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -175,11 +199,11 @@
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
                                             <tableCellView identifier="minCell" id="lfX-2o-kf7">
-                                                <rect key="frame" x="240" y="3" width="96" height="17"/>
+                                                <rect key="frame" x="265" y="3" width="71" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="50" translatesAutoresizingMaskIntoConstraints="NO" id="kuw-8A-pde">
-                                                        <rect key="frame" x="0.0" y="0.0" width="98" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="73" height="17"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" title="0" id="pwF-77-Nvx">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -234,46 +258,22 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button identifier="homeStation" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vhR-94-OpT">
-                    <rect key="frame" x="0.0" y="57" width="18" height="18"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="18" id="2su-PU-Ed9"/>
-                        <constraint firstAttribute="width" constant="18" id="Fzi-O5-LEe"/>
-                    </constraints>
-                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Home" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="xFD-bj-DNO">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="clickFavoriteStation:" target="1sr-Uh-37g" id="Orl-Hw-ZRH"/>
-                    </connections>
-                </button>
-                <button identifier="workStation" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zyn-Yv-uM6">
-                    <rect key="frame" x="21" y="57" width="18" height="18"/>
-                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="Work" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="vY8-qT-ogv">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="clickFavoriteStation:" target="1sr-Uh-37g" id="gfn-q6-hO8"/>
-                    </connections>
-                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" constant="-15" id="1Bq-GQ-QtD"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="centerY" secondItem="vhR-94-OpT" secondAttribute="centerY" id="2P2-li-rna"/>
-                <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="vhR-94-OpT" secondAttribute="bottom" constant="7" id="3X1-0L-eqZ"/>
+                <constraint firstItem="ne8-JS-SDK" firstAttribute="top" secondItem="vhR-94-OpT" secondAttribute="bottom" constant="4" id="3X1-0L-eqZ"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerX" secondItem="ZUe-4O-rwA" secondAttribute="centerX" id="9Rs-VA-cXR"/>
                 <constraint firstItem="ZUe-4O-rwA" firstAttribute="centerX" secondItem="ne8-JS-SDK" secondAttribute="centerX" constant="10" id="Agz-lO-mNJ"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="height" secondItem="vhR-94-OpT" secondAttribute="height" id="As0-dU-EPr"/>
-                <constraint firstItem="zyn-Yv-uM6" firstAttribute="leading" secondItem="vhR-94-OpT" secondAttribute="trailing" constant="3" id="HnR-9e-c0y"/>
+                <constraint firstItem="zyn-Yv-uM6" firstAttribute="leading" secondItem="vhR-94-OpT" secondAttribute="trailing" constant="5" id="HnR-9e-c0y"/>
                 <constraint firstAttribute="trailing" secondItem="ne8-JS-SDK" secondAttribute="trailing" constant="10" id="I97-LF-ZsN"/>
                 <constraint firstItem="zyn-Yv-uM6" firstAttribute="width" secondItem="vhR-94-OpT" secondAttribute="width" id="J7W-t8-aQq"/>
                 <constraint firstItem="ne8-JS-SDK" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="OOw-98-Mg0"/>
-                <constraint firstItem="vhR-94-OpT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Owj-iO-kZD"/>
+                <constraint firstItem="vhR-94-OpT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="4" id="Owj-iO-kZD"/>
                 <constraint firstItem="vhR-94-OpT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="U6c-0n-eJ4"/>
                 <constraint firstItem="lHc-Kj-KoE" firstAttribute="centerY" secondItem="ne8-JS-SDK" secondAttribute="centerY" constant="10" id="ZZ2-0s-H52"/>
-                <constraint firstItem="vhR-94-OpT" firstAttribute="centerY" secondItem="ZUe-4O-rwA" secondAttribute="centerY" constant="-3" id="kXU-8K-xWW"/>
+                <constraint firstItem="vhR-94-OpT" firstAttribute="centerY" secondItem="ZUe-4O-rwA" secondAttribute="centerY" constant="-2" id="kXU-8K-xWW"/>
                 <constraint firstItem="vMG-YT-uax" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="l4f-9L-5Xz"/>
                 <constraint firstAttribute="bottom" secondItem="ne8-JS-SDK" secondAttribute="bottom" id="s7Y-Rf-WMb"/>
             </constraints>
@@ -296,7 +296,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACV-B8-Vee">
-                    <rect key="frame" x="-2" y="165" width="164" height="23"/>
+                    <rect key="frame" x="23" y="165" width="164" height="23"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="23" id="84s-Io-Vjn"/>
                         <constraint firstAttribute="width" constant="160" id="z8M-wI-ekl"/>
@@ -308,7 +308,7 @@
                     </textFieldCell>
                 </textField>
                 <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="dwA-BQ-Qh3">
-                    <rect key="frame" x="-1" y="144" width="263" height="25"/>
+                    <rect key="frame" x="24" y="144" width="263" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="260" id="R6T-SI-Rd7"/>
                     </constraints>
@@ -321,7 +321,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="7g1-b0-6tO">
-                    <rect key="frame" x="-1" y="121" width="263" height="25"/>
+                    <rect key="frame" x="24" y="121" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="wvk-kg-6n4">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -331,7 +331,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="2" translatesAutoresizingMaskIntoConstraints="NO" id="WNO-CP-OSh">
-                    <rect key="frame" x="-1" y="98" width="263" height="25"/>
+                    <rect key="frame" x="24" y="98" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="Jlo-dh-3XZ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -341,7 +341,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="3" translatesAutoresizingMaskIntoConstraints="NO" id="nBu-WG-98t">
-                    <rect key="frame" x="-1" y="75" width="263" height="25"/>
+                    <rect key="frame" x="24" y="75" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="jJF-bf-oDB">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -351,7 +351,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" focusRingType="none" tag="4" translatesAutoresizingMaskIntoConstraints="NO" id="afb-Tg-MZI">
-                    <rect key="frame" x="-1" y="52" width="263" height="25"/>
+                    <rect key="frame" x="24" y="52" width="263" height="25"/>
                     <buttonCell key="cell" type="radio" title="Radio" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="hWU-Zl-mae">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -361,7 +361,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Xg-rL-G4C">
-                    <rect key="frame" x="-2" y="36" width="184" height="17"/>
+                    <rect key="frame" x="23" y="36" width="184" height="17"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="17" id="I4h-Ou-tlj"/>
                         <constraint firstAttribute="width" constant="180" id="wtj-lO-dSg"/>
@@ -373,7 +373,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2aZ-BT-h88">
-                    <rect key="frame" x="-2" y="7" width="265" height="26"/>
+                    <rect key="frame" x="23" y="7" width="265" height="26"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="udd-wN-kdB"/>
                     </constraints>
@@ -412,7 +412,7 @@
                 <constraint firstItem="afb-Tg-MZI" firstAttribute="height" secondItem="dwA-BQ-Qh3" secondAttribute="height" id="o3X-Em-1vK"/>
                 <constraint firstItem="7g1-b0-6tO" firstAttribute="centerX" secondItem="dwA-BQ-Qh3" secondAttribute="centerX" id="r58-jO-tdF"/>
                 <constraint firstItem="WNO-CP-OSh" firstAttribute="top" secondItem="7g1-b0-6tO" secondAttribute="bottom" id="s3B-qp-ICD"/>
-                <constraint firstItem="dwA-BQ-Qh3" firstAttribute="leading" secondItem="HsN-Qm-UAY" secondAttribute="leading" id="tk4-ID-dXR"/>
+                <constraint firstItem="dwA-BQ-Qh3" firstAttribute="leading" secondItem="HsN-Qm-UAY" secondAttribute="leading" constant="25" id="tk4-ID-dXR"/>
                 <constraint firstItem="7g1-b0-6tO" firstAttribute="width" secondItem="dwA-BQ-Qh3" secondAttribute="width" id="u1R-Dv-K9l"/>
                 <constraint firstItem="dwA-BQ-Qh3" firstAttribute="top" secondItem="ACV-B8-Vee" secondAttribute="bottom" constant="-3" id="y9M-7R-4ec"/>
             </constraints>
