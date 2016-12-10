@@ -98,7 +98,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 			self.selectedStationLabel.stringValue = selectedStation.description
 			
 			let trainsHeight = self.trains.count * (self.ROW_HEIGHT + self.ROW_SPACING)
-			let spacesHeight = WMATAfetcher.getSpaceCount(self.trains) * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
+			let spacesHeight = WMATAfetcher.getSpaceCount(trains: self.trains) * (self.ROW_HEIGHT - self.SPACE_HEIGHT)
 			
 			self.predictionTableViewHeightConstraint.constant = CGFloat(self.HEADER_HEIGHT + trainsHeight - spacesHeight)
 			self.predictionTableView.reloadData()
@@ -166,10 +166,10 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 	}
 	
 	func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-		if self.trains[row].group != "-1" {
-			return CGFloat(ROW_HEIGHT)
-		} else {
+		if self.trains[row].group == "-1" {
 			return CGFloat(SPACE_HEIGHT)
+		} else {
+			return CGFloat(ROW_HEIGHT)
 		}
 	}
 	
@@ -180,7 +180,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 		LocationManager.sharedManager.stopUpdatingLocation()
 		
 		if currentLocation != nil {
-			fiveClosestStations = WMATAfetcher.getClosestStations(currentLocation!, numStations: 5)
+			fiveClosestStations = WMATAfetcher.getClosestStations(location: currentLocation!, numStations: 5)
 			if !didSelectStation {
 				selectedStation = fiveClosestStations[0]
 			}
@@ -213,7 +213,7 @@ class MainViewController: NSViewController, NCWidgetProviding, NSTableViewDelega
 	Wrapper method that calls getPrediction(), passing it the selectedStation.
 	*/
 	func getPredictionsForSelectedStation() {
-		WMATAfetcher.getStationPredictions(selectedStation.rawValue, onCompleted: {
+		WMATAfetcher.getStationPredictions(stationCode: selectedStation.rawValue, onCompleted: {
 			trainResponse in
 			if trainResponse.errorCode == nil {
 				self.trains = trainResponse.trains!
