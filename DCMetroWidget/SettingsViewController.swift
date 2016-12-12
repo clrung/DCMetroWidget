@@ -27,6 +27,8 @@ class SettingsViewController: NCWidgetListViewController {
 	@IBOutlet weak var chooseFromListTextField: NSTextField!
 	@IBOutlet weak var stationPopUpButton: NSPopUpButton!
 	
+	@IBOutlet weak var unitsSegmentedControl: NSSegmentedControl!
+	
 	override var nibName: String? {
 		return "SettingsViewController"
 	}
@@ -34,6 +36,7 @@ class SettingsViewController: NCWidgetListViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupPopUpButton()
+		UserDefaults.standard.bool(forKey: "isMetric") ? unitsSegmentedControl.setSelected(true, forSegment: 1) : unitsSegmentedControl.setSelected(true, forSegment: 0)
 	}
 	
 	override func viewWillAppear() {
@@ -47,11 +50,7 @@ class SettingsViewController: NCWidgetListViewController {
 		if currentLocation != nil {
 			selectStationAndRadioButtonsHeightConstraint.constant = 23
 			chooseFromListTextField.stringValue = "or choose from the list"
-			for (index, radioButton) in stationRadioButtons.enumerated() {
-				radioButton.isHidden = false
-				let station = fiveClosestStations[index]
-				stationRadioButtons[index].title = station.description + String(format: " (%@)", WMATAfetcher.getDistanceFromStation(location: currentLocation!, station: station, isMetric: false))
-			}
+			populateStationRadioButtonTitles()
 		} else {
 			selectStationAndRadioButtonsHeightConstraint.constant = 2
 			chooseFromListTextField.stringValue = "Choose a station from the list"
@@ -91,6 +90,11 @@ class SettingsViewController: NCWidgetListViewController {
 		setSelectedStation(sender.selectedItem?.representedObject as! String)
 	}
 	
+	@IBAction func touchUnitsSegmentedControl(_ sender: NSSegmentedControl) {
+		unitsSegmentedControl.isSelected(forSegment: 1) ? UserDefaults.standard.set(true, forKey: "isMetric") : UserDefaults.standard.set(false, forKey: "isMetric")
+		populateStationRadioButtonTitles()
+	}
+	
 	func setSelectedStation(_ selectedStationCode: String) {
 		for radioButton in stationRadioButtons {
 			radioButton.state = NSOffState
@@ -100,6 +104,15 @@ class SettingsViewController: NCWidgetListViewController {
 		UserDefaults.standard.set(selectedStation.rawValue, forKey: "selectedStation")
 		
 		didSelectStation = true
+	}
+	
+	func populateStationRadioButtonTitles() {
+		for (index, radioButton) in stationRadioButtons.enumerated() {
+			radioButton.isHidden = false
+			let station = fiveClosestStations[index]
+			let distance = WMATAfetcher.getDistanceFromStation(location: currentLocation!, station: station, isMetric: unitsSegmentedControl.isSelected(forSegment: 1))
+			stationRadioButtons[index].title = station.description + String(format: " (%@)", distance)
+		}
 	}
 	
 }

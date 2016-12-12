@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController">
@@ -296,9 +297,9 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ACV-B8-Vee">
-                    <rect key="frame" x="23" y="165" width="164" height="23"/>
+                    <rect key="frame" x="23" y="168" width="164" height="20"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="23" id="84s-Io-Vjn"/>
+                        <constraint firstAttribute="height" constant="20" id="84s-Io-Vjn"/>
                         <constraint firstAttribute="width" constant="160" id="z8M-wI-ekl"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Select a station near you" id="mES-6g-8Ve">
@@ -386,6 +387,23 @@
                         <action selector="touchStationPopUpButton:" target="0Rw-a2-Wa9" id="sby-bn-22V"/>
                     </connections>
                 </popUpButton>
+                <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wJg-zX-n1u">
+                    <rect key="frame" x="204" y="168" width="113" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Qzv-vQ-FfF"/>
+                        <constraint firstAttribute="width" constant="109" id="XHZ-Pb-aPw"/>
+                    </constraints>
+                    <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="8uy-YH-SQQ">
+                        <font key="font" metaFont="system"/>
+                        <segments>
+                            <segment label="Imperial" width="53" selected="YES"/>
+                            <segment label="Metric" width="53" tag="1"/>
+                        </segments>
+                    </segmentedCell>
+                    <connections>
+                        <action selector="touchUnitsSegmentedControl:" target="0Rw-a2-Wa9" id="5iK-0Q-aPW"/>
+                    </connections>
+                </segmentedControl>
             </subviews>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2aZ-BT-h88" secondAttribute="bottom" constant="10" id="1mk-e8-Urh"/>
@@ -395,10 +413,12 @@
                 <constraint firstItem="nBu-WG-98t" firstAttribute="width" secondItem="dwA-BQ-Qh3" secondAttribute="width" id="Ey4-wV-N9B"/>
                 <constraint firstItem="nBu-WG-98t" firstAttribute="centerX" secondItem="dwA-BQ-Qh3" secondAttribute="centerX" id="FZc-CB-zRj"/>
                 <constraint firstItem="3Xg-rL-G4C" firstAttribute="top" secondItem="afb-Tg-MZI" secondAttribute="bottom" id="GYr-U3-IYW"/>
+                <constraint firstAttribute="trailing" secondItem="wJg-zX-n1u" secondAttribute="trailing" constant="5" id="HVn-tA-ASc"/>
                 <constraint firstItem="ACV-B8-Vee" firstAttribute="leading" secondItem="dwA-BQ-Qh3" secondAttribute="leading" id="Ioq-sO-pBQ"/>
                 <constraint firstItem="2aZ-BT-h88" firstAttribute="width" secondItem="dwA-BQ-Qh3" secondAttribute="width" id="N1u-Yy-CNb"/>
                 <constraint firstItem="3Xg-rL-G4C" firstAttribute="leading" secondItem="dwA-BQ-Qh3" secondAttribute="leading" id="Nfd-CK-LWU"/>
-                <constraint firstItem="dwA-BQ-Qh3" firstAttribute="height" secondItem="ACV-B8-Vee" secondAttribute="height" id="URi-2Z-0i7"/>
+                <constraint firstItem="wJg-zX-n1u" firstAttribute="centerY" secondItem="ACV-B8-Vee" secondAttribute="centerY" constant="-2" id="QKk-GP-6zd"/>
+                <constraint firstItem="dwA-BQ-Qh3" firstAttribute="height" secondItem="ACV-B8-Vee" secondAttribute="height" constant="3" id="URi-2Z-0i7"/>
                 <constraint firstItem="WNO-CP-OSh" firstAttribute="bottom" secondItem="nBu-WG-98t" secondAttribute="top" id="Utp-eb-zMU"/>
                 <constraint firstItem="WNO-CP-OSh" firstAttribute="height" secondItem="dwA-BQ-Qh3" secondAttribute="height" id="aGv-Zo-WfS"/>
                 <constraint firstItem="ACV-B8-Vee" firstAttribute="top" secondItem="HsN-Qm-UAY" secondAttribute="top" id="aPs-B6-d0j"/>
@@ -414,7 +434,7 @@
                 <constraint firstItem="WNO-CP-OSh" firstAttribute="top" secondItem="7g1-b0-6tO" secondAttribute="bottom" id="s3B-qp-ICD"/>
                 <constraint firstItem="dwA-BQ-Qh3" firstAttribute="leading" secondItem="HsN-Qm-UAY" secondAttribute="leading" constant="25" id="tk4-ID-dXR"/>
                 <constraint firstItem="7g1-b0-6tO" firstAttribute="width" secondItem="dwA-BQ-Qh3" secondAttribute="width" id="u1R-Dv-K9l"/>
-                <constraint firstItem="dwA-BQ-Qh3" firstAttribute="top" secondItem="ACV-B8-Vee" secondAttribute="bottom" constant="-3" id="y9M-7R-4ec"/>
+                <constraint firstItem="dwA-BQ-Qh3" firstAttribute="top" secondItem="ACV-B8-Vee" secondAttribute="bottom" id="y9M-7R-4ec"/>
             </constraints>
             <point key="canvasLocation" x="460" y="774"/>
         </customView>
@@ -429,6 +449,7 @@
                 <outlet property="stationRadioButton3" destination="WNO-CP-OSh" id="8fb-EE-s4d"/>
                 <outlet property="stationRadioButton4" destination="nBu-WG-98t" id="I35-QX-aRh"/>
                 <outlet property="stationRadioButton5" destination="afb-Tg-MZI" id="9BN-9f-jz3"/>
+                <outlet property="unitsSegmentedControl" destination="wJg-zX-n1u" id="WcC-RA-vbE"/>
                 <outlet property="view" destination="HsN-Qm-UAY" id="LIU-Gg-VaC"/>
             </connections>
         </viewController>
