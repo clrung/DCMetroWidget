@@ -49,7 +49,8 @@ class SettingsViewController: NCWidgetListViewController {
 			chooseFromListTextField.stringValue = "or choose from the list"
 			for (index, radioButton) in stationRadioButtons.enumerated() {
 				radioButton.isHidden = false
-				stationRadioButtons[index].title = fiveClosestStations[index].description
+				let station = fiveClosestStations[index]
+				stationRadioButtons[index].title = station.description + String(format: " (%@)", WMATAfetcher.getDistanceFromStation(location: currentLocation!, station: station, isMetric: false))
 			}
 		} else {
 			selectStationAndRadioButtonsHeightConstraint.constant = 2
